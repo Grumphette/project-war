@@ -2,14 +2,19 @@ package Core;
 
 import java.util.ArrayList;
 
+import com.sun.xml.internal.bind.v2.runtime.Coordinator;
+
 public class Battlefield 
 {
-	private ArrayList<Field> battlefieldZones;
+	private int sizeX,sizeY;
+	private Field[][] battlefieldZones;
 	
 	
-	public Battlefield()
+	public Battlefield(int sizeX, int sizeY)
 	{
-
+		this.sizeX = sizeX;
+		this.sizeY = sizeY;
+		
+		this.battlefieldZones = new Field[this.sizeX][this.sizeY];
 	}
-
 }

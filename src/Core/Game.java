@@ -25,8 +25,12 @@ public class Game {
 	public Game ()
 	{
 		//Initialization of the different game component
+			//Size of Army selection
+			//Load Units/Abilities
+			//Army Creation (store/load army ?)
 		
 		//Define witch player starts, (draw a dice, the greater score starts)
+			//Army Placement on the battlefield
 		
 		//while half of a player's army is not yet destroyed, continue
 		

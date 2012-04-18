@@ -2,6 +2,9 @@ package Core;
 
 import java.util.ArrayList;
 
+
+
+
 public class Troop {
 	
 	private int size;

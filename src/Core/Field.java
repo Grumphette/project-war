@@ -2,11 +2,12 @@ package Core;
 
 import java.util.ArrayList;
 
+import misc.Coord2D;
+
+
 public class Field 
 {
-	private ArrayList<Troop> stationatedTroops;
-	private int playerOwner; //0 = player 0; 1 = player 1; -1 = both
-	private String position; // RM, RR, RL, FM, FR, FL,EZ;
+	private Troop stationatedTroops;
 	
 	public Field()
 	{
