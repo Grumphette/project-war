@@ -2,12 +2,10 @@ package Core;
 
 import java.util.ArrayList;
 
-import misc.Coord2D;
 
-
-public abstact class Field 
+public abstract class Field 
 {
-  private bool crossable;
+  private boolean crossable;
   private int movementPenalty;
   private Ability grantedBonus;
 	
@@ -17,18 +15,18 @@ public abstact class Field
 	}
 	
 	
-	public void isCrossable()
-  {
-    return crossable;
-  }
+	public boolean isCrossable()
+	{
+		return crossable;
+	}
   
-  public Ability getGrantedBonus()
-  {
-    return grantedBonus;
-  }
+	public Ability getGrantedBonus()
+	{
+		return grantedBonus;
+	}
   
-  public int getMovementPenalty()
-  {
-     return movementPenalty;
-  }
+	public int getMovementPenalty()
+	{
+		return movementPenalty;
+	}
 }
