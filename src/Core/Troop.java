@@ -10,6 +10,7 @@ import misc.Coord2D;
 public class Troop {
 	
 	private int size;
+  private int trackSize;
 	private Coord2D leftrotatePoint, rightrotatePoint;
 	private ArrayList<Unit> troupUnits;
 	private boolean isDeployed;
@@ -22,6 +23,7 @@ public class Troop {
 	public Troop()
 	{
 		this.size = 0;
+    this.trackSize = 0;
 		this.troupUnits = new ArrayList<Unit>();
 		this.grantedAbilities = new ArrayList<Ability>();
 		this.attackDices = new ArrayList<Dice>();
@@ -33,27 +35,27 @@ public class Troop {
 
 	public void addUnit(Unit unitToAdd)
 	{
+    this.trackSize++;
 		//you have to check that the unitToAdd.troupSizeAgreement is less or equal to the other Unit in the troop
-		int tmpSize = 1;
 		if(this.troupUnits.isEmpty())
 		{
 			this.size = unitToAdd.getTroupSizeAgreement();
 		}
 		else
 		{
-			while(this.troupUnits.iterator().hasNext())
-			{
-				tmpSize++;
-				if(unitToAdd.getTroupSizeAgreement() > this.size && tmpSize < this.size)
-				{
-					
-				}
-				if(unitToAdd.getTroupSizeAgreement() < this.size && tmpSize < this.size)
-				{
-					this.size=unitToAdd.getTroupSizeAgreement();
-					/***/
-				}
-			}
+			if(unitToAdd.getTroupSizeAgreement() <= this.size && this.trackSize <= this.size) //we are in the case where we want to add a unit with a correct size aggrement in a not fully populated troop
+      {
+        this.troopUnits.add(unitToAdd);
+        this.grantedAbilities.add(unitToAdd.getGrantedAbilities());
+        this.attackDices.add(unitToAdd.getAttackDices());
+        this.stamania += unitToAdd.getStamania();
+        
+        if(unitToAdd.getTroupSizeAgreement() < this.size) // if we add a unit with a lowest troop size agreement we have to udpate the size limit of this troop
+        {
+          this.size = unitToAdd.getTroupSizeAgreement();
+        }
+      }
+      /**@TODO correctly handle the other cases*/
 		}
 		
 		
