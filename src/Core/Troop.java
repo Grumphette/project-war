@@ -43,7 +43,7 @@ public class Troop {
     }
     else
     {
-      if(unitToAdd.getTroupSizeAgreement() <= this.size && this.trackSize <= this.size) //we are in the case where we want to add a unit with a correct size aggrement in a not fully populated troop
+      if(unitToAdd.getTroupSizeAgreement() >= this.trackSize && this.trackSize <= this.size ) //we are in the case where we want to add a unit with a correct size aggrement in a not fully populated troop
       {
         this.troopUnits.add(unitToAdd);
         this.grantedAbilities.add(unitToAdd.getGrantedAbilities());
@@ -55,15 +55,7 @@ public class Troop {
           this.size = unitToAdd.getTroupSizeAgreement();
         }
       }
-    /**@TODO correctly handle the other cases*/
     }
-		
-		
-		
-		//add the potential abilites of the unit to the aglomerated one in the troop
-		//same for the attackDices
-		//increment the stamania of the Troop
-		//increment the size
 	}
 	
 	public void rotate(int dx, int dy, Coord2D pivot)
