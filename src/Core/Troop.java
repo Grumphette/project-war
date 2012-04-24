@@ -45,9 +45,9 @@ public class Troop {
     {
       if(unitToAdd.getTroupSizeAgreement() >= this.trackSize && this.trackSize <= this.size ) //we are in the case where we want to add a unit with a correct size aggrement in a not fully populated troop
       {
-        this.troopUnits.add(unitToAdd);
-        this.grantedAbilities.add(unitToAdd.getGrantedAbilities());
-        this.attackDices.add(unitToAdd.getAttackDices());
+        this.troupUnits.add(unitToAdd);
+        this.grantedAbilities.addAll(unitToAdd.getGrantedAbilities());
+        this.attackDices.addAll(unitToAdd.getAttackDices());
         this.stamania += unitToAdd.getStamania();
         
         if(unitToAdd.getTroupSizeAgreement() < this.size) // if we add a unit with a lowest troop size agreement we have to udpate the size limit of this troop
