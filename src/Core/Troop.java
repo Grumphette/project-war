@@ -36,14 +36,14 @@ public class Troop {
 	public void addUnit(Unit unitToAdd)
 	{
     this.trackSize++;
-		//you have to check that the unitToAdd.troupSizeAgreement is less or equal to the other Unit in the troop
-		if(this.troupUnits.isEmpty())
-		{
-			this.size = unitToAdd.getTroupSizeAgreement();
-		}
-		else
-		{
-			if(unitToAdd.getTroupSizeAgreement() <= this.size && this.trackSize <= this.size) //we are in the case where we want to add a unit with a correct size aggrement in a not fully populated troop
+    //you have to check that the unitToAdd.troupSizeAgreement is less or equal to the other Unit in the troop
+    if(this.troupUnits.isEmpty())
+    {
+      this.size = unitToAdd.getTroupSizeAgreement();
+    }
+    else
+    {
+      if(unitToAdd.getTroupSizeAgreement() <= this.size && this.trackSize <= this.size) //we are in the case where we want to add a unit with a correct size aggrement in a not fully populated troop
       {
         this.troopUnits.add(unitToAdd);
         this.grantedAbilities.add(unitToAdd.getGrantedAbilities());
@@ -55,8 +55,8 @@ public class Troop {
           this.size = unitToAdd.getTroupSizeAgreement();
         }
       }
-      /**@TODO correctly handle the other cases*/
-		}
+    /**@TODO correctly handle the other cases*/
+    }
 		
 		
 		
