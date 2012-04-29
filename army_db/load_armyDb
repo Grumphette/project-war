@@ -1,0 +1,130 @@
+CREATE TABLE race  --<= ok
+(
+name VARCHAR(30)
+);
+
+CREATE TABLE dice  --<= ok
+(
+type VARCHAR(30),
+val INTEGER
+);
+
+CREATE TABLE unit  --<= ok
+(
+name VARCHAR(30),
+cmd_price INTEGER,
+size_agreement INTEGER,
+stamania INTEGER
+);
+
+CREATE TABLE ability  --<= ok
+(
+name VARCHAR(30),
+is_free INTEGER
+);
+
+CREATE TABLE mability
+(
+winorder INTEGER,
+windice INTEGER,
+winability INTEGER,
+joinany INTEGER,
+addxdice INTEGER,
+woundonone INTEGER,
+adddiceoncharge INTEGER,
+adddiceonanycac INTEGER,
+adddiceonshoot IiNTEGER,
+adddiceoncarycac INTEGER,
+moveafterfastmarch INTEGER,
+chargeondestroy INTEGER,
+sameorderamount INTEGER,
+removeallwound INTEGER,
+intercepted INTEGER,
+fastmarch INTEGER,
+addwoundonhit INTEGER,
+addXwound INTEGER,
+id_ability INTEGER,
+FOREIGN KEY (id_ability) REFERENCES ability(rowid), 
+FOREIGN KEY (winability) REFERENCES ability(rowid)
+);
+
+CREATE TABLE race_unit 
+(
+id_race INTEGER,
+id_unit INTEGER,
+FOREIGN KEY (id_race) REFERENCES race(rowid), 
+FOREIGN KEY (id_unit) REFERENCES unit(rowid)
+);
+
+CREATE TABLE unit_dice
+(
+id_unit INTEGER,
+id_dice INTEGER,
+FOREIGN KEY (id_unit) REFERENCES unit(rowid), 
+FOREIGN KEY (id_dice) REFERENCES dice(rowid)
+);
+
+CREATE TABLE unit_ability
+(
+id_unit INTEGER,
+id_ability INTEGER,
+FOREIGN KEY (id_unit) REFERENCES unit(rowid), 
+FOREIGN KEY (id_ability) REFERENCES ability(rowid)
+);
+
+
+--Table Race
+INSERT INTO race (name) VALUES ('elves');
+INSERT INTO race (name) VALUES ('orcs');
+INSERT INTO race (name) VALUES ('dwarves');
+
+--Table Dice
+INSERT INTO dice (type,val) VALUES ('close',1);
+INSERT INTO dice (type,val) VALUES ('close',2);
+INSERT INTO dice (type,val) VALUES ('close',3);
+INSERT INTO dice (type,val) VALUES ('close',4);
+INSERT INTO dice (type,val) VALUES ('close',5);
+INSERT INTO dice (type,val) VALUES ('close',6);
+INSERT INTO dice (type,val) VALUES ('range',1);
+INSERT INTO dice (type,val) VALUES ('range',2);
+INSERT INTO dice (type,val) VALUES ('range',3);
+INSERT INTO dice (type,val) VALUES ('range',4);
+INSERT INTO dice (type,val) VALUES ('range',5);
+INSERT INTO dice (type,val) VALUES ('range',6);
+
+--Table Unit
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Spear men',2,4,1);
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Archers',3,4,1);
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Elite archers',4,4,1);
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Mounted archers',5,1,2);
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Mounted guard',4,3,2);
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Elven does',4,3,1);
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Wood pack',4,4,1);
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Hero',6,1,1);
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Chariot',7,1,2);
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Pathfinders',4,3,0);
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Great Eagle',6,1,2);
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Tree man',8,1,4);
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Magess',5,1,1);
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Queen',6,1,1);
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Captain',6,4,1);
+INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Champion',6,4,1);
+
+--Table Ability
+INSERT INTO ability (name,is_free) VALUES ('Control',1);
+INSERT INTO ability (name,is_free) VALUES ('Excite',1);
+INSERT INTO ability (name,is_free) VALUES ('Galvanize',1);
+INSERT INTO ability (name,is_free) VALUES ('Heal',1);
+INSERT INTO ability (name,is_free) VALUES ('Auxiliary',0);
+INSERT INTO ability (name,is_free) VALUES ('Blood lust',0);
+INSERT INTO ability (name,is_free) VALUES ('Berzerk',0);
+INSERT INTO ability (name,is_free) VALUES ('Fast',0);
+INSERT INTO ability (name,is_free) VALUES ('Impetus',0);
+INSERT INTO ability (name,is_free) VALUES ('Overwhelming',0);
+INSERT INTO ability (name,is_free) VALUES ('Reactive',0);
+INSERT INTO ability (name,is_free) VALUES ('Regenerate',0);
+INSERT INTO ability (name,is_free) VALUES ('Scout',0);
+INSERT INTO ability (name,is_free) VALUES ('Hawk eye',0);
+INSERT INTO ability (name,is_free) VALUES ('Skirmish',0);
+INSERT INTO ability (name,is_free) VALUES ('Slow',0);
+INSERT INTO ability (name,is_free) VALUES ('Trample',0);
