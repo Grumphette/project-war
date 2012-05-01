@@ -20,31 +20,56 @@ stamania INTEGER
 CREATE TABLE ability  --<= ok
 (
 name VARCHAR(30),
-is_free INTEGER
+is_free INTEGER,
+id_mability INTEGER,
+FOREIGN KEY (id_mability) REFERENCES mability(rowid) 
 );
+
+
+-- Description of the micro-ability table
+
+--winorder INTEGER > 0/1, define if the ability generate free order(s)
+--winXorder INTEGER > NULL/1-X, define the number of free order generated
+--windice INTEGER > 0/1, define if the ability generate additional dice(s)
+--winXdice INTEGER > NULL/1-X, define the number of dice generated
+--winability INTEGER > NULL/id, define the id of the ability gained
+--joinany INTEGER > 0/1, define that this unit can join any troop (the unit troop size agreement does not matter) 
+--woundonone INTEGER > 0/1, define that the attacking troop is wounded if one or more rolled dice(s) hit a one.
+--adddiceonanycac INTEGER > 0/1, define where the won dice are applied, on "charge" or on "carry an engagement"
+--adddiceonshoot IiNTEGER > 0/1, define where the won dice are applied, here on "shoot"
+--moveafterfastmarch INTEGER > 0/1, define if the unit can move after a fast march performed on the last turn.
+--chargeondestroy INTEGER > 0/1, if the attacking unit destroy its target, it has to charge an another unit
+--sameorderamount INTEGER > 0/1, define that there is no incremental order issuing (instead of 1-2-3.. it is 1-1-2-4..)
+--removewound INTEGER > 0/1, define the ability to recover wounds
+--removeXwound INTEGER > NULL/1-X, define the amount of recovered wounds
+--intercepted INTEGER > 0/1, define the fact that a troop can/cannot be intercepted when charging
+--intercepter INTEGER > 0/1, define the fact that a troop can/cannot intercept charginf troops without spending orders
+--fastmarch INTEGER > 0/1, define if a troop can perform fast march
+--addwound INTEGER > 0/1, define if additional wound can be dealt by a troop when performing at least one hit
+--addXwound INTEGER > NULL/1-X, define the number of additional wound
+
 
 CREATE TABLE mability
 (
 winorder INTEGER,
+winXorder INTEGER,
 windice INTEGER,
+winXdice INTEGER,
 winability INTEGER,
 joinany INTEGER,
-addxdice INTEGER,
 woundonone INTEGER,
-adddiceoncharge INTEGER,
 adddiceonanycac INTEGER,
 adddiceonshoot IiNTEGER,
-adddiceoncarycac INTEGER,
 moveafterfastmarch INTEGER,
 chargeondestroy INTEGER,
 sameorderamount INTEGER,
-removeallwound INTEGER,
+removewound INTEGER,
+removeXwound INTEGER,
 intercepted INTEGER,
+intercepter INTEGER,
 fastmarch INTEGER,
-addwoundonhit INTEGER,
+addwound INTEGER,
 addXwound INTEGER,
-id_ability INTEGER,
-FOREIGN KEY (id_ability) REFERENCES ability(rowid), 
 FOREIGN KEY (winability) REFERENCES ability(rowid)
 );
 
@@ -60,6 +85,7 @@ CREATE TABLE unit_dice
 (
 id_unit INTEGER,
 id_dice INTEGER,
+dice_group INTEGER,
 FOREIGN KEY (id_unit) REFERENCES unit(rowid), 
 FOREIGN KEY (id_dice) REFERENCES dice(rowid)
 );
@@ -110,7 +136,18 @@ INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Queen',6,1,1)
 INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Captain',6,4,1);
 INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Champion',6,4,1);
 
---Table Ability
+--Table Mability
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound) 
+		VALUES (1,1,0,NULL,NULL,0,0,0,0,0,0,0,0,NULL,0,0,0,0,NULL);
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound) 
+		VALUES (0,NULL,1,1,NULL,0,0,1,1,0,0,0,0,NULL,0,0,0,0,NULL);
+
+
+--Table Ability -- add the mability id
 INSERT INTO ability (name,is_free) VALUES ('Control',1);
 INSERT INTO ability (name,is_free) VALUES ('Excite',1);
 INSERT INTO ability (name,is_free) VALUES ('Galvanize',1);
