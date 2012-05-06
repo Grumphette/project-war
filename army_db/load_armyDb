@@ -70,6 +70,8 @@ intercepter INTEGER,
 fastmarch INTEGER,
 addwound INTEGER,
 addXwound INTEGER,
+movethroughtroop INTEGER,
+shootabovetroop INTEGER,
 FOREIGN KEY (winability) REFERENCES ability(rowid)
 );
 
@@ -139,12 +141,34 @@ INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Champion',6,4
 --Table Mability
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound) 
-		VALUES (1,1,0,NULL,NULL,0,0,0,0,0,0,0,0,NULL,0,0,0,0,NULL);
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop);
+		VALUES (1,1,0,NULL,NULL,0,0,0,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0);
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound) 
-		VALUES (0,NULL,1,1,NULL,0,0,1,1,0,0,0,0,NULL,0,0,0,0,NULL);
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop); 
+		VALUES (0,NULL,1,1,NULL,0,0,1,1,0,0,0,0,NULL,0,0,0,0,NULL,0,0);
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop); 
+		VALUES (0,NULL,0,NULL,10,0,0,0,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0);
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop); 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,1,1,0,0,0,0,NULL,0,0);
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop); 
+		VALUES (0,NULL,0,NULL,NULL,1,0,0,0,0,0,0,1,1,0,0,0,0,NULL,0,0);
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop); 
+		VALUES (0,NULL,1,NULL,NULL,0,1,0,0,0,0,0,1,1,0,0,0,0,NULL,0,0);
 
 
 --Table Ability -- add the mability id
@@ -165,3 +189,5 @@ INSERT INTO ability (name,is_free) VALUES ('Hawk eye',0);
 INSERT INTO ability (name,is_free) VALUES ('Skirmish',0);
 INSERT INTO ability (name,is_free) VALUES ('Slow',0);
 INSERT INTO ability (name,is_free) VALUES ('Trample',0);
+INSERT INTO ability (name,is_free) VALUES ('Fly',0);
+INSERT INTO ability (name,is_free) VALUES ('Long range',0);
