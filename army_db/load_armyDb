@@ -1,30 +1,25 @@
-CREATE TABLE race  --<= ok
-(
-name VARCHAR(30)
-);
-
 CREATE TABLE dice  --<= ok
 (
-type VARCHAR(30),
-val INTEGER
+type VARCHAR(30) NOT NULL,
+val INTEGER NOT NULL
 );
 
 CREATE TABLE unit  --<= ok
 (
-name VARCHAR(30),
-cmd_price INTEGER,
-size_agreement INTEGER,
-stamania INTEGER
+race VARCHAR(30) NOT NULL,
+name VARCHAR(30) NOT NULL,
+cmd_price INTEGER NOT NULL,
+size_agreement INTEGER NOT NULL,
+stamania INTEGER NOT NULL
 );
 
 CREATE TABLE ability  --<= ok
 (
-name VARCHAR(30),
-is_free INTEGER,
-id_mability INTEGER,
+name VARCHAR(30) NOT NULL,
+is_free INTEGER NOT NULL,
+id_mability INTEGER NOT NULL,
 FOREIGN KEY (id_mability) REFERENCES mability(rowid) 
 );
-
 
 -- Description of the micro-ability table
 
@@ -42,70 +37,62 @@ FOREIGN KEY (id_mability) REFERENCES mability(rowid)
 --sameorderamount INTEGER > 0/1, define that there is no incremental order issuing (instead of 1-2-3.. it is 1-1-2-4..)
 --removewound INTEGER > 0/1, define the ability to recover wounds
 --removeXwound INTEGER > NULL/1-X, define the amount of recovered wounds
---intercepted INTEGER > 0/1, define the fact that a troop can/cannot be intercepted when charging
+--nointercepition INTEGER > 0/1, define the fact that a troop can/cannot be nointercepition when charging
 --intercepter INTEGER > 0/1, define the fact that a troop can/cannot intercept charginf troops without spending orders
 --fastmarch INTEGER > 0/1, define if a troop can perform fast march
 --addwound INTEGER > 0/1, define if additional wound can be dealt by a troop when performing at least one hit
 --addXwound INTEGER > NULL/1-X, define the number of additional wound
 
 
-CREATE TABLE mability
+CREATE TABLE mability --<= ok
 (
-winorder INTEGER,
+winorder INTEGER NOT NULL,
 winXorder INTEGER,
-windice INTEGER,
+windice INTEGER NOT NULL,
 winXdice INTEGER,
 winability INTEGER,
-joinany INTEGER,
-woundonone INTEGER,
-adddiceonanycac INTEGER,
-adddiceonshoot INTEGER,
-adddiceoncharge INTEGER,
-moveafterfastmarch INTEGER,
-chargeondestroy INTEGER,
-sameorderamount INTEGER,
-removewound INTEGER,
+joinany INTEGER NOT NULL,
+woundonone INTEGER NOT NULL,
+adddiceonanycac INTEGER NOT NULL,
+adddiceonshoot INTEGER NOT NULL,
+adddiceoncharge INTEGER NOT NULL,
+moveafterfastmarch INTEGER NOT NULL,
+chargeondestroy INTEGER NOT NULL,
+sameorderamount INTEGER NOT NULL,
+removewound INTEGER NOT NULL,
 removeXwound INTEGER,
-intercepted INTEGER,
-intercepter INTEGER,
-fastmarch INTEGER,
-addwound INTEGER,
+nointercepition INTEGER NOT NULL,
+intercepter INTEGER NOT NULL,
+fastmarch INTEGER NOT NULL,
+addwound INTEGER NOT NULL,
 addXwound INTEGER,
-movethroughtroop INTEGER,
-shootabovetroop INTEGER,
-FOREIGN KEY (winability) REFERENCES ability(rowid)
+movethroughtroop INTEGER NOT NULL,
+shootabovetroop INTEGER NOT NULL,
+FOREIGN KEY (winability) REFERENCES ability(rowid),
+CONSTRAINT chk_Order CHECK ((winorder=0 AND winXorder=NULL)OR(winorder=1 AND winXorder=NULL)OR(winorder=1 AND winXorder!=NULL)),
+CONSTRAINT chk_Dice CHECK ((windice=0 AND winXdice=NULL)OR(windice=1 AND winXdice=NULL)OR(windice=1 AND winXdice!=NULL)),
+CONSTRAINT chk_Dice CHECK ((removewound=0 AND removeXwound=NULL)OR(removewound=1 AND removeXwound=NULL)OR(removewound=1 AND removeXwound!=NULL)),
+CONSTRAINT chk_Dice CHECK ((addwound=0 AND addXwound=NULL)OR(addwound=1 AND addXwound=NULL)OR(addwound=1 AND addXwound!=NULL))
 );
 
-CREATE TABLE race_unit 
+CREATE TABLE unit_dice --<= ok
 (
-id_race INTEGER,
-id_unit INTEGER,
-FOREIGN KEY (id_race) REFERENCES race(rowid), 
-FOREIGN KEY (id_unit) REFERENCES unit(rowid)
-);
-
-CREATE TABLE unit_dice
-(
-id_unit INTEGER,
-id_dice INTEGER,
-dice_group INTEGER,
+id_unit INTEGER NOT NULL,
+id_dice INTEGER NOT NULL,
+dice_group INTEGER NOT NULL,
 FOREIGN KEY (id_unit) REFERENCES unit(rowid), 
 FOREIGN KEY (id_dice) REFERENCES dice(rowid)
 );
 
-CREATE TABLE unit_ability
+CREATE TABLE unit_ability --<= ok
 (
-id_unit INTEGER,
-id_ability INTEGER,
+id_unit INTEGER NOT NULL,
+id_ability INTEGER NOT NULL,
 FOREIGN KEY (id_unit) REFERENCES unit(rowid), 
 FOREIGN KEY (id_ability) REFERENCES ability(rowid)
 );
 
 
---Table Race
-INSERT INTO race (name) VALUES ('elves');
-INSERT INTO race (name) VALUES ('orcs');
-INSERT INTO race (name) VALUES ('dwarves');
 
 --Table Dice
 INSERT INTO dice (type,val) VALUES ('close',1);
@@ -122,119 +109,361 @@ INSERT INTO dice (type,val) VALUES ('range',5);
 INSERT INTO dice (type,val) VALUES ('range',6);
 
 --Table Unit
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Spear men',2,4,1);
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Archers',3,4,1);
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Elite archers',4,4,1);
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Mounted archers',5,1,2);
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Mounted guard',4,3,2);
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Elven does',4,3,1);
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Wood pack',4,4,1);
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Hero',6,1,1);
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Chariot',7,1,2);
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Pathfinders',4,3,0);
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Great Eagle',6,1,2);
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Tree man',8,1,4);
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Magess',5,1,1);
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Queen',6,1,1);
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Captain',6,4,1);
-INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Champion',6,4,1);
+--Elves
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Spear men',2,4,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Archers',3,4,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Elite archers',4,4,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Mounted archers',5,1,2);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Mounted guard',4,3,2);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Elven does',4,3,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Wood pack',4,4,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Hero',6,1,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Chariot',7,1,2);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Pathfinders',4,3,0);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Great Eagle',6,1,2);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Tree man',8,1,4);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Magess',5,1,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Queen',6,1,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Captain',6,4,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Champion',6,4,1);
+
+--Orcs
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Standard bearer',3,4,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Orcs',3,4,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Warlord',6,3,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Troll',6,1,3);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Boulder thrower',6,1,2);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Catapult',6,1,2);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Hobgoblins',2,4,2);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Kobolds',1,0,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Shaman',5,1,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Chariot',5,1,2);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Half orcs',3,3,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Goblins',2,4,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Bugbears',5,4,2);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Fanatic',4,1,1);
+INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Gnolls',4,4,1);
+
+--Table unit_dice
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (18,4,0);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (18,5,0);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (18,3,1);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (18,4,1);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (18,5,2);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (18,6,2);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (18,3,3);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (18,6,3);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (19,2,4);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (19,6,4);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (20,4,5);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (20,5,5);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (20,6,5);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (21,11,6);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (21,12,6);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (22,10,7);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (22,11,7);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (22,12,7);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (23,6,8);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (23,5,9);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (26,5,10);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (26,6,10);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (27,6,11);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (27,9,11);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (27,12,11);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (27,4,12);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (27,10,12);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (27,11,12);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (27,5,13);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (27,11,13);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (27,12,13);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (28,4,14);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (28,10,14);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (28,3,15);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (28,9,15);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (28,6,16);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (28,12,16);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (28,5,17);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (28,11,17);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (29,3,18);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (29,3,18);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (29,4,19);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (29,4,19);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (29,5,20);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (29,5,20);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (29,6,21);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (29,6,21);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (30,4,22);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (30,5,22);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (30,6,22);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (31,6,23);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (31,6,24);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (1,2,25);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (1,3,25);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (1,4,26);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (1,5,26);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (1,5,27);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (1,6,27);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (1,2,28);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (1,6,28);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (1,3,29);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (1,4,29);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (2,8,30);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (2,9,30);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (2,8,31);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (2,9,31);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (2,10,32);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (2,11,32);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (2,10,33);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (2,11,33);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (2,8,34);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (2,12,34);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (3,8,35);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (3,9,35);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (3,12,35);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (3,9,36);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (3,10,36);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (3,12,36);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (3,10,37);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (3,11,37);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (3,12,37);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (3,8,38);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (3,11,38);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (3,12,38);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (4,5,39);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (4,6,39);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (4,11,39);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (4,12,39);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (4,5,40);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (4,6,40);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (4,11,40);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (4,12,40);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (5,2,41);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (5,3,41);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (5,6,41);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (5,4,42);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (5,5,42);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (5,6,42);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (6,3,43);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (6,3,43);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (6,4,43);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (6,4,43);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (6,5,44);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (6,5,44);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (6,6,44);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (6,6,44);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (7,6,45);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (8,4,46);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (8,5,46);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (8,6,46);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (10,10,47);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (10,11,47);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (10,12,47);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (11,4,48);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (11,5,48);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (11,6,48);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (12,4,49);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (12,5,49);
+INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (12,6,49);
+
 
 --Table Mability
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
-					shootabovetroop);
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop)
 		VALUES (1,1,0,NULL,NULL,0,0,0,0,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< Control
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
-					shootabovetroop); 
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
 		VALUES (0,NULL,1,1,NULL,0,0,1,1,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< Excite
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
-					shootabovetroop); 
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
 		VALUES (0,NULL,0,NULL,10,0,0,0,0,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< Galvanize
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
-					shootabovetroop); 
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
 		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,1,1,0,0,0,0,NULL,0,0); --< Heal
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
-					shootabovetroop); 
-		VALUES (0,NULL,0,NULL,NULL,1,0,0,0,0,0,0,0,0,0,0,0,0,0,NULL,0,0); --< Auxiliary
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,0,NULL,NULL,1,0,0,0,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< Auxiliary
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
-					shootabovetroop); 
-		VALUES (0,NULL,1,NULL,NULL,0,0,1,0,0,0,0,0,0,0,0,0,0,0,NULL,0,0); --< Blood lust
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,1,NULL,NULL,0,0,1,0,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< Blood lust
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
-					shootabovetroop); 
-		VALUES (0,NULL,1,1,NULL,0,0,1,0,0,0,0,0,0,0,0,0,0,0,NULL,0,0); --< +1 engagement dice
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,1,1,NULL,0,0,1,0,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< +1 engagement dice
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
-					shootabovetroop); 
-		VALUES (0,NULL,1,2,NULL,0,0,1,0,0,0,0,0,0,0,0,0,0,0,NULL,0,0); --< +2 engagement dice
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,1,2,NULL,0,0,1,0,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< +2 engagement dice
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
-					shootabovetroop); 
-		VALUES (0,NULL,1,3,NULL,0,0,1,0,0,0,0,0,0,0,0,0,0,0,NULL,0,0); --< +3 engagement dice
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,1,3,NULL,0,0,1,0,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< +3 engagement dice
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
-					shootabovetroop); 
-		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,1,0,0,0,0,0,0,1,0,NULL,0,0); --< fast
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,1,0,0,0,NULL,0,0,1,0,NULL,0,0); --< fast
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
-					shootabovetroop); 
-		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0,0,1,0,NULL,0,0); --< tough
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,0,NULL,0,0,1,0,NULL,0,0); --< tough
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
-					shootabovetroop); 
-		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NULL,1,0); --< flying
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,0,NULL,0,0,0,0,NULL,1,0); --< flying
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
-					shootabovetroop); 
-		VALUES (0,NULL,1,2,NULL,0,0,0,0,1,0,0,0,0,0,0,0,0,0,NULL,0,0); --< Impetus				
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,1,2,NULL,0,0,0,0,1,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< Impetus				
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
-					shootabovetroop); 
-		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NULL,0,1); --< Long range
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,0,NULL,0,0,0,0,NULL,0,1); --< Long range
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
 					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
-					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
-					shootabovetroop); 
-		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,1,0,0,0,0,0,0,0,NULL,0,0); --< Overwhelming		
-		
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,1,0,0,NULL,0,0,0,0,NULL,0,0); --< Overwhelming		
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,1,0,NULL,0,0,0,0,NULL,0,0); --< Reactive			
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,1,NULL,0,0,0,0,NULL,0,0); --< Regenerate	
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,0,NULL,1,0,0,0,NULL,0,0); --< Scout
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,1,1,NULL,0,0,0,1,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< +1 shoot dice		
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,1,2,NULL,0,0,0,1,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< +2 shoot dice
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,1,3,NULL,0,0,0,1,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< +3 shoot dice
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,1,0,0,NULL,0,0,0,0,NULL,0,0); --< Skirmish
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< Slow
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,0,NULL,0,0,0,1,1,0,0); --< +1 wound
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,0,NULL,0,0,0,1,2,0,0); --< +2 wound
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,nointercepition,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop) 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,0,NULL,0,0,0,1,3,0,0); --< +3 wound
 
---Table Ability -- add the mability id
-INSERT INTO ability (name,is_free) VALUES ('Control',1);
-INSERT INTO ability (name,is_free) VALUES ('Excite',1);
-INSERT INTO ability (name,is_free) VALUES ('Galvanize',1);
-INSERT INTO ability (name,is_free) VALUES ('Heal',1);
-INSERT INTO ability (name,is_free) VALUES ('Auxiliary',0);
-INSERT INTO ability (name,is_free) VALUES ('Blood lust',0);
-INSERT INTO ability (name,is_free) VALUES ('Berzerk',0);
-INSERT INTO ability (name,is_free) VALUES ('Fast',0);
-INSERT INTO ability (name,is_free) VALUES ('Impetus',0);
-INSERT INTO ability (name,is_free) VALUES ('Overwhelming',0);
-INSERT INTO ability (name,is_free) VALUES ('Reactive',0);
-INSERT INTO ability (name,is_free) VALUES ('Regenerate',0);
-INSERT INTO ability (name,is_free) VALUES ('Scout',0);
-INSERT INTO ability (name,is_free) VALUES ('Hawk eye',0);
-INSERT INTO ability (name,is_free) VALUES ('Skirmish',0);
-INSERT INTO ability (name,is_free) VALUES ('Slow',0);
-INSERT INTO ability (name,is_free) VALUES ('Trample',0);
-INSERT INTO ability (name,is_free) VALUES ('Fly',0);
-INSERT INTO ability (name,is_free) VALUES ('Long range',0);
-INSERT INTO ability (name,is_free) VALUES ('Tough',0);
+--Table Ability
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Control',1,1);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Excite',1,2);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Galvanize',1,3);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Heal',1,4);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Auxiliary',0,5);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Blood lust',0,6);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Berzerk lvl 1',0,7);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Berzerk lvl 2',0,8);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Berzerk lvl 3',0,9);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Fast',0,10);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Tough',0,11);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Fly',0,12);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Impetus',0,13);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Long range',0,14);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Overwhelming',0,15);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Reactive',0,16);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Regenerate',0,17);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Scout',0,18);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Hawk eye lvl 1',0,19);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Hawk eye lvl 2',0,20);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Hawk eye lvl 3',0,21);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Skirmish',0,22);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Slow',0,23);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Trample lvl 1',0,24);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Trample lvl 2',0,25);
+INSERT INTO ability (name,is_free,id_mability) VALUES ('Trample lvl 3',0,26);
+
+--Table unit_ability
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (4,22);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (4,10);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (4,19);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (7,23);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (7,7);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (8,16);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (8,20);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (9,15);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (9,10);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (9,13);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (10,10);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (10,18);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (11,12);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (11,10);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (12,23);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (12,9);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (13,4);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (14,1);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (15,14);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (16,7);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (16,19);
+
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (17,17);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (19,18);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (20,18);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (20,23);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (20,17);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (21,6);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (21,14);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (22,19);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (22,14);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (24,5);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (25,3);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (25,2);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (26,15);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (26,7);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (26,13);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (29,13);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (30,6);
+INSERT INTO unit_ability (id_unit,id_ability) VALUES (30,24);
