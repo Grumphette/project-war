@@ -59,7 +59,8 @@ winability INTEGER,
 joinany INTEGER,
 woundonone INTEGER,
 adddiceonanycac INTEGER,
-adddiceonshoot IiNTEGER,
+adddiceonshoot INTEGER,
+adddiceoncharge INTEGER,
 moveafterfastmarch INTEGER,
 chargeondestroy INTEGER,
 sameorderamount INTEGER,
@@ -140,36 +141,81 @@ INSERT INTO unit (name,cmd_price,size_agreement,stamania) VALUES ('Champion',6,4
 
 --Table Mability
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
-					adddiceonshoot,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
 					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
 					shootabovetroop);
-		VALUES (1,1,0,NULL,NULL,0,0,0,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0);
+		VALUES (1,1,0,NULL,NULL,0,0,0,0,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< Control
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
-					adddiceonshoot,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
 					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
 					shootabovetroop); 
-		VALUES (0,NULL,1,1,NULL,0,0,1,1,0,0,0,0,NULL,0,0,0,0,NULL,0,0);
+		VALUES (0,NULL,1,1,NULL,0,0,1,1,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< Excite
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
-					adddiceonshoot,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
 					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
 					shootabovetroop); 
-		VALUES (0,NULL,0,NULL,10,0,0,0,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0);
+		VALUES (0,NULL,0,NULL,10,0,0,0,0,0,0,0,0,0,NULL,0,0,0,0,NULL,0,0); --< Galvanize
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
-					adddiceonshoot,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
 					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
 					shootabovetroop); 
-		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,1,1,0,0,0,0,NULL,0,0);
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,1,1,0,0,0,0,NULL,0,0); --< Heal
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
-					adddiceonshoot,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
 					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
 					shootabovetroop); 
-		VALUES (0,NULL,0,NULL,NULL,1,0,0,0,0,0,0,1,1,0,0,0,0,NULL,0,0);
+		VALUES (0,NULL,0,NULL,NULL,1,0,0,0,0,0,0,0,0,0,0,0,0,0,NULL,0,0); --< Auxiliary
 INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
-					adddiceonshoot,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
 					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
 					shootabovetroop); 
-		VALUES (0,NULL,1,NULL,NULL,0,1,0,0,0,0,0,1,1,0,0,0,0,NULL,0,0);
-
+		VALUES (0,NULL,1,NULL,NULL,0,0,1,0,0,0,0,0,0,0,0,0,0,0,NULL,0,0); --< Blood lust
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop); 
+		VALUES (0,NULL,1,1,NULL,0,0,1,0,0,0,0,0,0,0,0,0,0,0,NULL,0,0); --< +1 engagement dice
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop); 
+		VALUES (0,NULL,1,2,NULL,0,0,1,0,0,0,0,0,0,0,0,0,0,0,NULL,0,0); --< +2 engagement dice
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop); 
+		VALUES (0,NULL,1,3,NULL,0,0,1,0,0,0,0,0,0,0,0,0,0,0,NULL,0,0); --< +3 engagement dice
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop); 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,1,0,0,0,0,0,0,1,0,NULL,0,0); --< fast
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop); 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0,0,1,0,NULL,0,0); --< tough
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop); 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NULL,1,0); --< flying
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop); 
+		VALUES (0,NULL,1,2,NULL,0,0,0,0,1,0,0,0,0,0,0,0,0,0,NULL,0,0); --< Impetus				
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop); 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NULL,0,1); --< Long range
+INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,woundonone,adddiceonanycac,
+					adddiceonshoot,adddiceoncharge,moveafterfastmarch,chargeondestroy,sameorderamount,removewound,
+					removeXwound,intercepted,intercepter,fastmarch,addwound,addXwound,movethroughtroop,
+					shootabovetroop); 
+		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,1,0,0,0,0,0,0,0,NULL,0,0); --< Overwhelming		
+		
 
 --Table Ability -- add the mability id
 INSERT INTO ability (name,is_free) VALUES ('Control',1);
@@ -191,3 +237,4 @@ INSERT INTO ability (name,is_free) VALUES ('Slow',0);
 INSERT INTO ability (name,is_free) VALUES ('Trample',0);
 INSERT INTO ability (name,is_free) VALUES ('Fly',0);
 INSERT INTO ability (name,is_free) VALUES ('Long range',0);
+INSERT INTO ability (name,is_free) VALUES ('Tough',0);
