@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Unit {
 	
-	
+	private String race;
 	private String name;
 	private int commandPrice;
 	private int troupSizeAgreement;
@@ -14,14 +14,19 @@ public class Unit {
 	private ArrayList<Dice> attackDices;
 	private int stamania;
 	
-	public Unit(String name, int price, int sizeAgreement, ArrayList<Ability> abilities, ArrayList<Dice> dices, int stamania)
+	public Unit(String race, String name, int price, int sizeAgreement, ArrayList<Ability> abilities, ArrayList<Dice> dices, int stamania)
 	{
+		this.race = race;
 		this.name = name;
 		this.commandPrice = price;
 		this.troupSizeAgreement = sizeAgreement;
 		this.grantedAbilities = abilities;
 		this.attackDices = dices;
 		this.stamania = stamania;
+	}
+
+	public String getRace() {
+		return race;
 	}
 
 	public String getName() {
