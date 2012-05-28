@@ -1,9 +1,13 @@
 {
-  "DefaultSize" : { "width":"800", "high":"600"},
+  "DefaultSize" : 
+  {
+  	"width":"800",
+  	"high":"600"
+  },
   "ArmySaveFolder" : "path",
   "ArmyDB" : "path",
   "ArmyConfigFiles" : ["path", "path"],
-  "Images" : 
+  "GeneralImages" : 
   { 
     "BackImg" : "path",
     "LogoImg" : "path",
