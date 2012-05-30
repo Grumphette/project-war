@@ -18,18 +18,31 @@ import org.json.simple.parser.ParseException;
 
 public class ConfigFileHandler
 {
-	GeneralConfig globalConfigSettings;
-	//ArmyConfig armyConfigSettings;
-	JSONParser parser;
-	FileReader fileReader;
-	JSONObject generalConfigJsonObj;
-	Iterator anIterator;
+	private static ConfigFileHandler singleton;
 	
-	public ConfigFileHandler() 
+	private GeneralConfig globalConfigSettings;
+	//ArmyConfig armyConfigSettings;
+	private JSONParser parser;
+	private FileReader fileReader;
+	private JSONObject generalConfigJsonObj;
+	private Iterator<Object> anIterator;
+	
+	private ConfigFileHandler() 
 	{
 		parser = new JSONParser();
 		globalConfigSettings = GeneralConfig.getGeneralConfig();
 	}
+	
+	public static ConfigFileHandler getConfigFileHandler ()
+	{
+		if (singleton == null)
+		{
+			singleton = new ConfigFileHandler();
+		}
+		return singleton;
+	} 
+	
+	
 	
 	public void Load() throws IOException, ParseException
 	{
@@ -43,7 +56,7 @@ public class ConfigFileHandler
 		
 		generalConfigJsonObj = (JSONObject) parser.parse(fileReader);
 		
-		Map DefaultSizeMap  = (Map) generalConfigJsonObj.get("DefaultSize");
+		Map DefaultSizeMap  =  (Map) generalConfigJsonObj.get("DefaultSize");
 		
 		globalConfigSettings.setDefaultSize(Integer.parseInt(DefaultSizeMap.get("width").toString()), Integer.parseInt(DefaultSizeMap.get("high").toString()));
 		//System.out.println(DefaultSizeMap.get("ArmySaveFolder").toString());
@@ -59,8 +72,11 @@ public class ConfigFileHandler
 
 			globalConfigSettings.addGeneralImage(entry.getKey().toString(),entry.getValue().toString());
 		}
-		
-		
+	}
+	
+	public GeneralConfig getGlobalConfigSettings()
+	{
+		return globalConfigSettings;
 	}
 	
 }

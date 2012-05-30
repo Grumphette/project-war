@@ -4,15 +4,15 @@
   	"width":"800",
   	"high":"600"
   },
-  "ArmySaveFolder" : "path",
-  "ArmyDB" : "path",
-  "ArmyConfigFiles" : ["path", "path"],
+  "ArmySaveFolder" : "../saved_army",
+  "ArmyDB" : "army_db/army.db",
+  "ArmyConfigFiles" : ["configFiles/orcsConfig", "configFiles/elvesConfig"],
   "GeneralImages" : 
   { 
-    "BackImg" : "path",
-    "LogoImg" : "path",
-    "BtnSteadyImg" : "path",
-    "BtnOverImg" : "path",
-    "PresArmyImg" : ["path", "path"]
+    "BackImg" : "images/startMenuBg.svg",
+ 	"PanelBgImg" : "images/pnlBg.svg",
+    "LogoImg" : "images/logo.svg",
+    "BtnSteadyImg" : "images/btnSteady.svg",
+    "BtnOverImg" : "images/bntOver.svg"
   }
 }

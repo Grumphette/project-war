@@ -1,6 +1,8 @@
 package misc;
 
+import java.awt.Image;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import GUIobjects.BackImage;
 
@@ -13,8 +15,8 @@ public class GeneralConfig
 	private String ArmySaveFolder;
 	private String ArmyDB;
 	private ArrayList<String> ArmyConfigFiles;
-	private ArrayList<BackImage> GeneralImages; 
-	
+	private ArrayList<BackImage> GeneralImages;
+	private Iterator<BackImage> ImageIterator;
 	
 	private GeneralConfig()
 	{
@@ -57,6 +59,19 @@ public class GeneralConfig
 	{
 		BackImage imageToAdd = new BackImage(Name, Path);
 		GeneralImages.add(imageToAdd);
+	}
+	
+	public Image getGeneralImage(String Name)
+	{
+		ImageIterator = GeneralImages.iterator();
+		while(ImageIterator.hasNext())
+		{
+			if(ImageIterator.next().getName().equals(Name))
+			{
+				return  ImageIterator.next().getImage();
+			}
+		}
+		return null;
 	}
 	
 	
