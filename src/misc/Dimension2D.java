@@ -25,4 +25,14 @@ public class Dimension2D
 		this.width = width;
 		this.heigh = heigh;
 	}
+	
+	public int getWidth()
+	{
+		return this.width;
+	}
+	
+	public int getHeigh()
+	{
+		return this.heigh;
+	}
 }

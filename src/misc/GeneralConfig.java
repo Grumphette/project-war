@@ -41,6 +41,11 @@ public class GeneralConfig
 	{
 		DefaultSize = new Dimension2D(width,heigh);
 	}
+	
+	public Dimension2D getDefaultSize() 
+	{
+		return DefaultSize;
+	}
 
 	public void setArmySaveFolder(String armySaveFolder) {
 		ArmySaveFolder = armySaveFolder;
@@ -63,12 +68,11 @@ public class GeneralConfig
 	
 	public Image getGeneralImage(String Name)
 	{
-		ImageIterator = GeneralImages.iterator();
-		while(ImageIterator.hasNext())
+		for(BackImage img : GeneralImages)
 		{
-			if(ImageIterator.next().getName().equals(Name))
+			if(img.getName().equals(Name))
 			{
-				return  ImageIterator.next().getImage();
+				return  img.getImage();
 			}
 		}
 		return null;

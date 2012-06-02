@@ -5,6 +5,9 @@ import misc.ConfigFileHandler;
 import org.json.simple.parser.ParseException;
 import DesktopGUI.MainWindow;
 
+/** Special fonts have to be installed in  the ~/.fonts */
+
+
 public class Main {
 
 	
