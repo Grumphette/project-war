@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 
 public class JPanelWithSpeBgColor extends JPanel implements MouseListener 
 {
+	
+	Color grey = new Color(230,230,230,255);
 	Color lighBlue = new Color (121,186,255,74);
 	
 	
@@ -31,7 +33,7 @@ public class JPanelWithSpeBgColor extends JPanel implements MouseListener
 	@Override
 	public void mouseExited(MouseEvent arg0) 
 	{
-		
+		this.setBackground(this.grey);
 	}
 
 	@Override
