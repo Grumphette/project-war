@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+
 public class BackImage 
 {
 	private String Name;
@@ -22,7 +23,7 @@ public class BackImage
 
 	}
 	
-	public void generateImg() throws IOException
+	private void generateImg() throws IOException
 	{
 		RealImg = ImageIO.read(ImgFile);
 	}
@@ -32,8 +33,12 @@ public class BackImage
 		return Name;
 	}
 	
-	public Image getImage()
+	public Image getImage() throws IOException
 	{
+		if(RealImg == null)
+		{
+			this.generateImg();
+		}
 		return RealImg;
 	}
 }

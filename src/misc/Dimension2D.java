@@ -1,38 +1,29 @@
 package misc;
 
-public class Dimension2D 
+import java.awt.Dimension;
+
+public class Dimension2D extends Dimension
 {
-	private int width;
-	private int heigh;
 	
-	public Dimension2D(int width, int heigh)
+	public Dimension2D(int width, int height)
 	{
-		this.width = width;
-		this.heigh = heigh;
+		super(width,height);
 	}
 	
-	
-	public void expandTo(int width, int heigh)
+	public Dimension2D()
 	{
-		assert(width > this.width && heigh > this.heigh);
-		this.width = width;
-		this.heigh = heigh;
+		super();
 	}
 	
-	public void shrinkTo (int width, int heigh)
+	public void expandTo(int width, int height)
 	{
-		assert(width < this.width && heigh < this.heigh);
-		this.width = width;
-		this.heigh = heigh;
+		assert(width > this.getWidth() && height > this.getHeight());
+		this.setSize(width, height);
 	}
 	
-	public int getWidth()
+	public void shrinkTo (int width, int height)
 	{
-		return this.width;
-	}
-	
-	public int getHeigh()
-	{
-		return this.heigh;
+		assert(width < this.getWidth() && height < this.getHeight());
+		this.setSize(width, height);
 	}
 }

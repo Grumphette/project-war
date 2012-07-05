@@ -14,7 +14,7 @@
    id="svg3034"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="New document 1">
+   sodipodi:docname="logo.svg">
   <defs
      id="defs3036">
     <filter
@@ -57,18 +57,18 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="153.90832"
+     inkscape:cx="152.89817"
      inkscape:cy="-33.907033"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="956"
-     inkscape:window-height="1032"
-     inkscape:window-x="960"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1039"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
@@ -97,7 +97,10 @@
      transform="translate(-33.174463,-153.53738)">
     <g
        id="g3862"
-       style="filter:url(#filter3874)">
+       style="filter:url(#filter3874)"
+       inkscape:export-filename="/home/ntriquenaux/Projets/project-war/images/logo.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300">
       <text
          sodipodi:linespacing="125%"
          id="text3042"

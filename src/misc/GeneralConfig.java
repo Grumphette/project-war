@@ -1,6 +1,7 @@
 package misc;
 
 import java.awt.Image;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -66,7 +67,7 @@ public class GeneralConfig
 		GeneralImages.add(imageToAdd);
 	}
 	
-	public Image getGeneralImage(String Name)
+	public Image getGeneralImage(String Name) throws IOException
 	{
 		for(BackImage img : GeneralImages)
 		{

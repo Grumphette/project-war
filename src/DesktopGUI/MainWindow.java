@@ -1,5 +1,8 @@
 package DesktopGUI;
 
+import java.awt.Color;
+import java.io.IOException;
+
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -12,7 +15,7 @@ public class MainWindow
 	private StartWindow WelcomScreen;
 	private ConfigFileHandler gameConfigSettings;
 	
-	public MainWindow(ConfigFileHandler config)
+	public MainWindow(ConfigFileHandler config) throws IOException
 	{
 		this.gameConfigSettings = config;
 		
@@ -24,7 +27,9 @@ public class MainWindow
 		Window.add(WelcomScreen);
 		Window.pack();
 		Window.setVisible(true);
-		
+		Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Window.setResizable(false);
+		//Window.setBackground(Color.WHITE);
 	}
 
 	

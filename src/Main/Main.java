@@ -17,12 +17,13 @@ public class Main {
 		try 
 		{
 			config.Load();
+			MainWindow window = new MainWindow(config);
 		} 
 		catch (Exception e) 
 		{	
 			e.printStackTrace();
 		}
-		MainWindow window = new MainWindow(config);
+		
 		
 	}
 

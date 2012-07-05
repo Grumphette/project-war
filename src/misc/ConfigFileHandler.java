@@ -26,6 +26,7 @@ public class ConfigFileHandler
 	private FileReader fileReader;
 	private JSONObject generalConfigJsonObj;
 	private Iterator<Object> anIterator;
+	private Iterator<Object> anotherIterator;
 	
 	private ConfigFileHandler() 
 	{
@@ -65,12 +66,13 @@ public class ConfigFileHandler
 		globalConfigSettings.setArmyConfigFiles((ArrayList<String>)generalConfigJsonObj.get("ArmyConfigFiles"));
 		
 		Map allGeneralImg  = (Map) generalConfigJsonObj.get("GeneralImages");
+		
 		anIterator = allGeneralImg.entrySet().iterator();
 		while(anIterator.hasNext())
 		{
-			Map.Entry entry = (Map.Entry)anIterator.next();
-
-			globalConfigSettings.addGeneralImage(entry.getKey().toString(),entry.getValue().toString());
+				Map.Entry entry = (Map.Entry)anIterator.next();
+				globalConfigSettings.addGeneralImage(entry.getKey().toString(),entry.getValue().toString());
+			
 		}
 	}
 	

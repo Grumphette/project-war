@@ -9,10 +9,7 @@
   "ArmyConfigFiles" : ["configFiles/orcsConfig", "configFiles/elvesConfig"],
   "GeneralImages" : 
   { 
-    "BackImg" : "images/startMenuBg.svg",
- 	"PanelBgImg" : "images/pnlBg.svg",
-    "LogoImg" : "images/logo.svg",
-    "BtnSteadyImg" : "images/btnSteady.svg",
-    "BtnOverImg" : "images/bntOver.svg"
-  }
+  		"LogoImg" : "images/logo.png"
+  },
+  "UIColors" : "configFiles/UIcolorsConfig"
 }
