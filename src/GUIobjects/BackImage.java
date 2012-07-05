@@ -13,7 +13,7 @@ public class BackImage
 	private File ImgFile;
 	private Image RealImg;
 	
-	
+	/*TODO take in acount that we have to manipulate SVG images*/
 	
 	public BackImage(String Name, String Path) 
 	{
