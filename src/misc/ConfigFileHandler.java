@@ -26,7 +26,6 @@ public class ConfigFileHandler
 	private FileReader fileReader;
 	private JSONObject generalConfigJsonObj;
 	private Iterator<Object> anIterator;
-	private Iterator<Object> anotherIterator;
 	
 	private ConfigFileHandler() 
 	{
@@ -72,6 +71,16 @@ public class ConfigFileHandler
 		{
 				Map.Entry entry = (Map.Entry)anIterator.next();
 				globalConfigSettings.addGeneralImage(entry.getKey().toString(),entry.getValue().toString());
+			
+		}
+		
+		Map allColors  = (Map) generalConfigJsonObj.get("UIColors");
+		
+		anIterator = allColors.entrySet().iterator();
+		while(anIterator.hasNext())
+		{
+				Map.Entry entry = (Map.Entry)anIterator.next();
+				globalConfigSettings.addBtnColor(entry.getKey().toString(),(ArrayList<String>)entry.getValue());
 			
 		}
 	}

@@ -29,7 +29,6 @@ public class MainWindow
 		Window.setVisible(true);
 		Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Window.setResizable(false);
-		//Window.setBackground(Color.WHITE);
 	}
 
 	

@@ -1,9 +1,11 @@
 package misc;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import GUIobjects.BackImage;
 
@@ -17,12 +19,13 @@ public class GeneralConfig
 	private String ArmyDB;
 	private ArrayList<String> ArmyConfigFiles;
 	private ArrayList<BackImage> GeneralImages;
-	private Iterator<BackImage> ImageIterator;
+	private ArrayList<BtnColor> BtnColors;
 	
 	private GeneralConfig()
 	{
 		GeneralImages = new ArrayList<BackImage>();
 		ArmyConfigFiles = new ArrayList<String>();
+		BtnColors = new ArrayList<BtnColor>();
 	}
 	
 	public static GeneralConfig getGeneralConfig ()
@@ -65,6 +68,24 @@ public class GeneralConfig
 	{
 		BackImage imageToAdd = new BackImage(Name, Path);
 		GeneralImages.add(imageToAdd);
+	}
+	
+	public void addBtnColor(String Name, List<String> RGBA) 
+	{
+		BtnColor colorsToAdd = new BtnColor(Name, Integer.parseInt(RGBA.get(0)),Integer.parseInt(RGBA.get(1)),Integer.parseInt(RGBA.get(2)),Integer.parseInt(RGBA.get(3)));
+		BtnColors.add(colorsToAdd);
+	}
+	
+	public Color getBtnColor(String Name)
+	{
+		for(BtnColor btnCol : BtnColors)
+		{
+			if(btnCol.GetBtnState().equals(Name))
+			{
+				return  btnCol.getColor();
+			}
+		}
+		return null;
 	}
 	
 	public Image getGeneralImage(String Name) throws IOException

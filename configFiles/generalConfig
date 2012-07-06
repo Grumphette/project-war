@@ -11,5 +11,11 @@
   { 
   		"LogoImg" : "images/logo.png"
   },
-  "UIColors" : "configFiles/UIcolorsConfig"
+  "UIColors" : 
+  {
+	"btnSteady" : ["221","221","221","255"],
+	"btnOver" : ["202","214","247","255"],
+	"btnPress" : ["197","197","247","255"]
+  }
+  "Font" : "font/Purisa.ttf"
 }

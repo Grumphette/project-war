@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/home/ntriquenaux/Projets/project-war/thirdParty/json-simple-1.1.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/ntriquenaux/Projets/project-war/thirdParty/svgSalamander.jar"/>
+	<classpathentry kind="lib" path="/home/users/ntriquenaux/Ide/project-war/thirdParty/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
