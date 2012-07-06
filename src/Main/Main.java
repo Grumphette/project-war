@@ -1,8 +1,6 @@
 package Main;
 
-import java.io.IOException;
 import misc.ConfigFileHandler;
-import org.json.simple.parser.ParseException;
 import DesktopGUI.MainWindow;
 
 /** Special fonts have to be installed in  the ~/.fonts */
@@ -17,7 +15,7 @@ public class Main {
 		try 
 		{
 			config.Load();
-			MainWindow window = new MainWindow(config);
+			MainWindow window = new MainWindow();
 		} 
 		catch (Exception e) 
 		{	

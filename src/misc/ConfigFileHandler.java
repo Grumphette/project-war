@@ -1,11 +1,11 @@
 package misc;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.awt.FontFormatException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -20,7 +20,7 @@ public class ConfigFileHandler
 {
 	private static ConfigFileHandler singleton;
 	
-	private GeneralConfig globalConfigSettings;
+	private static GeneralConfig globalConfigSettings;
 	//ArmyConfig armyConfigSettings;
 	private JSONParser parser;
 	private FileReader fileReader;
@@ -44,25 +44,25 @@ public class ConfigFileHandler
 	
 	
 	
-	public void Load() throws IOException, ParseException
+	public void Load() throws IOException, ParseException, FontFormatException
 	{
 		LoadGeneralConfig();
 		//LoadArmyConfig();
 	}
 	
-	private void LoadGeneralConfig() throws IOException, ParseException
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private void LoadGeneralConfig() throws IOException, ParseException, FontFormatException
 	{
 		fileReader = new FileReader("configFiles/generalConfig");
 		
 		generalConfigJsonObj = (JSONObject) parser.parse(fileReader);
 		
-		Map DefaultSizeMap  =  (Map) generalConfigJsonObj.get("DefaultSize");
-		
-		globalConfigSettings.setDefaultSize(Integer.parseInt(DefaultSizeMap.get("width").toString()), Integer.parseInt(DefaultSizeMap.get("high").toString()));
 		//System.out.println(DefaultSizeMap.get("ArmySaveFolder").toString());
 		globalConfigSettings.setArmySaveFolder(generalConfigJsonObj.get("ArmySaveFolder").toString());
 		globalConfigSettings.setArmyDB(generalConfigJsonObj.get("ArmyDB").toString());
 		globalConfigSettings.setArmyConfigFiles((ArrayList<String>)generalConfigJsonObj.get("ArmyConfigFiles"));
+		globalConfigSettings.createFont(generalConfigJsonObj.get("Font").toString());
+		
 		
 		Map allGeneralImg  = (Map) generalConfigJsonObj.get("GeneralImages");
 		
@@ -70,7 +70,7 @@ public class ConfigFileHandler
 		while(anIterator.hasNext())
 		{
 				Map.Entry entry = (Map.Entry)anIterator.next();
-				globalConfigSettings.addGeneralImage(entry.getKey().toString(),entry.getValue().toString());
+				globalConfigSettings.addGeneralImage(entry.getKey().toString(),(ArrayList<String>)entry.getValue());
 			
 		}
 		
@@ -85,7 +85,7 @@ public class ConfigFileHandler
 		}
 	}
 	
-	public GeneralConfig getGlobalConfigSettings()
+	public static GeneralConfig getGlobalConfigSettings()
 	{
 		return globalConfigSettings;
 	}

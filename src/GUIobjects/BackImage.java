@@ -5,20 +5,22 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import misc.Dimension2D;
+
 
 public class BackImage 
 {
 	private String Name;
-	private String Path;
 	private File ImgFile;
 	private Image RealImg;
+	private Dimension2D size;
 	
 	/*TODO take in acount that we have to manipulate SVG images*/
 	
-	public BackImage(String Name, String Path) 
+	public BackImage(String Name, String Path, int width, int height) 
 	{
+		this.size = new Dimension2D(width,height);
 		this.Name = Name;
-		this.Path = Path;
 		ImgFile = new File(Path);
 
 	}
@@ -33,12 +35,22 @@ public class BackImage
 		return Name;
 	}
 	
-	public Image getImage() throws IOException
+	public Dimension2D getImgSize()
+	{
+		return this.size;
+	}
+	
+	public Image getFinalImage()
+	{
+		return RealImg;
+	}
+	
+	public BackImage getImage() throws IOException
 	{
 		if(RealImg == null)
 		{
 			this.generateImg();
 		}
-		return RealImg;
+		return this;
 	}
 }

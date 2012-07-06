@@ -1,10 +1,12 @@
 package misc;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Image;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import GUIobjects.BackImage;
@@ -19,13 +21,14 @@ public class GeneralConfig
 	private String ArmyDB;
 	private ArrayList<String> ArmyConfigFiles;
 	private ArrayList<BackImage> GeneralImages;
-	private ArrayList<BtnColor> BtnColors;
+	private ArrayList<UIColor> UIColors;
+	private Font purissaFont;
 	
 	private GeneralConfig()
 	{
 		GeneralImages = new ArrayList<BackImage>();
 		ArmyConfigFiles = new ArrayList<String>();
-		BtnColors = new ArrayList<BtnColor>();
+		UIColors = new ArrayList<UIColor>();
 	}
 	
 	public static GeneralConfig getGeneralConfig ()
@@ -41,16 +44,6 @@ public class GeneralConfig
 		GeneralConfig.singleton = singleton;
 	}
 
-	public void setDefaultSize(int width, int heigh) 
-	{
-		DefaultSize = new Dimension2D(width,heigh);
-	}
-	
-	public Dimension2D getDefaultSize() 
-	{
-		return DefaultSize;
-	}
-
 	public void setArmySaveFolder(String armySaveFolder) {
 		ArmySaveFolder = armySaveFolder;
 	}
@@ -64,31 +57,44 @@ public class GeneralConfig
 		ArmyConfigFiles = armyConfigFiles;
 	}
 
-	public void addGeneralImage(String Name, String Path) 
+	public void addGeneralImage(String Name, List<String> attributes) 
 	{
-		BackImage imageToAdd = new BackImage(Name, Path);
+		BackImage imageToAdd = new BackImage(Name, attributes.get(0), Integer.parseInt(attributes.get(1)),Integer.parseInt(attributes.get(2)));
 		GeneralImages.add(imageToAdd);
 	}
 	
 	public void addBtnColor(String Name, List<String> RGBA) 
 	{
-		BtnColor colorsToAdd = new BtnColor(Name, Integer.parseInt(RGBA.get(0)),Integer.parseInt(RGBA.get(1)),Integer.parseInt(RGBA.get(2)),Integer.parseInt(RGBA.get(3)));
-		BtnColors.add(colorsToAdd);
+		UIColor colorsToAdd = new UIColor(Name, Integer.parseInt(RGBA.get(0)),Integer.parseInt(RGBA.get(1)),Integer.parseInt(RGBA.get(2)),Integer.parseInt(RGBA.get(3)));
+		UIColors.add(colorsToAdd);
 	}
 	
-	public Color getBtnColor(String Name)
+	public void createFont(String pathToFont) throws FontFormatException, IOException
 	{
-		for(BtnColor btnCol : BtnColors)
+		
+		purissaFont = Font.createFont(Font.TRUETYPE_FONT,new File(pathToFont));
+		purissaFont = purissaFont.deriveFont(Font.BOLD, 14);
+		
+	}
+	
+	public Font getFont()
+	{
+		return purissaFont;
+	}
+	
+	public Color getUIColor(String Name)
+	{
+		for(UIColor UICol : UIColors)
 		{
-			if(btnCol.GetBtnState().equals(Name))
+			if(UICol.GetBtnState().equals(Name))
 			{
-				return  btnCol.getColor();
+				return  UICol.getColor();
 			}
 		}
 		return null;
 	}
 	
-	public Image getGeneralImage(String Name) throws IOException
+	public BackImage getGeneralImage(String Name) throws IOException
 	{
 		for(BackImage img : GeneralImages)
 		{

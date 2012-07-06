@@ -1,5 +1,6 @@
 package DesktopGUI;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -9,13 +10,15 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+
+import GUIobjects.BackImage;
 
 import misc.ConfigFileHandler;
 
 
-public class StartWindow extends JPanel implements MouseListener
+public class StartWindow extends JPanel
 {
-	private ConfigFileHandler config;
 	
 	private JPanelWithImg Logo;
 	private JPanel btnPnl;
@@ -28,12 +31,64 @@ public class StartWindow extends JPanel implements MouseListener
 	private JLabel lblQuit;
 	private JLabel lblCredit;
 	private JPanel btnLayoutPnl;
+	private MouseListener btnMouseListerner;
 	
-	public StartWindow(ConfigFileHandler config) throws IOException 
+	
+	public StartWindow() throws IOException 
 	{
 		super();
-		this.config = config;
-		Logo = new JPanelWithImg(this.config.getGlobalConfigSettings().getGeneralImage("LogoImg"));
+		
+		
+		btnMouseListerner = new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) 
+			{
+				if(e.getSource().equals(btnCredit) || e.getSource().equals(btnQuit) || e.getSource().equals(btnStartMulti) || e.getSource().equals(btnStartSolo))
+				{
+					JPanel Source = (JPanel)e.getSource();
+					Source.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("lightblue"));
+				}
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) 
+			{
+				if(e.getSource().equals(btnCredit) || e.getSource().equals(btnQuit) || e.getSource().equals(btnStartMulti) || e.getSource().equals(btnStartSolo))
+				{
+					JPanel Source = (JPanel)e.getSource();
+					Source.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("blue"));
+				}
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				if(e.getSource().equals(btnCredit) || e.getSource().equals(btnQuit) || e.getSource().equals(btnStartMulti) || e.getSource().equals(btnStartSolo))
+				{
+					JPanel Source = (JPanel)e.getSource();
+					Source.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("grey"));
+				}
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				if(e.getSource().equals(btnCredit) || e.getSource().equals(btnQuit) || e.getSource().equals(btnStartMulti) || e.getSource().equals(btnStartSolo))
+				{
+					JPanel Source = (JPanel)e.getSource();
+					Source.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("lightblue"));
+				}
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {}
+		};
+		
+		
+		this.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("grey"));
+		BackImage LogImgInfo = ConfigFileHandler.getGlobalConfigSettings().getGeneralImage("LogoImg");
+		Logo = new JPanelWithImg(LogImgInfo.getFinalImage());
 		
 		btnPnl = new JPanel();
 		btnStartSolo = new JPanel();
@@ -43,55 +98,57 @@ public class StartWindow extends JPanel implements MouseListener
 		btnLayoutPnl = new JPanel();
 		
 		/**Logo panel configuration*/
-		Logo.setPreferredSize(new Dimension((int)(this.config.getGlobalConfigSettings().getDefaultSize().getWidth()*0.4), (int)(this.config.getGlobalConfigSettings().getDefaultSize().getHeight()*0.2)));
-		
-		
+		Logo.setPreferredSize(LogImgInfo.getImgSize());
 		
 		/**Start solo game button panel configuration*/
-		btnStartSolo.setBorder(BorderFactory.createEmptyBorder(4, 0, 0, 0));
-		lblStartSolo = new JLabel("Start Solo game");
+		lblStartSolo = new JLabel();
+		lblStartSolo.setFont(ConfigFileHandler.getGlobalConfigSettings().getFont());
+		lblStartSolo.setText("Start Solo game");
+		btnStartSolo.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("grey"));
+		btnStartSolo.addMouseListener(btnMouseListerner);
 		btnStartSolo.add(lblStartSolo);
-		btnStartSolo.addMouseListener(this);
 		
 		
 		/**Start multi game button panel configuration*/
-		btnStartMulti.setPreferredSize(new Dimension((int)(this.config.getGlobalConfigSettings().getDefaultSize().getWidth()*0.4), (int)(this.config.getGlobalConfigSettings().getDefaultSize().getHeight()*0.05)));
-		btnStartMulti.setBorder(BorderFactory.createEmptyBorder(4, 0, 0, 0));
-		lblStartMulti = new JLabel("Start multi-player game");
+		lblStartMulti = new JLabel();
+		lblStartMulti.setFont(ConfigFileHandler.getGlobalConfigSettings().getFont());
+		lblStartMulti.setText("Start multi-player game");
+		btnStartMulti.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("grey"));
+		btnStartMulti.addMouseListener(btnMouseListerner);
 		btnStartMulti.add(lblStartMulti);
 		
 		/**Quit button panel configuration*/
-		btnQuit.setPreferredSize(new Dimension((int)(this.config.getGlobalConfigSettings().getDefaultSize().getWidth()*0.4), (int)(this.config.getGlobalConfigSettings().getDefaultSize().getHeight()*0.05)));
-		btnQuit.setBorder(BorderFactory.createEmptyBorder(4, 0, 0, 0));
-		lblQuit = new JLabel("Quit");
+		lblQuit = new JLabel();
+		lblQuit.setFont(ConfigFileHandler.getGlobalConfigSettings().getFont());
+		lblQuit.setText("Quit");
+		btnQuit.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("grey"));
+		btnQuit.addMouseListener(btnMouseListerner);
 		btnQuit.add(lblQuit);
 		
 		/**Credit button panel configuration*/
-		btnCredit.setPreferredSize(new Dimension((int)(this.config.getGlobalConfigSettings().getDefaultSize().getWidth()*0.4), (int)(this.config.getGlobalConfigSettings().getDefaultSize().getHeight()*0.05)));
-		btnCredit.setBorder(BorderFactory.createEmptyBorder(4, 0, 0, 0));
-		lblCredit = new JLabel("Credits");
+		lblCredit = new JLabel();
+		lblCredit.setFont(ConfigFileHandler.getGlobalConfigSettings().getFont());
+		lblCredit.setText("Credits");
+		btnCredit.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("grey"));
+		btnCredit.addMouseListener(btnMouseListerner);
 		btnCredit.add(lblCredit);
 		
 		
 		/**Adding all the button in the button panel*/
 		btnPnl.setLayout(new BoxLayout(btnPnl, BoxLayout.Y_AXIS));
-		btnPnl.setBorder(BorderFactory.createEmptyBorder(8, 8, 4, 4));
-		//btnPnl.setOpaque(true);
-		//btnPnl.setBackground(Color.blue);
-		
 		btnPnl.add(btnStartSolo);
-		btnPnl.add(Box.createVerticalStrut(5));
 		btnPnl.add(btnStartMulti);
-		btnPnl.add(Box.createVerticalGlue());
 		btnPnl.add(btnCredit);
-		btnPnl.add(Box.createVerticalGlue());
 		btnPnl.add(btnQuit);
-		btnPnl.add(Box.createVerticalGlue());
+		
 		
 		btnLayoutPnl.setLayout(new BoxLayout(btnLayoutPnl, BoxLayout.X_AXIS));
-		btnLayoutPnl.add(Box.createHorizontalStrut(5));
+		btnLayoutPnl.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("grey"));
+		btnLayoutPnl.add(Box.createHorizontalGlue());
 		btnLayoutPnl.add(btnPnl);
-		btnLayoutPnl.add(Box.createHorizontalStrut(5));
+		btnLayoutPnl.add(Box.createHorizontalGlue());
+		
+		
 		
 		/**Adding the panel with all the buttons and the logo,
 		 * a vertical glue is added to push the logo at the top
@@ -100,41 +157,8 @@ public class StartWindow extends JPanel implements MouseListener
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		this.add(Logo);
-		this.add(Box.createHorizontalGlue());
+		this.add(Box.createVerticalStrut(30));
 		this.add(btnLayoutPnl);
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) 
-	{
-		this.setBackground(this.config.getGlobalConfigSettings().getBtnColor("btnOver"));
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-
-	
 }

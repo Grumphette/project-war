@@ -13,17 +13,14 @@ public class MainWindow
 {
 	private JFrame Window;
 	private StartWindow WelcomScreen;
-	private ConfigFileHandler gameConfigSettings;
 	
-	public MainWindow(ConfigFileHandler config) throws IOException
+	public MainWindow() throws IOException
 	{
-		this.gameConfigSettings = config;
-		
 		this.setLookAndFeel();
 		
 		Window = new JFrame("Project War");
 		
-		WelcomScreen = new StartWindow(config);
+		WelcomScreen = new StartWindow();
 		Window.add(WelcomScreen);
 		Window.pack();
 		Window.setVisible(true);
