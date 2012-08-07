@@ -1,7 +1,6 @@
 package DesktopGUI;
 
-import java.awt.Color;
-import java.awt.Dimension;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -10,13 +9,11 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
-
 import GUIobjects.BackImage;
-
 import misc.ConfigFileHandler;
 
 
+@SuppressWarnings("serial")
 public class StartWindow extends JPanel
 {
 	
@@ -32,12 +29,13 @@ public class StartWindow extends JPanel
 	private JLabel lblCredit;
 	private JPanel btnLayoutPnl;
 	private MouseListener btnMouseListerner;
+	private int state;
 	
 	
 	public StartWindow() throws IOException 
 	{
 		super();
-		
+		state = 0;
 		
 		btnMouseListerner = new MouseListener() {
 			
@@ -49,6 +47,23 @@ public class StartWindow extends JPanel
 					JPanel Source = (JPanel)e.getSource();
 					Source.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("lightblue"));
 				}
+				if(e.getSource().equals(btnStartSolo))
+				{
+					state=1;
+				}
+				else if(e.getSource().equals(btnStartMulti))
+				{
+					state=2;
+				}
+				else if(e.getSource().equals(btnCredit))
+				{
+					state=3;
+				}
+				else
+				{
+					state=4;
+				}
+				hideStartWindow();
 			}
 			
 			@Override
@@ -160,5 +175,20 @@ public class StartWindow extends JPanel
 		this.add(Box.createVerticalStrut(30));
 		this.add(btnLayoutPnl);
 		
+	}
+	
+	public int getState()
+	{
+		return this.state;
+	}
+	private void hideStartWindow()
+	{
+		this.setVisible(false);
+	}
+	
+	public void showStartWindow()
+	{
+		this.state = 0;
+		this.setVisible(false);
 	}
 }
