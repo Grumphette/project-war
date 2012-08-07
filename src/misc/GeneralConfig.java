@@ -8,8 +8,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import GUIobjects.BackImage;
+import GUIobjects.UnitGui;
 
 
 public class GeneralConfig 
@@ -22,6 +24,7 @@ public class GeneralConfig
 	private ArrayList<String> ArmyConfigFiles;
 	private ArrayList<BackImage> GeneralImages;
 	private ArrayList<UIColor> UIColors;
+	private Map<String, ArrayList<UnitGui>> GUIunit;
 	private Font purissaFont;
 	
 	private GeneralConfig()

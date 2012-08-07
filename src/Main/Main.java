@@ -16,6 +16,7 @@ public class Main {
 		try 
 		{
 			config.Load();
+			
 			MainWindow window = new MainWindow();
 		} 
 		catch (Exception e) 

@@ -46,8 +46,10 @@ public class ConfigFileHandler
 	
 	public void Load() throws IOException, ParseException, FontFormatException
 	{
-		LoadGeneralConfig();
-		//LoadArmyConfig();
+		LoadGeneralConfig(); //load general images and set general settings
+		//LoadUnitsFromDataBase();
+		//LoadArmyConfig(); //load army images
+		
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
