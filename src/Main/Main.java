@@ -9,6 +9,7 @@ import DesktopGUI.MainWindow;
 public class Main {
 
 	
+	@SuppressWarnings("unused")
 	public static void main(String[] args) 
 	{
 		ConfigFileHandler config = ConfigFileHandler.getConfigFileHandler();

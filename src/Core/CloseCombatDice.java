@@ -1,9 +1,5 @@
 package Core;
 
-import java.util.Random;
-
-
-
 
 public class CloseCombatDice extends Dice 
 {

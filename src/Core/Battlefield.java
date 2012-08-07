@@ -1,8 +1,5 @@
 package Core;
 
-import java.util.ArrayList;
-
-import com.sun.xml.internal.bind.v2.runtime.Coordinator;
 
 public class Battlefield 
 {

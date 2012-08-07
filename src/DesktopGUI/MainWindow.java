@@ -1,15 +1,15 @@
 package DesktopGUI;
 
-import java.awt.Color;
+
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
-import misc.ConfigFileHandler;
 
-public class MainWindow 
+public class MainWindow implements ComponentListener
 {
 	private JFrame Window;
 	private StartWindow WelcomScreen;
@@ -21,6 +21,7 @@ public class MainWindow
 		Window = new JFrame("Project War");
 		
 		WelcomScreen = new StartWindow();
+		WelcomScreen.addComponentListener(this);
 		Window.add(WelcomScreen);
 		Window.pack();
 		Window.setVisible(true);
@@ -40,4 +41,37 @@ public class MainWindow
 			e.printStackTrace();
 		}
 	}
+
+
+	@Override
+	public void componentHidden(ComponentEvent e) 
+	{
+		if(e.getComponent().equals(WelcomScreen))
+		{
+			switch(WelcomScreen.getState())
+			{
+				case 1:
+					System.out.println("load single player panel");
+					break;
+				case 2:
+					System.out.println("load multy player panel");
+					break;
+				case 3:
+					System.out.println("load credit panel");
+					break;
+				case 4:
+					System.out.println("Quit");
+					break;
+			}
+		}
+	}
+
+
+	@Override
+	public void componentMoved(ComponentEvent e){} 
+	@Override
+	public void componentResized(ComponentEvent e){} 
+	@Override
+	public void componentShown(ComponentEvent e){} 
+	
 }
