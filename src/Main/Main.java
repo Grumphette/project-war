@@ -1,6 +1,6 @@
 package Main;
 
-import misc.ConfigFileHandler;
+import misc.GuiGeneralConfig;
 import DesktopGUI.MainWindow;
 
 /** Special fonts have to be installed in  the ~/.fonts */
@@ -12,11 +12,12 @@ public class Main {
 	@SuppressWarnings("unused")
 	public static void main(String[] args) 
 	{
-		ConfigFileHandler config = ConfigFileHandler.getConfigFileHandler();
+		GuiGeneralConfig guiConfig = GuiGeneralConfig.getGeneralConfigSingleton();
+		//CoreGeneralConfig coreConfig =  
 		try 
 		{
-			config.Load();
-			
+			guiConfig.loadGuiConfig();
+			//coreConfig.loadCoreConfig();
 			MainWindow window = new MainWindow();
 		} 
 		catch (Exception e) 

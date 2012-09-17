@@ -10,8 +10,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import misc.GuiGeneralConfig;
 import GUIobjects.BackImage;
-import misc.ConfigFileHandler;
 
 
 @SuppressWarnings("serial")
@@ -31,12 +31,14 @@ public class StartWindow extends JPanel
 	private JPanel btnLayoutPnl;
 	private MouseListener btnMouseListerner;
 	private int state;
+	private GuiGeneralConfig GuiConfig;
 	
 	
 	public StartWindow() throws IOException 
 	{
 		super();
 		state = 0;
+		GuiConfig = GuiGeneralConfig.getGeneralConfigSingleton();
 		
 		btnMouseListerner = new MouseListener() {
 			
@@ -46,7 +48,7 @@ public class StartWindow extends JPanel
 				if(e.getSource().equals(btnCredit) || e.getSource().equals(btnQuit) || e.getSource().equals(btnStartMulti) || e.getSource().equals(btnStartSolo))
 				{
 					JPanel Source = (JPanel)e.getSource();
-					Source.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("lightblue"));
+					Source.setBackground(GuiConfig.getUIColor("lightblue"));
 				}
 				if(e.getSource().equals(btnStartSolo))
 				{
@@ -73,7 +75,7 @@ public class StartWindow extends JPanel
 				if(e.getSource().equals(btnCredit) || e.getSource().equals(btnQuit) || e.getSource().equals(btnStartMulti) || e.getSource().equals(btnStartSolo))
 				{
 					JPanel Source = (JPanel)e.getSource();
-					Source.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("blue"));
+					Source.setBackground(GuiConfig.getUIColor("blue"));
 				}
 			}
 			
@@ -83,7 +85,7 @@ public class StartWindow extends JPanel
 				if(e.getSource().equals(btnCredit) || e.getSource().equals(btnQuit) || e.getSource().equals(btnStartMulti) || e.getSource().equals(btnStartSolo))
 				{
 					JPanel Source = (JPanel)e.getSource();
-					Source.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("grey"));
+					Source.setBackground(GuiConfig.getUIColor("grey"));
 				}
 			}
 			
@@ -93,7 +95,7 @@ public class StartWindow extends JPanel
 				if(e.getSource().equals(btnCredit) || e.getSource().equals(btnQuit) || e.getSource().equals(btnStartMulti) || e.getSource().equals(btnStartSolo))
 				{
 					JPanel Source = (JPanel)e.getSource();
-					Source.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("lightblue"));
+					Source.setBackground(GuiConfig.getUIColor("lightblue"));
 				}
 			}
 			
@@ -102,8 +104,8 @@ public class StartWindow extends JPanel
 		};
 		
 		
-		this.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("grey"));
-		BackImage LogImgInfo = ConfigFileHandler.getGlobalConfigSettings().getGeneralImage("LogoImg");
+		this.setBackground(GuiConfig.getUIColor("grey"));
+		BackImage LogImgInfo = GuiConfig.getGeneralImage("LogoImg");
 		Logo = new JPanelWithImg(LogImgInfo.getFinalImage());
 		
 		btnPnl = new JPanel();
@@ -118,34 +120,34 @@ public class StartWindow extends JPanel
 		
 		/**Start solo game button panel configuration*/
 		lblStartSolo = new JLabel();
-		lblStartSolo.setFont(ConfigFileHandler.getGlobalConfigSettings().getFont());
+		lblStartSolo.setFont(GuiConfig.getFont());
 		lblStartSolo.setText("Start Solo game");
-		btnStartSolo.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("grey"));
+		btnStartSolo.setBackground(GuiConfig.getUIColor("grey"));
 		btnStartSolo.addMouseListener(btnMouseListerner);
 		btnStartSolo.add(lblStartSolo);
 		
 		
 		/**Start multi game button panel configuration*/
 		lblStartMulti = new JLabel();
-		lblStartMulti.setFont(ConfigFileHandler.getGlobalConfigSettings().getFont());
+		lblStartMulti.setFont(GuiConfig.getFont());
 		lblStartMulti.setText("Start multi-player game");
-		btnStartMulti.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("grey"));
+		btnStartMulti.setBackground(GuiConfig.getUIColor("grey"));
 		btnStartMulti.addMouseListener(btnMouseListerner);
 		btnStartMulti.add(lblStartMulti);
 		
 		/**Quit button panel configuration*/
 		lblQuit = new JLabel();
-		lblQuit.setFont(ConfigFileHandler.getGlobalConfigSettings().getFont());
+		lblQuit.setFont(GuiConfig.getFont());
 		lblQuit.setText("Quit");
-		btnQuit.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("grey"));
+		btnQuit.setBackground(GuiConfig.getUIColor("grey"));
 		btnQuit.addMouseListener(btnMouseListerner);
 		btnQuit.add(lblQuit);
 		
 		/**Credit button panel configuration*/
 		lblCredit = new JLabel();
-		lblCredit.setFont(ConfigFileHandler.getGlobalConfigSettings().getFont());
+		lblCredit.setFont(GuiConfig.getFont());
 		lblCredit.setText("Credits");
-		btnCredit.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("grey"));
+		btnCredit.setBackground(GuiConfig.getUIColor("grey"));
 		btnCredit.addMouseListener(btnMouseListerner);
 		btnCredit.add(lblCredit);
 		
@@ -159,7 +161,7 @@ public class StartWindow extends JPanel
 		
 		
 		btnLayoutPnl.setLayout(new BoxLayout(btnLayoutPnl, BoxLayout.X_AXIS));
-		btnLayoutPnl.setBackground(ConfigFileHandler.getGlobalConfigSettings().getUIColor("grey"));
+		btnLayoutPnl.setBackground(GuiConfig.getUIColor("grey"));
 		btnLayoutPnl.add(Box.createHorizontalGlue());
 		btnLayoutPnl.add(btnPnl);
 		btnLayoutPnl.add(Box.createHorizontalGlue());
