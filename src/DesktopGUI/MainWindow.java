@@ -13,6 +13,7 @@ public class MainWindow implements ComponentListener
 {
 	private JFrame Window;
 	private StartWindow WelcomScreen;
+	private RaceSelection SelectPlayerRace;
 	
 	public MainWindow() throws IOException
 	{
@@ -21,7 +22,10 @@ public class MainWindow implements ComponentListener
 		Window = new JFrame("Project War");
 		
 		WelcomScreen = new StartWindow();
+		SelectPlayerRace = new RaceSelection();
+		
 		WelcomScreen.addComponentListener(this);
+		WelcomScreen.buildStartWindow();
 		Window.add(WelcomScreen);
 		Window.pack();
 		Window.setVisible(true);
@@ -52,6 +56,10 @@ public class MainWindow implements ComponentListener
 			{
 				case 1:
 					System.out.println("load single player panel");
+					Window.remove(WelcomScreen);
+					SelectPlayerRace.buildRaceSelection();
+					Window.add(SelectPlayerRace);
+					Window.pack();
 					break;
 				case 2:
 					System.out.println("load multy player panel");

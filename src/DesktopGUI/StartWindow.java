@@ -34,11 +34,14 @@ public class StartWindow extends JPanel
 	private GuiGeneralConfig GuiConfig;
 	
 	
-	public StartWindow() throws IOException 
+	public StartWindow()
 	{
 		super();
+	}
+	public void buildStartWindow()  throws IOException 
+	{
 		state = 0;
-		GuiConfig = GuiGeneralConfig.getGeneralConfigSingleton();
+		GuiConfig = GuiGeneralConfig.getGuiConfigSingleton();
 		
 		btnMouseListerner = new MouseListener() {
 			

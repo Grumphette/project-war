@@ -12,7 +12,7 @@ public class CoreGeneralConfig
 		ArmyDBC = new ArmyDataBaseConnector();
 	}
 	
-	public static CoreGeneralConfig getGeneralConfigSingleton ()
+	public static CoreGeneralConfig getCoreConfigSingleton ()
 	{
 		if (singleton == null)
 		{
@@ -21,10 +21,16 @@ public class CoreGeneralConfig
 		return singleton;
 	}
 	
-	public void LoadCoreConfig()
+	public ArmyDataBaseConnector getArmyDBC()
+	{
+		return ArmyDBC;
+	}
+	
+	public void loadCoreConfig()
 	{
 		this.setArmyDBPath(configFile.retrieveArmyDBPath());
 	}
+	
 	private void setArmyDBPath (String dbPath)
 	{
 		ArmyDBC.setPath(dbPath);

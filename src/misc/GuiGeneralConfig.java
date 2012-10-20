@@ -37,7 +37,7 @@ public class GuiGeneralConfig
 		UIColors = new ArrayList<UIColor>();
 	}
 	
-	public static GuiGeneralConfig getGeneralConfigSingleton ()
+	public static GuiGeneralConfig getGuiConfigSingleton ()
 	{
 		if (singleton == null)
 		{
@@ -91,6 +91,12 @@ public class GuiGeneralConfig
 	{
 		purissaFont = Font.createFont(Font.TRUETYPE_FONT,new File(pathToFont));
 		purissaFont = purissaFont.deriveFont(Font.BOLD, 14);
+	}
+	
+	
+	public ArrayList<String> getArmyConfigFiles()
+	{
+		return ArmyConfigFiles;
 	}
 	
 	public Font getFont()

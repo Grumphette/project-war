@@ -1,3 +1,8 @@
+CREATE TABLE race
+(
+race_name VARCHAR(30) NOT NULL
+);
+
 CREATE TABLE dice  --<= ok
 (
 type VARCHAR(30) NOT NULL,
@@ -6,16 +11,25 @@ val INTEGER NOT NULL
 
 CREATE TABLE unit  --<= ok
 (
-race VARCHAR(30) NOT NULL,
-name VARCHAR(30) NOT NULL,
+id_race INTEGER NOT NULL,
+unit_name VARCHAR(30) NOT NULL,
 cmd_price INTEGER NOT NULL,
 size_agreement INTEGER NOT NULL,
-stamania INTEGER NOT NULL
+stamania INTEGER NOT NULL,
+FOREIGN KEY (id_race) REFERENCES race(rowid)
 );
+
+CREATE TABLE unit_imgPath
+(
+id_unit INTEGER NOT NULL,
+img_path TEXT NOT NULL,
+FOREIGN KEY (id_unit) REFERENCES unit(rowid)
+);
+
 
 CREATE TABLE ability  --<= ok
 (
-name VARCHAR(30) NOT NULL,
+ability_name VARCHAR(30) NOT NULL,
 is_free INTEGER NOT NULL,
 id_mability INTEGER NOT NULL,
 FOREIGN KEY (id_mability) REFERENCES mability(rowid) 
@@ -108,41 +122,50 @@ INSERT INTO dice (type,val) VALUES ('range',4);
 INSERT INTO dice (type,val) VALUES ('range',5);
 INSERT INTO dice (type,val) VALUES ('range',6);
 
+--Table id_race
+INSERT INTO race (race_name) VALUES ('elves');
+INSERT INTO race (race_name) VALUES ('orcs');
+
+
 --Table Unit
 --Elves
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Spear men',2,4,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Archers',3,4,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Elite archers',4,4,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Mounted archers',5,1,2);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Mounted guard',4,3,2);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Elven does',4,3,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Wood pack',4,4,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Hero',6,1,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Chariot',7,1,2);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Pathfinders',4,3,0);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Great Eagle',6,1,2);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Tree man',8,1,4);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Magess',5,1,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Queen',6,1,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Captain',6,4,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('elves','Champion',6,4,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Spear men',2,4,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Archers',3,4,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Elite archers',4,4,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Mounted archers',5,1,2);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Mounted guard',4,3,2);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Elven does',4,3,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Wood pack',4,4,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Hero',6,1,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Chariot',7,1,2);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Pathfinders',4,3,0);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Great Eagle',6,1,2);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Tree man',8,1,4);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Magess',5,1,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Queen',6,1,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Captain',6,4,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (0,'Champion',6,4,1);
 
 --Orcs
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Standard bearer',3,4,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Orcs',3,4,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Warlord',6,3,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Troll',6,1,3);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Boulder thrower',6,1,2);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Catapult',6,1,2);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Hobgoblins',2,4,2);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Kobolds',1,0,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Shaman',5,1,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Chariot',5,1,2);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Half orcs',3,3,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Goblins',2,4,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Bugbears',5,4,2);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Fanatic',4,1,1);
-INSERT INTO unit (race,name,cmd_price,size_agreement,stamania) VALUES ('orcs','Gnolls',4,4,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Standard bearer',3,4,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Orcs',3,4,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Warlord',6,3,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Troll',6,1,3);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Boulder thrower',6,1,2);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Catapult',6,1,2);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Hobgoblins',2,4,2);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Kobolds',1,0,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Shaman',5,1,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Chariot',5,1,2);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Half orcs',3,3,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Goblins',2,4,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Bugbears',5,4,2);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Fanatic',4,1,1);
+INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Gnolls',4,4,1);
+
+--Table unit_imgPath
+INSERT INTO unit_imgPath (id_unit,img_path) VALUES (1,'');
+
 
 --Table unit_dice
 INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (18,4,0);
@@ -399,32 +422,32 @@ INSERT INTO mability (winorder,winXorder,windice,winXdice,winability,joinany,wou
 		VALUES (0,NULL,0,NULL,NULL,0,0,0,0,0,0,0,0,0,NULL,0,0,0,1,3,0,0); --< +3 wound
 
 --Table Ability
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Control',1,1);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Excite',1,2);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Galvanize',1,3);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Heal',1,4);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Auxiliary',0,5);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Blood lust',0,6);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Berzerk lvl 1',0,7);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Berzerk lvl 2',0,8);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Berzerk lvl 3',0,9);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Fast',0,10);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Tough',0,11);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Fly',0,12);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Impetus',0,13);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Long range',0,14);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Overwhelming',0,15);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Reactive',0,16);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Regenerate',0,17);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Scout',0,18);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Hawk eye lvl 1',0,19);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Hawk eye lvl 2',0,20);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Hawk eye lvl 3',0,21);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Skirmish',0,22);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Slow',0,23);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Trample lvl 1',0,24);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Trample lvl 2',0,25);
-INSERT INTO ability (name,is_free,id_mability) VALUES ('Trample lvl 3',0,26);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Control',1,1);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Excite',1,2);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Galvanize',1,3);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Heal',1,4);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Auxiliary',0,5);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Blood lust',0,6);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Berzerk lvl 1',0,7);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Berzerk lvl 2',0,8);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Berzerk lvl 3',0,9);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Fast',0,10);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Tough',0,11);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Fly',0,12);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Impetus',0,13);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Long range',0,14);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Overwhelming',0,15);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Reactive',0,16);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Regenerate',0,17);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Scout',0,18);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Hawk eye lvl 1',0,19);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Hawk eye lvl 2',0,20);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Hawk eye lvl 3',0,21);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Skirmish',0,22);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Slow',0,23);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Trample lvl 1',0,24);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Trample lvl 2',0,25);
+INSERT INTO ability (ability_name,is_free,id_mability) VALUES ('Trample lvl 3',0,26);
 
 --Table unit_ability
 INSERT INTO unit_ability (id_unit,id_ability) VALUES (4,22);

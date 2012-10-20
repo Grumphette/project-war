@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="allorcs.svg">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective3604"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3604-4"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3604-5"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3604-6"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3604-2"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3699"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3699-3"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3730"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3755"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3804"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3804-8"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3804-9"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3804-4"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3804-6"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3888"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3888-5"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3888-58"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3888-0"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3937"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3937-6"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3937-4"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3937-9"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3995"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3995-7"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3995-4"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3995-8"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3995-79"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective2901"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="79.22547"
+     inkscape:cy="721.57565"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1919"
+     inkscape:window-height="1040"
+     inkscape:window-x="-1"
+     inkscape:window-y="19"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816"
+       width="70.156998"
+       height="70.156998"
+       x="105.63583"
+       y="37.997921"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Standard bearer.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="140.88132"
+       y="69.874268"
+       id="text3590"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Standard bearer.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615"><tspan
+         sodipodi:role="line"
+         id="tspan3592"
+         x="140.88132"
+         y="69.874268">Standard</tspan><tspan
+         sodipodi:role="line"
+         x="140.88132"
+         y="84.874268"
+         id="tspan3594">bearer</tspan></text>
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-9"
+       width="70.156998"
+       height="70.156998"
+       x="335.63577"
+       y="35.140823"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Orcs.png"
+       inkscape:export-xdpi="89.798538"
+       inkscape:export-ydpi="89.798538" />
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-7"
+       width="70.156998"
+       height="70.156998"
+       x="120.63578"
+       y="255.14082"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Warlord.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="156.07756"
+       y="294.44394"
+       id="text3590-3"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Warlord.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615"><tspan
+         sodipodi:role="line"
+         x="156.07756"
+         y="294.44394"
+         id="tspan3594-5">Warlord</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="370.65567"
+       y="74.517174"
+       id="text3590-1"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Orcs.png"
+       inkscape:export-xdpi="89.798538"
+       inkscape:export-ydpi="89.798538"><tspan
+         sodipodi:role="line"
+         x="370.65567"
+         y="74.517174"
+         id="tspan3594-4">Orcs</tspan></text>
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-9-4"
+       width="70.156998"
+       height="70.156998"
+       x="312.77866"
+       y="179.42654"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Troll.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="348.14133"
+       y="218.72964"
+       id="text3590-1-4"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Troll.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615"><tspan
+         sodipodi:role="line"
+         x="348.14133"
+         y="218.72964"
+         id="tspan3594-4-4">Troll</tspan></text>
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-9-5"
+       width="70.156998"
+       height="70.156998"
+       x="454.92151"
+       y="245.14082"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Boulder thrower.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="489.7832"
+       y="276.94394"
+       id="text3590-1-45"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Boulder thrower.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615"><tspan
+         sodipodi:role="line"
+         x="489.7832"
+         y="276.94394"
+         id="tspan3594-4-8">Boulder</tspan><tspan
+         sodipodi:role="line"
+         x="489.7832"
+         y="291.94394"
+         id="tspan3876">Thrower</tspan></text>
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-9-6"
+       width="70.156998"
+       height="70.156998"
+       x="309.20721"
+       y="362.28369"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Catapult.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="344.02789"
+       y="400.53796"
+       id="text3590-1-2"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Catapult.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615"><tspan
+         sodipodi:role="line"
+         x="344.02789"
+         y="400.53796"
+         id="tspan3594-4-1">Catapult</tspan></text>
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-9-0"
+       width="70.156998"
+       height="70.156998"
+       x="189.92151"
+       y="405.14084"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Kobolds.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="224.79199"
+       y="444.44394"
+       id="text3590-1-8"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Kobolds.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615"><tspan
+         sodipodi:role="line"
+         x="224.79199"
+         y="444.44394"
+         id="tspan3594-4-3">Kobolds</tspan></text>
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-9-41"
+       width="70.156998"
+       height="70.156998"
+       x="462.77866"
+       y="412.28369"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Hobgoblins.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="497.89523"
+       y="442.89441"
+       id="text3590-1-3"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Hobgoblins.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615"><tspan
+         sodipodi:role="line"
+         x="497.89523"
+         y="442.89441"
+         id="tspan3594-4-0">Hob-</tspan><tspan
+         sodipodi:role="line"
+         x="497.89523"
+         y="457.89441"
+         id="tspan3878">goblins</tspan></text>
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-4"
+       width="70.156998"
+       height="70.156998"
+       x="14.921501"
+       y="158.71225"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Shaman.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615" />
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-3"
+       width="70.156998"
+       height="70.156998"
+       x="17.778645"
+       y="392.28369"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Chariot.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615" />
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-5"
+       width="70.156998"
+       height="70.156998"
+       x="177.06436"
+       y="571.5694"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Half orcs.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615" />
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-50"
+       width="70.156998"
+       height="70.156998"
+       x="449.92151"
+       y="536.5694"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Goblins.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="50.146484"
+       y="198.08566"
+       id="text3590-3-1"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Shaman.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615"><tspan
+         sodipodi:role="line"
+         x="50.146484"
+         y="198.08566"
+         id="tspan3594-5-2">Shaman</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="52.663784"
+       y="431.58679"
+       id="text3590-3-9"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Chariot.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615"><tspan
+         sodipodi:role="line"
+         x="52.663784"
+         y="431.58679"
+         id="tspan3594-5-6">charriot</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="211.89383"
+       y="610.94574"
+       id="text3590-3-11"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Half orcs.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615"><tspan
+         sodipodi:role="line"
+         x="211.89383"
+         y="610.94574"
+         id="tspan3594-5-9">Half-orcs</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="484.91211"
+       y="575.94281"
+       id="text3590-3-3"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Goblins.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615"><tspan
+         sodipodi:role="line"
+         x="484.91211"
+         y="575.94281"
+         id="tspan3594-5-1">Goblins</tspan></text>
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-7-0"
+       width="70.156998"
+       height="70.156998"
+       x="122.06436"
+       y="747.99799"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Bugbears.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="156.62723"
+       y="786.1087"
+       id="text3590-3-4"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Bugbears.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615"><tspan
+         sodipodi:role="line"
+         x="156.62723"
+         y="786.1087"
+         id="tspan3594-5-11">Bugbear</tspan></text>
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-7-2"
+       width="70.156998"
+       height="70.156998"
+       x="347.77866"
+       y="732.28369" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="383.22043"
+       y="771.58679"
+       id="text3590-3-0"><tspan
+         sodipodi:role="line"
+         x="383.22043"
+         y="771.58679"
+         id="tspan3594-5-65">Warlord</tspan></text>
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-7-5"
+       width="70.156998"
+       height="70.156998"
+       x="508.49292"
+       y="690.14081" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="543.93469"
+       y="729.44391"
+       id="text3590-3-8"><tspan
+         sodipodi:role="line"
+         x="543.93469"
+         y="729.44391"
+         id="tspan3594-5-4">Warlord</tspan></text>
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-7-4"
+       width="70.156998"
+       height="70.156998"
+       x="290.63577"
+       y="874.42651"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Fanatics.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="325.45352"
+       y="913.72961"
+       id="text3590-3-6"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Fanatics.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615"><tspan
+         sodipodi:role="line"
+         x="325.45352"
+         y="913.72961"
+         id="tspan3594-5-96">Fanatics</tspan></text>
+    <rect
+       style="fill:#e90000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-7-28"
+       width="70.156998"
+       height="70.156998"
+       x="488.49292"
+       y="872.28369"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Gnoll.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="523.67688"
+       y="911.6571"
+       id="text3590-3-7"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/Gnoll.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615"><tspan
+         sodipodi:role="line"
+         x="523.67688"
+         y="911.6571"
+         id="tspan3594-5-13">Gnoll</tspan></text>
+    <rect
+       style="fill:#2e9000;fill-opacity:0.4545455;stroke:none"
+       id="rect2816-4-7"
+       width="70.156998"
+       height="70.156998"
+       x="487.77866"
+       y="105.85511"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/elves/elvesIcon.png"
+       inkscape:export-xdpi="89.798576"
+       inkscape:export-ydpi="89.798576" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="522.79272"
+       y="137.73146"
+       id="text3590-3-1-9"
+       inkscape:export-filename="/home/users/ntriquenaux/Ide/project-war/images/orcs/orcsIcon.png"
+       inkscape:export-xdpi="89.798615"
+       inkscape:export-ydpi="89.798615"><tspan
+         sodipodi:role="line"
+         x="522.79272"
+         y="137.73146"
+         id="tspan3594-5-2-8">Elves</tspan><tspan
+         sodipodi:role="line"
+         x="522.79272"
+         y="152.73146"
+         id="tspan2921">ICON</tspan></text>
+  </g>
+</svg>

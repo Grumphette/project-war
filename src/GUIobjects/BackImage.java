@@ -15,7 +15,6 @@ public class BackImage
 	private Image RealImg;
 	private Dimension2D size;
 	
-	/*TODO take in acount that we have to manipulate SVG images*/
 	
 	public BackImage(String Name, String Path, int width, int height) 
 	{

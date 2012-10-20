@@ -11,9 +11,12 @@ public class ArmyDataBaseConnector
 	private Connection connectionDB;
 	private Statement requestStmt;
 	
+	private ArrayList<String> allRaces;
+	
+	
 	public ArmyDataBaseConnector()
 	{
-		armyListing = new ArrayList<Unit>();
+		
 	}
 	
 	public void setPath(String path)
@@ -21,18 +24,49 @@ public class ArmyDataBaseConnector
 		this.Path = path;
 	}
 	
-	public void connectToDB() throws ClassNotFoundException, SQLException
+	public void connectToDB() throws ClassNotFoundException
 	{
+		armyListing = new ArrayList<Unit>();
 		Class.forName("org.sqlite.JDBC");
-		connectionDB = DriverManager.getConnection("jdbc:sqlite:"+this.Path);
-		requestStmt = connectionDB.createStatement();
+	    Connection connection = null;
+	    try {
+			connectionDB = DriverManager.getConnection("jdbc:sqlite:"+this.Path);
+			requestStmt = connectionDB.createStatement();
+		} 
+	    catch (SQLException e) 
+	    {
+			e.printStackTrace();
+		}
+	    
+	   
 	}
+	
+	public ArrayList<String> getAllRaces() 
+	{
+		if(allRaces == null)
+		{
+			allRaces = new ArrayList<String>();
+			ResultSet rs;
+			try 
+			{
+				rs = requestStmt.executeQuery("select * from race");
+				while(rs.next())
+				{
+					allRaces.add(rs.getString("race_name"));
+				}
+			} 
+			catch (SQLException e)
+			{	
+				e.printStackTrace();
+			}
+			
+		}
+		return allRaces;
+	}
+	
 	
 	public ArrayList<Unit> getAllTheUnitDescription(String armyRace)
 	{
 		return null;
 	}
-	//we have to connect to the database
-	//load all units when the race is chosen
-	//store all the results in a ArrayList and then provide it to the calling object
 }
