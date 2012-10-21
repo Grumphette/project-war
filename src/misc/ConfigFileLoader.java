@@ -1,11 +1,11 @@
 package misc;
 
-import java.awt.FontFormatException;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.List;
 import java.util.Map;
 
@@ -22,58 +22,124 @@ public class ConfigFileLoader
 	private static ConfigFileLoader singleton;
 	
 	private JSONParser parser;
-	private FileReader fileReader;
-	private JSONObject generalConfigJsonObj;
-	private Iterator<Object> anIterator;
+	private ArrayList<JSONObject> generalConfigJsonObj;
 	
-	private ConfigFileLoader() throws IOException, ParseException 
+	private ConfigFileLoader()
 	{
 		parser = new JSONParser();
-		fileReader = new FileReader("configFiles/generalConfig");
-		generalConfigJsonObj = (JSONObject) parser.parse(fileReader);
+		generalConfigJsonObj = new ArrayList<JSONObject>();
+	}
+	
+	public void addConfigFileToLoad(String path)
+	{
+		FileReader tmp;
+		try 
+		{
+			tmp = new FileReader(path);
+			generalConfigJsonObj.add((JSONObject) parser.parse(tmp));
+		}
+		catch (Exception e) 
+		{	
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public static ConfigFileLoader getConfigFileLoaderSingleton ()
 	{
 		if (singleton == null)
 		{
-			try {
 				singleton = new ConfigFileLoader();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 		}
 		return singleton;
 	}
 	
 	public String retrieveArmySaveFolder()
 	{
-		return generalConfigJsonObj.get("ArmySaveFolder").toString();
+		String toReturn = null;
+		for(JSONObject tmp : generalConfigJsonObj)
+		{
+			 toReturn = tmp.get("ArmySaveFolder").toString();
+			 if(toReturn != null)
+			 {
+				 return toReturn;
+			 }
+		}
+		return null;
 	}
 	
 	public String retrieveArmyDBPath()
 	{
-		return generalConfigJsonObj.get("ArmyDB").toString();
+		String toReturn = null;
+		for(JSONObject tmp : generalConfigJsonObj)
+		{
+			 toReturn = tmp.get("ArmyDB").toString();
+			 if(toReturn != null)
+			 {
+				 return toReturn;
+			 }
+		}
+		return null;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public ArrayList<String> retrieveArmyConfigFiles()
 	{
-		return (ArrayList<String>)generalConfigJsonObj.get("ArmyConfigFiles");
+		
+		ArrayList<String> toReturn = null;
+		for(JSONObject tmp : generalConfigJsonObj)
+		{
+			 toReturn = (ArrayList<String>)tmp.get("ArmyConfigFiles");
+			 if(toReturn != null)
+			 {
+				 return toReturn;
+			 }
+		}
+		return null;
 	}
 	
 	public String retrieveFont()
 	{
-		return generalConfigJsonObj.get("Font").toString();
+		String toReturn = null;
+		for(JSONObject tmp : generalConfigJsonObj)
+		{
+			 toReturn = tmp.get("Font").toString();
+			 if(toReturn != null)
+			 {
+				 return toReturn;
+			 }
+		}
+		return null;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Map<String,List<String>> retrieveGeneralImages()
 	{
-		return (Map<String,List<String>>) generalConfigJsonObj.get("GeneralImages");
+		Map<String,List<String>> toReturn = null;
+		for(JSONObject tmp : generalConfigJsonObj)
+		{
+			 toReturn = (Map<String,List<String>>) tmp.get("GeneralImages");
+			 if(toReturn != null)
+			 {
+				 return toReturn;
+			 }
+		}
+		return null;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Map<String,List<String>> retrieveUIColor()
 	{
-		return (Map<String,List<String>>) generalConfigJsonObj.get("UIColors");
+		Map<String,List<String>> toReturn = null;
+		for(JSONObject tmp : generalConfigJsonObj)
+		{
+			 toReturn = (Map<String,List<String>>) tmp.get("UIColors");
+			 if(toReturn != null)
+			 {
+				 return toReturn;
+			 }
+		}
+		return null;
 	}
 	
 }

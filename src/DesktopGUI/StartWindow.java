@@ -38,7 +38,7 @@ public class StartWindow extends JPanel
 	{
 		super();
 	}
-	public void buildStartWindow()  throws IOException 
+	public void buildStartWindow()
 	{
 		state = 0;
 		GuiConfig = GuiGeneralConfig.getGuiConfigSingleton();
@@ -108,6 +108,7 @@ public class StartWindow extends JPanel
 		
 		
 		this.setBackground(GuiConfig.getUIColor("grey"));
+		
 		BackImage LogImgInfo = GuiConfig.getGeneralImage("LogoImg");
 		Logo = new JPanelWithImg(LogImgInfo.getFinalImage());
 		

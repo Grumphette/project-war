@@ -12,9 +12,7 @@ public class JPanelWithImg extends JPanel
 {
 	Image bgImg;
 	
-	
-	
-	
+
 	public JPanelWithImg(Image img)
 	{
 		super();

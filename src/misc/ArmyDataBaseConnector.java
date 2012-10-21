@@ -37,8 +37,6 @@ public class ArmyDataBaseConnector
 	    {
 			e.printStackTrace();
 		}
-	    
-	   
 	}
 	
 	public ArrayList<String> getAllRaces() 

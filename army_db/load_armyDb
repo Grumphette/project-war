@@ -19,14 +19,6 @@ stamania INTEGER NOT NULL,
 FOREIGN KEY (id_race) REFERENCES race(rowid)
 );
 
-CREATE TABLE unit_imgPath
-(
-id_unit INTEGER NOT NULL,
-img_path TEXT NOT NULL,
-FOREIGN KEY (id_unit) REFERENCES unit(rowid)
-);
-
-
 CREATE TABLE ability  --<= ok
 (
 ability_name VARCHAR(30) NOT NULL,
@@ -162,10 +154,6 @@ INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1
 INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Bugbears',5,4,2);
 INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Fanatic',4,1,1);
 INSERT INTO unit (id_race,unit_name,cmd_price,size_agreement,stamania) VALUES (1,'Gnolls',4,4,1);
-
---Table unit_imgPath
-INSERT INTO unit_imgPath (id_unit,img_path) VALUES (1,'');
-
 
 --Table unit_dice
 INSERT INTO unit_dice (id_unit,id_dice,dice_group) VALUES (18,4,0);
