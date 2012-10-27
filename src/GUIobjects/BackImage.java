@@ -24,9 +24,16 @@ public class BackImage
 
 	}
 	
-	private void generateImg() throws IOException
+	private void generateImg()
 	{
-		RealImg = ImageIO.read(ImgFile);
+		try 
+		{
+			RealImg = ImageIO.read(ImgFile);
+		}
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public String getName()
@@ -44,7 +51,7 @@ public class BackImage
 		return RealImg;
 	}
 	
-	public BackImage getImage() throws IOException
+	public BackImage getImage()
 	{
 		if(RealImg == null)
 		{

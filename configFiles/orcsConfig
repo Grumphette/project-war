@@ -1,3 +1,22 @@
 {
 	"armyIcon" : ["images/orcs/orcsIcon.png","70","70"]
+	"armyImages" :
+	{
+		"Boulder thrower" : ["images/orcs/Boulder thrower.png","70","70"]
+		"Bugbears" : ["images/orcs/Bugbears.png","70","70"]
+		"Catapult" : ["images/orcs/Catapult.png","70","70"]
+		"Chariot" : ["images/orcs/Chariot.png","70","70"]
+		"Fanatics" : ["images/orcs/Fanatics.png","70","70"]
+		"Gnoll" : ["images/orcs/Gnoll.png","70","70"]
+		"Goblins" : ["images/orcs/Goblins.png","70","70"]
+		"Half orcs" : ["images/orcs/Half orcs.png","70","70"]
+		"Hobgoblins" : ["images/orcs/Hobgoblins.png","70","70"]
+		"Kobolds" : ["images/orcs/Kobolds.png","70","70"]
+		"Orcs" : ["images/orcs/Orcs.png","70","70"]
+		"Shaman" : ["images/orcs/Shaman.png","70","70"]
+		"Standard bearer" : ["images/orcs/Standard bearer.png","70","70"]
+		"Troll" : ["images/orcs/Troll.png","70","70"]
+		"Warlord" : ["images/orcs/Warlord.png","70","70"]
+	}
+	
 }

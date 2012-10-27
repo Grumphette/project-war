@@ -1,3 +1,6 @@
 {
 	"armyIcon" : ["images/elves/elvesIcon.png","70","70"]
+	"armyImages" :
+	{
+	}
 }

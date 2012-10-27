@@ -1,7 +1,10 @@
 package Core;
 
-public class Game {
-	
+import misc.CoreGeneralConfig;
+
+public class CoreGame 
+{
+	CoreGeneralConfig coreConfig;
 	/**
 	 * The game is decomposed  in turns (taken by each one of the player alternatively) with diferent phases :
 	 * 
@@ -22,8 +25,10 @@ public class Game {
 	 * For each action there is special cases to be handled
 	 * */
 	
-	public Game ()
+	public CoreGame ()
 	{
+		coreConfig = CoreGeneralConfig.getCoreConfigSingleton(); 
+		coreConfig.loadCoreConfig();
 		//Initialization of the different game component
 			//Size of Army selection
 			//Load Units/Abilities
@@ -37,6 +42,11 @@ public class Game {
 			//Execute the actions described above
 		
 		//if half of a player's army is destroyed, end
+	}
+	
+	public void getAvailableRaces()
+	{
+		coreConfig.getArmyDBC().getAllRaces();
 	}
 
 }

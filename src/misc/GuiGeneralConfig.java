@@ -46,14 +46,19 @@ public class GuiGeneralConfig
 		return singleton;
 	}
 	
-	public void loadGuiConfig() throws IOException, ParseException, FontFormatException
+	public void loadGuiConfig()
 	{
 		GuiConfLoader = ConfigFileLoader.getConfigFileLoaderSingleton();
-		this.setArmySaveFolder(GuiConfLoader.retrieveArmySaveFolder());
-		this.setArmyConfigFiles(GuiConfLoader.retrieveArmyConfigFiles());
-		this.setGuiGeneralImage(GuiConfLoader.retrieveGeneralImages());
-		this.setUIColor(GuiConfLoader.retrieveUIColor());
-		this.setFont(GuiConfLoader.retrieveFont());
+		
+			GuiConfLoader.addConfigFileToLoad("configFiles/generalConfig");
+			GuiConfLoader.addConfigFileToLoad("configFiles/orcsConfig");
+			GuiConfLoader.addConfigFileToLoad("configFiles/elvesConfig");
+			
+			this.setArmySaveFolder(GuiConfLoader.retrieveArmySaveFolder());
+			this.setArmyConfigFiles(GuiConfLoader.retrieveArmyConfigFiles());
+			this.setGuiGeneralImage(GuiConfLoader.retrieveGeneralImages());
+			this.setUIColor(GuiConfLoader.retrieveUIColor());
+			this.setFont(GuiConfLoader.retrieveFont());
 	}
 
 	private void setArmySaveFolder(String armySaveFolder) {
@@ -87,9 +92,16 @@ public class GuiGeneralConfig
 		}
 	}
 	
-	private void setFont(String pathToFont) throws FontFormatException, IOException
+	private void setFont(String pathToFont)
 	{
-		purissaFont = Font.createFont(Font.TRUETYPE_FONT,new File(pathToFont));
+		try 
+		{
+			purissaFont = Font.createFont(Font.TRUETYPE_FONT,new File(pathToFont));
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
 		purissaFont = purissaFont.deriveFont(Font.BOLD, 14);
 	}
 	
@@ -116,7 +128,7 @@ public class GuiGeneralConfig
 		return null;
 	}
 	
-	public BackImage getGeneralImage(String Name) throws IOException
+	public BackImage getGeneralImage(String Name)
 	{
 		for(BackImage img : GeneralImages)
 		{

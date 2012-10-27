@@ -8,6 +8,8 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
+import misc.GuiGeneralConfig;
+
 
 public class MainWindow implements ComponentListener
 {
@@ -15,8 +17,12 @@ public class MainWindow implements ComponentListener
 	private StartWindow WelcomScreen;
 	private RaceSelection SelectPlayerRace;
 	
-	public MainWindow() throws IOException
+	public MainWindow()
 	{
+		GuiGeneralConfig guiConfig = GuiGeneralConfig.getGuiConfigSingleton();
+		guiConfig.loadGuiConfig();
+		
+		
 		this.setLookAndFeel();
 		
 		Window = new JFrame("Project War");
