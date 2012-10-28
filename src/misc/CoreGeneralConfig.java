@@ -1,10 +1,13 @@
 package misc;
 
+import java.util.ArrayList;
+
 public class CoreGeneralConfig 
 {
 	private static CoreGeneralConfig singleton;
 	private ArmyDataBaseConnector ArmyDBC;
 	private ConfigFileLoader configFile;
+	
 	
 	private CoreGeneralConfig ()
 	{
@@ -21,11 +24,6 @@ public class CoreGeneralConfig
 		return singleton;
 	}
 	
-	public ArmyDataBaseConnector getArmyDBC()
-	{
-		return ArmyDBC;
-	}
-	
 	public void loadCoreConfig()
 	{
 		this.setArmyDBPath(configFile.retrieveArmyDBPath());
@@ -34,5 +32,10 @@ public class CoreGeneralConfig
 	private void setArmyDBPath (String dbPath)
 	{
 		ArmyDBC.setPath(dbPath);
+	}
+	
+	public ArmyDataBaseConnector dbc()
+	{
+		return ArmyDBC;
 	}
 }

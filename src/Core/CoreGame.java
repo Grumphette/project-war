@@ -1,10 +1,23 @@
 package Core;
 
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Observable;
+
+import GUIobjects.UnitGui;
+
+import misc.ConfigFileLoader;
 import misc.CoreGeneralConfig;
 
-public class CoreGame 
+public class CoreGame extends Observable
 {
+	private static CoreGame singleton;
+	
 	CoreGeneralConfig coreConfig;
+
+	private ArrayList<String> armyRaces;
+	private Map<String, ArrayList<Unit>> armyUnits;
+	
 	/**
 	 * The game is decomposed  in turns (taken by each one of the player alternatively) with diferent phases :
 	 * 
@@ -25,15 +38,28 @@ public class CoreGame
 	 * For each action there is special cases to be handled
 	 * */
 	
-	public CoreGame ()
+	private CoreGame ()
 	{
 		coreConfig = CoreGeneralConfig.getCoreConfigSingleton(); 
 		coreConfig.loadCoreConfig();
-		//Initialization of the different game component
-			//Size of Army selection
-			//Load Units/Abilities
-			//Army Creation (store/load army ?)
 		
+		//initialization of data structures for the game
+		armyRaces = new ArrayList<String>();
+		
+		//geting all the needed informations about the play
+		coreConfig.dbc().connectToDB();
+		coreConfig.dbc().retrieveAllRaces(armyRaces);
+		
+		
+	}
+	
+	public void playTurn()
+	{
+		//Initialization of the different game component
+		//Size of Army selection
+		//Load Units/Abilities
+		//Army Creation (store/load army ?)
+	
 		//Define witch player starts, (draw a dice, the greater score starts)
 			//Army Placement on the battlefield
 		
@@ -43,10 +69,18 @@ public class CoreGame
 		
 		//if half of a player's army is destroyed, end
 	}
-	
-	public void getAvailableRaces()
+	public void askArmyRaces()
 	{
-		coreConfig.getArmyDBC().getAllRaces();
+		setChanged();
+		notifyObservers(armyRaces);
 	}
-
+	
+	public static CoreGame getCoreGameSingleton ()
+	{
+		if (singleton == null)
+		{
+				singleton = new CoreGame();
+		}
+		return singleton;
+	}
 }

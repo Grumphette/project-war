@@ -8,6 +8,8 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
+import Core.CoreGame;
+
 import misc.GuiGeneralConfig;
 
 
@@ -28,7 +30,7 @@ public class MainWindow implements ComponentListener
 		Window = new JFrame("Project War");
 		
 		WelcomScreen = new StartWindow();
-		SelectPlayerRace = new RaceSelection();
+		SelectPlayerRace = new RaceSelection(CoreGame.getCoreGameSingleton());
 		
 		WelcomScreen.addComponentListener(this);
 		WelcomScreen.buildStartWindow();

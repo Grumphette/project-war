@@ -7,11 +7,10 @@ import Core.Unit;
 public class ArmyDataBaseConnector 
 {
 	private String Path;
-	private ArrayList<Unit> armyListing;
 	private Connection connectionDB;
 	private Statement requestStmt;
 	
-	private ArrayList<String> allRaces;
+	
 	
 	
 	public ArmyDataBaseConnector()
@@ -24,42 +23,37 @@ public class ArmyDataBaseConnector
 		this.Path = path;
 	}
 	
-	public void connectToDB() throws ClassNotFoundException
+	public void connectToDB() 
 	{
-		armyListing = new ArrayList<Unit>();
-		Class.forName("org.sqlite.JDBC");
-	    Connection connection = null;
-	    try {
+		
+	
+	    try 
+	    {
+	    	Class.forName("org.sqlite.JDBC");
 			connectionDB = DriverManager.getConnection("jdbc:sqlite:"+this.Path);
 			requestStmt = connectionDB.createStatement();
 		} 
-	    catch (SQLException e) 
+	    catch (Exception e) 
 	    {
 			e.printStackTrace();
 		}
 	}
 	
-	public ArrayList<String> getAllRaces() 
+	public void retrieveAllRaces(ArrayList<String> races) 
 	{
-		if(allRaces == null)
+		ResultSet rs;
+		try 
 		{
-			allRaces = new ArrayList<String>();
-			ResultSet rs;
-			try 
+			rs = requestStmt.executeQuery("select * from race");
+			while(rs.next())
 			{
-				rs = requestStmt.executeQuery("select * from race");
-				while(rs.next())
-				{
-					allRaces.add(rs.getString("race_name"));
-				}
-			} 
-			catch (SQLException e)
-			{	
-				e.printStackTrace();
+				races.add(rs.getString("race_name"));
 			}
-			
+		} 
+		catch (SQLException e)
+		{	
+			e.printStackTrace();
 		}
-		return allRaces;
 	}
 	
 	
