@@ -14,24 +14,24 @@ import misc.CoreGeneralConfig;
 @SuppressWarnings("serial")
 public class RaceSelection extends JPanel implements Observer
 {
-	//represents the model to observe
-	private CoreGame model;
-	
 	private CoreGeneralConfig coreConfig;
 	private ArrayList<String> racesAvailable;
 	
-	
-	public RaceSelection(CoreGame model)
+	public RaceSelection()
 	{
 		super();
-		this.model = model;
 	}
 	
 	public void buildRaceSelection()
 	{
-		model.addObserver(this);
 		coreConfig = CoreGeneralConfig.getCoreConfigSingleton();
-		model.askArmyRaces();
+		racesAvailable = coreConfig.getarmyRaces();
+		
+		for(String race : racesAvailable)
+		{
+			//create a new JPanelWithImage
+			//
+		}
 	}
 
 	@Override

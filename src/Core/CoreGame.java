@@ -15,8 +15,8 @@ public class CoreGame extends Observable
 	
 	CoreGeneralConfig coreConfig;
 
-	private ArrayList<String> armyRaces;
-	private Map<String, ArrayList<Unit>> armyUnits;
+	//private Player player1;
+	//private Player player2;
 	
 	/**
 	 * The game is decomposed  in turns (taken by each one of the player alternatively) with diferent phases :
@@ -42,15 +42,6 @@ public class CoreGame extends Observable
 	{
 		coreConfig = CoreGeneralConfig.getCoreConfigSingleton(); 
 		coreConfig.loadCoreConfig();
-		
-		//initialization of data structures for the game
-		armyRaces = new ArrayList<String>();
-		
-		//geting all the needed informations about the play
-		coreConfig.dbc().connectToDB();
-		coreConfig.dbc().retrieveAllRaces(armyRaces);
-		
-		
 	}
 	
 	public void playTurn()
@@ -68,11 +59,6 @@ public class CoreGame extends Observable
 			//Execute the actions described above
 		
 		//if half of a player's army is destroyed, end
-	}
-	public void askArmyRaces()
-	{
-		setChanged();
-		notifyObservers(armyRaces);
 	}
 	
 	public static CoreGame getCoreGameSingleton ()

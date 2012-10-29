@@ -1,6 +1,9 @@
 package misc;
 
 import java.util.ArrayList;
+import java.util.Map;
+
+import Core.Unit;
 
 public class CoreGeneralConfig 
 {
@@ -8,11 +11,18 @@ public class CoreGeneralConfig
 	private ArmyDataBaseConnector ArmyDBC;
 	private ConfigFileLoader configFile;
 	
+	//armyRaces and armyUnits are 2 needed object
+	//for the dispalay and the army building, but
+	//it will not be used during the Game
+	private ArrayList<String> armyRaces;
+	private Map<String, ArrayList<Unit>> armyUnits;
 	
 	private CoreGeneralConfig ()
 	{
 		configFile = ConfigFileLoader.getConfigFileLoaderSingleton();
 		ArmyDBC = new ArmyDataBaseConnector();
+		armyRaces = new ArrayList<String>();
+		//armyUnits = new Map<String, ArrayList<Unit>>();
 	}
 	
 	public static CoreGeneralConfig getCoreConfigSingleton ()
@@ -27,6 +37,7 @@ public class CoreGeneralConfig
 	public void loadCoreConfig()
 	{
 		this.setArmyDBPath(configFile.retrieveArmyDBPath());
+		ArmyDBC.retrieveAllRaces(armyRaces);
 	}
 	
 	private void setArmyDBPath (String dbPath)
@@ -34,8 +45,8 @@ public class CoreGeneralConfig
 		ArmyDBC.setPath(dbPath);
 	}
 	
-	public ArmyDataBaseConnector dbc()
+	public ArrayList<String> getarmyRaces()
 	{
-		return ArmyDBC;
+		return armyRaces;
 	}
 }

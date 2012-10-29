@@ -30,7 +30,7 @@ public class MainWindow implements ComponentListener
 		Window = new JFrame("Project War");
 		
 		WelcomScreen = new StartWindow();
-		SelectPlayerRace = new RaceSelection(CoreGame.getCoreGameSingleton());
+		SelectPlayerRace = new RaceSelection();
 		
 		WelcomScreen.addComponentListener(this);
 		WelcomScreen.buildStartWindow();
