@@ -26,6 +26,7 @@ public class GuiGeneralConfig
 	private String ArmySaveFolder;
 	private ArrayList<String> ArmyConfigFiles;
 	private ArrayList<BackImage> GeneralImages;
+	private ArrayList<BackImage> ArmyIcons;
 	private ArrayList<UIColor> UIColors;
 	private Map<String, ArrayList<UnitGui>> GUIunit;
 	private Font purissaFont;
@@ -33,6 +34,7 @@ public class GuiGeneralConfig
 	private GuiGeneralConfig()
 	{
 		GeneralImages = new ArrayList<BackImage>();
+		ArmyIcons =	 new ArrayList<BackImage>();
 		ArmyConfigFiles = new ArrayList<String>();
 		UIColors = new ArrayList<UIColor>();
 	}
@@ -49,16 +51,19 @@ public class GuiGeneralConfig
 	public void loadGuiConfig()
 	{
 		GuiConfLoader = ConfigFileLoader.getConfigFileLoaderSingleton();
+		GuiConfLoader.addConfigFileToLoad("configFiles/generalConfig");
 		
-			GuiConfLoader.addConfigFileToLoad("configFiles/generalConfig");
-			GuiConfLoader.addConfigFileToLoad("configFiles/orcsConfig");
-			GuiConfLoader.addConfigFileToLoad("configFiles/elvesConfig");
-			
-			this.setArmySaveFolder(GuiConfLoader.retrieveArmySaveFolder());
-			this.setArmyConfigFiles(GuiConfLoader.retrieveArmyConfigFiles());
-			this.setGuiGeneralImage(GuiConfLoader.retrieveGeneralImages());
-			this.setUIColor(GuiConfLoader.retrieveUIColor());
-			this.setFont(GuiConfLoader.retrieveFont());
+		this.setArmyConfigFiles(GuiConfLoader.retrieveArmyConfigFiles());
+		for (String tmp : ArmyConfigFiles)
+		{
+			GuiConfLoader.addConfigFileToLoad(tmp);
+		}
+		
+		this.setArmySaveFolder(GuiConfLoader.retrieveArmySaveFolder());
+		this.setGuiGeneralImage(GuiConfLoader.retrieveGeneralImages());
+		this.setUIColor(GuiConfLoader.retrieveUIColor());
+		this.setFont(GuiConfLoader.retrieveFont());
+		this.setArmyIcons(GuiConfLoader.retrieveArmyIcons());
 	}
 
 	private void setArmySaveFolder(String armySaveFolder) {
@@ -89,6 +94,16 @@ public class GuiGeneralConfig
 				Map.Entry<String, List<String>> entry = (Map.Entry<String, List<String>>)anIterator.next();
 				UIColor colorsToAdd = new UIColor(entry.getKey().toString(), Integer.parseInt(((ArrayList<String>) entry.getValue()).get(0)), Integer.parseInt(((ArrayList<String>) entry.getValue()).get(1)),Integer.parseInt(((ArrayList<String>) entry.getValue()).get(2)),Integer.parseInt(((ArrayList<String>) entry.getValue()).get(3)));
 				UIColors.add(colorsToAdd);
+		}
+	}
+	private void setArmyIcons(Map<String,List<String>> ImageMap)
+	{
+		Iterator<Entry<String,List<String>>> anIterator = ImageMap.entrySet().iterator();
+		while(anIterator.hasNext())
+		{
+				Map.Entry<String, List<String>> entry = (Map.Entry<String, List<String>>)anIterator.next();
+				BackImage imageToAdd = new BackImage(entry.getKey().toString(), ((ArrayList<String>) entry.getValue()).get(0), Integer.parseInt(((ArrayList<String>) entry.getValue()).get(1)),Integer.parseInt(((ArrayList<String>) entry.getValue()).get(2)));
+				ArmyIcons.add(imageToAdd);
 		}
 	}
 	
@@ -131,6 +146,17 @@ public class GuiGeneralConfig
 	public BackImage getGeneralImage(String Name)
 	{
 		for(BackImage img : GeneralImages)
+		{
+			if(img.getName().equals(Name))
+			{
+				return  img.getImage();
+			}
+		}
+		return null;
+	}
+	public BackImage getArmyIcons(String Name)
+	{
+		for(BackImage img : ArmyIcons)
 		{
 			if(img.getName().equals(Name))
 			{

@@ -37,6 +37,7 @@ public class CoreGeneralConfig
 	public void loadCoreConfig()
 	{
 		this.setArmyDBPath(configFile.retrieveArmyDBPath());
+		ArmyDBC.connectToDB();
 		ArmyDBC.retrieveAllRaces(armyRaces);
 	}
 	

@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -140,6 +141,25 @@ public class ConfigFileLoader
 			 }
 		}
 		return null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String,List<String>> retrieveArmyIcons()
+	{
+		Map<String,List<String>> toReturn = new HashMap<String,List<String>>();
+		List<String> armyIconsInfo;
+		String tmpRace = null;
+		for(JSONObject tmp : generalConfigJsonObj)
+		{
+			if(tmp.get("armyIcon") != null)
+			{				
+				armyIconsInfo = (List<String>) tmp.get("armyIcon");
+				tmpRace = armyIconsInfo.get(0).split("/")[1];
+				
+				toReturn.put(tmpRace, armyIconsInfo);
+			}
+		}
+		return toReturn;
 	}
 	
 }

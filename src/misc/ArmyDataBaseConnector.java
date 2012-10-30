@@ -25,8 +25,6 @@ public class ArmyDataBaseConnector
 	
 	public void connectToDB() 
 	{
-		
-	
 	    try 
 	    {
 	    	Class.forName("org.sqlite.JDBC");

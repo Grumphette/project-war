@@ -8,14 +8,16 @@ import java.util.Observer;
 import javax.swing.JPanel;
 
 import Core.CoreGame;
+import GUIobjects.BackImage;
 
 import misc.CoreGeneralConfig;
+import misc.GuiGeneralConfig;
 
 @SuppressWarnings("serial")
-public class RaceSelection extends JPanel implements Observer
+public class RaceSelection extends JPanel
 {
-	private CoreGeneralConfig coreConfig;
 	private ArrayList<String> racesAvailable;
+	
 	
 	public RaceSelection()
 	{
@@ -24,20 +26,16 @@ public class RaceSelection extends JPanel implements Observer
 	
 	public void buildRaceSelection()
 	{
-		coreConfig = CoreGeneralConfig.getCoreConfigSingleton();
-		racesAvailable = coreConfig.getarmyRaces();
+		CoreGeneralConfig coreConfig = CoreGeneralConfig.getCoreConfigSingleton();
+		GuiGeneralConfig guiConfig = GuiGeneralConfig.getGuiConfigSingleton();
 		
-		for(String race : racesAvailable)
+		racesAvailable = coreConfig.getarmyRaces();
+		for(String tmp : racesAvailable)
 		{
-			//create a new JPanelWithImage
-			//
+			//BackImage toto = guiConfig.getGeneralImage(tmp);
+			//Logo = new JPanelWithImg(LogImgInfo.getFinalImage());
 		}
 	}
 
-	@Override
-	public void update(Observable obs, Object obj)
-	{
-		
-	}
 
 }
