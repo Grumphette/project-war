@@ -10,6 +10,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneLayout;
 
 import Core.CoreGame;
 import GUIobjects.BackImage;
@@ -24,7 +26,7 @@ public class RaceSelection extends JPanel
 	private JPanel verticalLayoutPnl;
 	private JPanel horizontalLayoutPnl;
 	private JPanel armyRacesPnlBack;
-	private JLabel armyDescriptionLbl;
+	private JTextArea armyDescriptionLbl;
 	private JPanel armyLayout;
 	private JPanel btnLayoutPnl;
 	
@@ -46,10 +48,11 @@ public class RaceSelection extends JPanel
 		racesAvailable = coreConfig.getarmyRaces();
 		
 		chooseUrArmyLbl = new JLabel("Choose your army race");
+		chooseUrArmyLbl.setAlignmentX(CENTER_ALIGNMENT);
 		
 		allArmyPnl = new ArrayList<ArmyRaceIcon>();
 		armyRacesPnlBack = new JPanel();
-		armyRacesPnlBack.setLayout(new BoxLayout(armyRacesPnlBack, BoxLayout.X_AXIS));
+		armyRacesPnlBack.setLayout(new BoxLayout(armyRacesPnlBack, BoxLayout.Y_AXIS));
 		for(String tmp : racesAvailable)
 		{
 			ArmyRaceIcon tmpPnl = new ArmyRaceIcon(tmp);
@@ -59,13 +62,17 @@ public class RaceSelection extends JPanel
 		
 		armyRacesScrollPnl = new JScrollPane(armyRacesPnlBack);
 		armyRacesScrollPnl.setAutoscrolls(true);
+		armyRacesScrollPnl.setVerticalScrollBarPolicy(ScrollPaneLayout.VERTICAL_SCROLLBAR_NEVER);
 		
-		armyDescriptionLbl = new JLabel("TODO");
+		armyDescriptionLbl = new JTextArea();
+		armyDescriptionLbl.setEditable(false);
+		armyDescriptionLbl.setOpaque(false);
+		armyDescriptionLbl.append("description de l'armée de la mort qui tue vraiment la mort");
 		
 		horizontalLayoutPnl = new JPanel();
 		horizontalLayoutPnl.setLayout(new BoxLayout(horizontalLayoutPnl, BoxLayout.X_AXIS));
 		horizontalLayoutPnl.add(armyRacesScrollPnl);
-		horizontalLayoutPnl.add(Box.createHorizontalStrut(5));
+		horizontalLayoutPnl.add(Box.createHorizontalGlue());
 		horizontalLayoutPnl.add(armyDescriptionLbl);
 		
 		

@@ -1,5 +1,6 @@
 {
 	"armyIcon" : ["images/orcs/orcsIcon.png","70","70"]
+	"history" : ""
 	"armyImages" :
 	{
 		"Boulder thrower" : ["images/orcs/Boulder thrower.png","70","70"]
