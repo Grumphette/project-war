@@ -192,10 +192,4 @@ public class StartWindow extends JPanel
 	{
 		this.setVisible(false);
 	}
-	
-	public void showStartWindow()
-	{
-		this.state = 0;
-		this.setVisible(false);
-	}
 }

@@ -7,12 +7,12 @@ import Core.CoreGame;
 import DesktopGUI.MainWindow;
 
 // Special fonts have to be installed in  the ~/.fonts
-
+/** @brief Class starting the game, load the graphic interface and the game core behind*/
 public class Main {
 
 	/**
 	 * @brief Entry point for the application, start the Gui and the game behind
-	 * @args args Application argument - not used
+	 * @param args Application argument - not used
 	 * */
 	public static void main(String[] args) 
 	{

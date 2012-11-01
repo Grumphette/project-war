@@ -16,8 +16,12 @@ import misc.GuiGeneralConfig;
 @SuppressWarnings("serial")
 public class RaceSelection extends JPanel
 {
+	private JPanel verticalLayoutPnl;
+	private JPanel horizontalLayoutPnl;
+	private JPanel armyLayout;
+	private JPanel btnLayoutPnl;
 	private ArrayList<String> racesAvailable;
-	
+	private int state;
 	
 	public RaceSelection()
 	{
@@ -32,9 +36,18 @@ public class RaceSelection extends JPanel
 		racesAvailable = coreConfig.getarmyRaces();
 		for(String tmp : racesAvailable)
 		{
-			//BackImage toto = guiConfig.getGeneralImage(tmp);
+			//BackImage tmpIcons = guiConfig.getGeneralImage(tmp);
 			//Logo = new JPanelWithImg(LogImgInfo.getFinalImage());
 		}
+	}
+	
+	public int getState()
+	{
+		return this.state;
+	}
+	private void hideStartWindow()
+	{
+		this.setVisible(false);
 	}
 
 
