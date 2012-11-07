@@ -7,8 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -23,27 +25,31 @@ public class ConfigFileLoader
 	private static ConfigFileLoader singleton;
 	
 	private JSONParser parser;
-	private ArrayList<JSONObject> generalConfigJsonObj;
-	
+	private Map<String,JSONObject> generalConfigJsonObj;
+
 	private ConfigFileLoader()
 	{
 		parser = new JSONParser();
-		generalConfigJsonObj = new ArrayList<JSONObject>();
+		generalConfigJsonObj = new HashMap<String,JSONObject>();
+		
+		this.openAllConfigFiles();
 	}
 	
-	public void addConfigFileToLoad(String path)
+	private void openAllConfigFiles()
 	{
-		FileReader tmp;
 		try 
 		{
-			tmp = new FileReader(path);
-			generalConfigJsonObj.add((JSONObject) parser.parse(tmp));
-		}
+			generalConfigJsonObj.put("generalConfig",(JSONObject) parser.parse(new FileReader("configFiles/generalConfig")));
+			
+			for (String tmp : this.retrieveArmyConfigFiles())
+			{
+				generalConfigJsonObj.put(tmp.split("/")[1],(JSONObject) parser.parse(new FileReader(tmp)));
+			}
+		} 
 		catch (Exception e) 
-		{	
+		{
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public static ConfigFileLoader getConfigFileLoaderSingleton ()
@@ -58,13 +64,15 @@ public class ConfigFileLoader
 	public String retrieveArmySaveFolder()
 	{
 		String toReturn = null;
-		for(JSONObject tmp : generalConfigJsonObj)
+		Iterator<Entry<String,JSONObject>> anIterator = generalConfigJsonObj.entrySet().iterator();
+		while(anIterator.hasNext())
 		{
-			 toReturn = tmp.get("ArmySaveFolder").toString();
-			 if(toReturn != null)
-			 {
-				 return toReturn;
-			 }
+			Map.Entry<String, JSONObject> entry = anIterator.next();
+			toReturn = entry.getValue().get("ArmySaveFolder").toString();
+			if(toReturn != null)
+			{
+				return toReturn;
+			}
 		}
 		return null;
 	}
@@ -72,13 +80,15 @@ public class ConfigFileLoader
 	public String retrieveArmyDBPath()
 	{
 		String toReturn = null;
-		for(JSONObject tmp : generalConfigJsonObj)
+		Iterator<Entry<String,JSONObject>> anIterator = generalConfigJsonObj.entrySet().iterator();
+		while(anIterator.hasNext())
 		{
-			 toReturn = tmp.get("ArmyDB").toString();
-			 if(toReturn != null)
-			 {
-				 return toReturn;
-			 }
+			Map.Entry<String, JSONObject> entry = anIterator.next();
+			toReturn = entry.getValue().get("ArmyDB").toString();
+			if(toReturn != null)
+			{
+				return toReturn;
+			}
 		}
 		return null;
 	}
@@ -88,9 +98,12 @@ public class ConfigFileLoader
 	{
 		
 		ArrayList<String> toReturn = null;
-		for(JSONObject tmp : generalConfigJsonObj)
+		Iterator<Entry<String,JSONObject>> anIterator = generalConfigJsonObj.entrySet().iterator();
+		while(anIterator.hasNext())
 		{
-			 toReturn = (ArrayList<String>)tmp.get("ArmyConfigFiles");
+			 Map.Entry<String, JSONObject> entry = anIterator.next();
+			 
+			 toReturn = (ArrayList<String>) entry.getValue().get("ArmyConfigFiles");
 			 if(toReturn != null)
 			 {
 				 return toReturn;
@@ -102,9 +115,12 @@ public class ConfigFileLoader
 	public String retrieveFont()
 	{
 		String toReturn = null;
-		for(JSONObject tmp : generalConfigJsonObj)
+		Iterator<Entry<String,JSONObject>> anIterator = generalConfigJsonObj.entrySet().iterator();
+		while(anIterator.hasNext())
 		{
-			 toReturn = tmp.get("Font").toString();
+			 Map.Entry<String, JSONObject> entry = anIterator.next();
+			 
+			 toReturn = entry.getValue().get("Font").toString();
 			 if(toReturn != null)
 			 {
 				 return toReturn;
@@ -117,9 +133,12 @@ public class ConfigFileLoader
 	public Map<String,List<String>> retrieveGeneralImages()
 	{
 		Map<String,List<String>> toReturn = null;
-		for(JSONObject tmp : generalConfigJsonObj)
+		Iterator<Entry<String,JSONObject>> anIterator = generalConfigJsonObj.entrySet().iterator();
+		while(anIterator.hasNext())
 		{
-			 toReturn = (Map<String,List<String>>) tmp.get("GeneralImages");
+			 Map.Entry<String, JSONObject> entry = anIterator.next();
+			 
+			 toReturn = (Map<String,List<String>>) entry.getValue().get("GeneralImages");
 			 if(toReturn != null)
 			 {
 				 return toReturn;
@@ -132,9 +151,12 @@ public class ConfigFileLoader
 	public Map<String,List<String>> retrieveUIColor()
 	{
 		Map<String,List<String>> toReturn = null;
-		for(JSONObject tmp : generalConfigJsonObj)
+		Iterator<Entry<String,JSONObject>> anIterator = generalConfigJsonObj.entrySet().iterator();
+		while(anIterator.hasNext())
 		{
-			 toReturn = (Map<String,List<String>>) tmp.get("UIColors");
+			 Map.Entry<String, JSONObject> entry = anIterator.next();
+			 
+			 toReturn = (Map<String,List<String>>) entry.getValue().get("UIColors");
 			 if(toReturn != null)
 			 {
 				 return toReturn;
@@ -149,14 +171,42 @@ public class ConfigFileLoader
 		Map<String,List<String>> toReturn = new HashMap<String,List<String>>();
 		List<String> armyIconsInfo;
 		String tmpRace = null;
-		for(JSONObject tmp : generalConfigJsonObj)
+		Iterator<Entry<String,JSONObject>> anIterator = generalConfigJsonObj.entrySet().iterator();
+		
+		while(anIterator.hasNext())
 		{
-			if(tmp.get("armyIcon") != null)
+			Map.Entry<String, JSONObject> entry = anIterator.next();
+			 
+			if(entry.getValue().get("armyIcon") != null)
 			{				
-				armyIconsInfo = (List<String>) tmp.get("armyIcon");
-				tmpRace = armyIconsInfo.get(0).split("/")[1];
+				armyIconsInfo = (List<String>) entry.getValue().get("armyIcon");
+				tmpRace = entry.getKey().split("Config")[0];
 				
 				toReturn.put(tmpRace, armyIconsInfo);
+			}
+		}
+		return toReturn;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String,String> retrieveArmyDescription()
+	{
+		Map<String,String> toReturn = new HashMap<String,String>();
+		String tmpRace = null;
+		String tmpDescription = null;
+		
+		Iterator<Entry<String,JSONObject>> anIterator = generalConfigJsonObj.entrySet().iterator();
+		
+		while(anIterator.hasNext())
+		{
+			Map.Entry<String, JSONObject> entry = anIterator.next();
+			 
+			if(entry.getValue().get("history") != null)
+			{				
+				tmpDescription = entry.getValue().get("history").toString();
+				tmpRace = entry.getKey().split("Config")[0];
+				
+				toReturn.put(tmpRace, tmpDescription);
 			}
 		}
 		return toReturn;

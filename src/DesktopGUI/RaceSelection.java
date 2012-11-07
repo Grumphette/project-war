@@ -1,10 +1,8 @@
 package DesktopGUI;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
+import java.util.ArrayList;
+import java.util.Map;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -13,8 +11,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneLayout;
 
-import Core.CoreGame;
-import GUIobjects.BackImage;
 
 import misc.CoreGeneralConfig;
 import misc.GuiGeneralConfig;
@@ -34,7 +30,10 @@ public class RaceSelection extends JPanel
 	
 	private ArrayList<ArmyRaceIcon> allArmyPnl;
 	private ArrayList<String> racesAvailable;
+	private Map<String,String> racesDescription;
 	private int state;
+	
+	private GuiGeneralConfig guiConfig;
 	
 	public RaceSelection()
 	{
@@ -43,8 +42,9 @@ public class RaceSelection extends JPanel
 	
 	public void buildRaceSelection()
 	{
-		CoreGeneralConfig coreConfig = CoreGeneralConfig.getCoreConfigSingleton();
-		GuiGeneralConfig guiConfig = GuiGeneralConfig.getGuiConfigSingleton();
+		CoreGeneralConfig  coreConfig = CoreGeneralConfig.getCoreConfigSingleton();
+		guiConfig = GuiGeneralConfig.getGuiConfigSingleton();
+		
 		racesAvailable = coreConfig.getarmyRaces();
 		
 		chooseUrArmyLbl = new JLabel("Choose your army race");
@@ -75,15 +75,11 @@ public class RaceSelection extends JPanel
 		horizontalLayoutPnl.add(Box.createHorizontalGlue());
 		horizontalLayoutPnl.add(armyDescriptionLbl);
 		
-		
-		
-		
 		verticalLayoutPnl = new JPanel();
 		verticalLayoutPnl.setLayout(new BoxLayout(verticalLayoutPnl, BoxLayout.Y_AXIS));
 		verticalLayoutPnl.add(chooseUrArmyLbl);
 		verticalLayoutPnl.add(horizontalLayoutPnl);
 		this.add(verticalLayoutPnl);
-		
 		
 	}
 	

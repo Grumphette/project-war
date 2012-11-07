@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,7 @@ public class GuiGeneralConfig
 	private ArrayList<String> ArmyConfigFiles;
 	private ArrayList<BackImage> GeneralImages;
 	private ArrayList<BackImage> ArmyIcons;
+	private Map<String, String> ArmyDescriptions; 
 	private ArrayList<UIColor> UIColors;
 	private Map<String, ArrayList<UnitGui>> GUIunit;
 	private Font purissaFont;
@@ -37,6 +39,7 @@ public class GuiGeneralConfig
 		ArmyIcons =	 new ArrayList<BackImage>();
 		ArmyConfigFiles = new ArrayList<String>();
 		UIColors = new ArrayList<UIColor>();
+		ArmyDescriptions = new HashMap<String, String>();
 	}
 	
 	public static GuiGeneralConfig getGuiConfigSingleton ()
@@ -51,28 +54,17 @@ public class GuiGeneralConfig
 	public void loadGuiConfig()
 	{
 		GuiConfLoader = ConfigFileLoader.getConfigFileLoaderSingleton();
-		GuiConfLoader.addConfigFileToLoad("configFiles/generalConfig");
-		
-		this.setArmyConfigFiles(GuiConfLoader.retrieveArmyConfigFiles());
-		for (String tmp : ArmyConfigFiles)
-		{
-			GuiConfLoader.addConfigFileToLoad(tmp);
-		}
 		
 		this.setArmySaveFolder(GuiConfLoader.retrieveArmySaveFolder());
 		this.setGuiGeneralImage(GuiConfLoader.retrieveGeneralImages());
 		this.setUIColor(GuiConfLoader.retrieveUIColor());
 		this.setFont(GuiConfLoader.retrieveFont());
 		this.setArmyIcons(GuiConfLoader.retrieveArmyIcons());
+		this.setArmyDescriptions(GuiConfLoader.retrieveArmyDescription());
 	}
 
 	private void setArmySaveFolder(String armySaveFolder) {
 		ArmySaveFolder = armySaveFolder;
-	}
-
-	private void setArmyConfigFiles(ArrayList<String> armyConfigFiles) 
-	{
-		ArmyConfigFiles = armyConfigFiles;
 	}
 
 	private void setGuiGeneralImage(Map<String,List<String>> ImageMap) 
@@ -80,7 +72,7 @@ public class GuiGeneralConfig
 		Iterator<Entry<String,List<String>>> anIterator = ImageMap.entrySet().iterator();
 		while(anIterator.hasNext())
 		{
-				Map.Entry<String, List<String>> entry = (Map.Entry<String, List<String>>)anIterator.next();
+				Map.Entry<String, List<String>> entry = anIterator.next();
 				BackImage imageToAdd = new BackImage(entry.getKey().toString(), ((ArrayList<String>) entry.getValue()).get(0), Integer.parseInt(((ArrayList<String>) entry.getValue()).get(1)),Integer.parseInt(((ArrayList<String>) entry.getValue()).get(2)));
 				GeneralImages.add(imageToAdd);
 		}
@@ -91,7 +83,7 @@ public class GuiGeneralConfig
 		Iterator<Entry<String,List<String>>> anIterator = ColorMap.entrySet().iterator();
 		while(anIterator.hasNext())
 		{
-				Map.Entry<String, List<String>> entry = (Map.Entry<String, List<String>>)anIterator.next();
+				Map.Entry<String, List<String>> entry = anIterator.next();
 				UIColor colorsToAdd = new UIColor(entry.getKey().toString(), Integer.parseInt(((ArrayList<String>) entry.getValue()).get(0)), Integer.parseInt(((ArrayList<String>) entry.getValue()).get(1)),Integer.parseInt(((ArrayList<String>) entry.getValue()).get(2)),Integer.parseInt(((ArrayList<String>) entry.getValue()).get(3)));
 				UIColors.add(colorsToAdd);
 		}
@@ -101,10 +93,15 @@ public class GuiGeneralConfig
 		Iterator<Entry<String,List<String>>> anIterator = ImageMap.entrySet().iterator();
 		while(anIterator.hasNext())
 		{
-				Map.Entry<String, List<String>> entry = (Map.Entry<String, List<String>>)anIterator.next();
+				Map.Entry<String, List<String>> entry = anIterator.next();
 				BackImage imageToAdd = new BackImage(entry.getKey().toString(), ((ArrayList<String>) entry.getValue()).get(0), Integer.parseInt(((ArrayList<String>) entry.getValue()).get(1)),Integer.parseInt(((ArrayList<String>) entry.getValue()).get(2)));
 				ArmyIcons.add(imageToAdd);
 		}
+	}
+	
+	private void setArmyDescriptions(Map<String, String> Descriptionsmap)
+	{
+		this.ArmyDescriptions = Descriptionsmap;
 	}
 	
 	private void setFont(String pathToFont)
@@ -161,6 +158,20 @@ public class GuiGeneralConfig
 			if(img.getName().equals(Name))
 			{
 				return  img.getImage();
+			}
+		}
+		return null;
+	}
+	
+	public String getArmyDescitpions(String Name)
+	{
+		Iterator<Entry<String,String>> anIterator = ArmyDescriptions.entrySet().iterator();
+		while(anIterator.hasNext())
+		{
+			Map.Entry<String, String> entry = anIterator.next();
+			if(entry.getKey().equals(Name))
+			{
+				return entry.getValue();
 			}
 		}
 		return null;
