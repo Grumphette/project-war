@@ -1,9 +1,11 @@
 {
 	"armyIcon" : ["images/elves/elvesIcon.png","70","70"]
-	"history" : "les elfes créature en apparence frêle et longiligne \n
-				 sont pourtant doté d'un temperament aussi froid et buté \n
-				 que les armes qu'il forge. En effet, les elfes ont reçu \n
-				 une connaissance innée dans la creation d'arme"
+
+	"history" : "les elfes créature en apparence frêle et longiligne
+sont pourtant doté d'un temperament aussi froid et buté
+que les armes qu'il forge. En effet, les elfes ont reçu
+une connaissance innée dans la creation d'arme"
+
 	"armyImages" :
 	{
 	}

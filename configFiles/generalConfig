@@ -5,12 +5,14 @@
   "GeneralImages" : 
   { 
   		"LogoImg" : ["images/logo.png","306","120"]
+  		"SeparatorVImg" : ["images/separator.png","2","180"]
   },
   "UIColors" : 
   {
 	"grey" : ["221","221","221","255"],
 	"lightblue" : ["202","214","247","255"],
-	"blue" : ["197","197","247","255"]
+	"blue" : ["197","197","247","255"],
+	"red" : ["255","0","0","115"]
   }
   "Font" : "font/Purisa.ttf"
 }

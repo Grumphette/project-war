@@ -32,15 +32,18 @@ public class StartWindow extends JPanel
 	private MouseListener btnMouseListerner;
 	private int state;
 	private GuiGeneralConfig GuiConfig;
-	
+	private boolean isAlreadyBuild;
 	
 	public StartWindow()
 	{
 		super();
+		isAlreadyBuild = false;
+		state = 0;
 	}
 	public void buildStartWindow()
 	{
-		state = 0;
+		isAlreadyBuild = true;
+		
 		GuiConfig = GuiGeneralConfig.getGuiConfigSingleton();
 		
 		btnMouseListerner = new MouseListener() {
@@ -109,8 +112,7 @@ public class StartWindow extends JPanel
 		
 		this.setBackground(GuiConfig.getUIColor("grey"));
 		
-		BackImage LogImgInfo = GuiConfig.getGeneralImage("LogoImg");
-		Logo = new JPanelWithImg(LogImgInfo.getFinalImage());
+		Logo = new JPanelWithImg(GuiConfig.getGeneralImage("LogoImg").getFinalImage());
 		
 		btnPnl = new JPanel();
 		btnStartSolo = new JPanel();
@@ -119,8 +121,6 @@ public class StartWindow extends JPanel
 		btnCredit = new JPanel();
 		btnLayoutPnl = new JPanel();
 		
-		/**Logo panel configuration*/
-		Logo.setPreferredSize(LogImgInfo.getImgSize());
 		
 		/**Start solo game button panel configuration*/
 		lblStartSolo = new JLabel();
@@ -184,6 +184,10 @@ public class StartWindow extends JPanel
 		
 	}
 	
+	public boolean isBuilt()
+	{
+		return this.isAlreadyBuild;
+	}
 	public int getState()
 	{
 		return this.state;

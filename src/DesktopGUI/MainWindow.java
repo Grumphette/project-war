@@ -33,6 +33,8 @@ public class MainWindow implements ComponentListener
 		SelectPlayerRace = new RaceSelection();
 		
 		WelcomScreen.addComponentListener(this);
+		SelectPlayerRace.addComponentListener(this);
+		
 		WelcomScreen.buildStartWindow();
 		Window.add(WelcomScreen);
 		Window.pack();
@@ -65,7 +67,15 @@ public class MainWindow implements ComponentListener
 				case 1:
 					System.out.println("load single player panel");
 					Window.remove(WelcomScreen);
-					SelectPlayerRace.buildRaceSelection();
+					if(SelectPlayerRace.isBuilt() == true)
+					{
+						SelectPlayerRace.setVisible(true);
+					}
+					else
+					{
+						SelectPlayerRace.buildRaceSelection();
+					}
+					
 					Window.add(SelectPlayerRace);
 					Window.pack();
 					break;
@@ -87,17 +97,19 @@ public class MainWindow implements ComponentListener
 				case 1:
 					System.out.println("retunr to start window");
 					Window.remove(SelectPlayerRace);
+					if(WelcomScreen.isBuilt() == true)
+					{
+						WelcomScreen.setVisible(true);
+					}
+					else
+					{
+						WelcomScreen.buildStartWindow();
+					}
 					Window.add(WelcomScreen);
 					Window.pack();
 					break;
 				case 2:
 					System.out.println("load army builder");
-					break;
-				case 3:
-					System.out.println("load credit panel");
-					break;
-				case 4:
-					System.out.println("Quit");
 					break;
 			}
 		}

@@ -1,6 +1,8 @@
 package DesktopGUI;
 
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.JPanel;
@@ -17,6 +19,11 @@ public class JPanelWithImg extends JPanel
 	{
 		super();
 		this.bgImg=img;
+		if(this.bgImg != null)
+		{
+			this.setPreferredSize(new Dimension(this.bgImg.getWidth(null),this.bgImg.getHeight(null)));
+		}
+		this.setBackground(Color.CYAN);
 	}
 
 	public void paintComponent(Graphics g)

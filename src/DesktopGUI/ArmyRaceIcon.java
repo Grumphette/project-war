@@ -27,6 +27,7 @@ public class ArmyRaceIcon extends JPanel
 		this.race = race;
 		raceLbl = new JLabel(this.race);
 		raceLbl.setAlignmentX(CENTER_ALIGNMENT);
+		raceLbl.setFont(guiConfig.getFont());
 		raceIcon = guiConfig.getArmyIcons(race);
 		raceIconPnl = new JPanelWithImg(raceIcon.getFinalImage());
 		raceIconPnl.setPreferredSize(raceIcon.getImgSize());
@@ -35,7 +36,7 @@ public class ArmyRaceIcon extends JPanel
 		this.add(raceIconPnl);
 		this.add(Box.createVerticalStrut(2));
 		this.add(raceLbl);
-		this.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 0));
+		this.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 2));
 		
 	}
 	
