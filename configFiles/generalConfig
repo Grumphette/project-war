@@ -1,7 +1,7 @@
 {
   "ArmySaveFolder" : "../saved_army",
   "ArmyDB" : "army_db/army.db",
-  "ArmyConfigFiles" : ["configFiles/orcsConfig", "configFiles/elvesConfig","configFiles/trollConfig"],
+  "ArmyConfigFiles" : ["configFiles/orcsConfig", "configFiles/elvesConfig"],
   "GeneralImages" : 
   { 
   		"LogoImg" : ["images/logo.png","306","120"]

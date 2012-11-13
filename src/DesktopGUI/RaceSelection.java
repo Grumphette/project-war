@@ -1,12 +1,15 @@
 package DesktopGUI;
 
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Map;
+
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -14,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneLayout;
+import javax.swing.border.Border;
 
 import GUIobjects.BackImage;
 
@@ -26,6 +30,7 @@ public class RaceSelection extends JPanel
 {
 	private JLabel chooseUrArmyLbl;
 	private JPanel verticalLayoutPnl;
+	private JPanel horizontalLayoutPnl;
 	private JPanel raceDescriptionLayoutPnl;
 	private JPanel headerLayoutPnl;
 	private JPanel armyRacesPnlBack;
@@ -68,29 +73,29 @@ public class RaceSelection extends JPanel
 			@Override
 			public void mouseReleased(MouseEvent e) 
 			{
-				if(e.getSource().equals(btnNext) || e.getSource().equals(btnReturn))
+				if(e.getSource().equals(btnReturn))
 				{
-					if( selectedRace == null)
+					JPanel Source = (JPanel)e.getSource();
+					Source.setBackground(guiConfig.getUIColor("grey"));	
+					state=1;
+					hideRaceWindow();
+				}
+				if(e.getSource().equals(btnNext)   )
+				{
+					if(selectedRace != null)
 					{
 						JPanel Source = (JPanel)e.getSource();
-						Source.setBackground(guiConfig.getUIColor("red"));	
+						Source.setBackground(guiConfig.getUIColor("grey"));
+						state=2;
+						hideRaceWindow();
 					}
 					else
 					{
 						JPanel Source = (JPanel)e.getSource();
-						Source.setBackground(guiConfig.getUIColor("grey"));	
-						hideRaceWindow();
+						Source.setBackground(guiConfig.getUIColor("red"));	
+						
 					}
 					
-				}
-				if(e.getSource().equals(btnReturn))
-				{
-					state=1;
-					
-				}
-				if(e.getSource().equals(btnNext) && selectedRace != null )
-				{
-					state=2;
 				}
 				
 			}
@@ -139,7 +144,6 @@ public class RaceSelection extends JPanel
 		};
 		
 		racesAvailable = coreConfig.getarmyRaces();
-		racesAvailable.add("troll");
 		
 		chooseUrArmyLbl = new JLabel("Choose your army race");
 		chooseUrArmyLbl.setFont(guiConfig.getStandarFont());
@@ -172,45 +176,55 @@ public class RaceSelection extends JPanel
 		
 		allArmyPnl = new ArrayList<ArmyRaceIcon>();
 		armyRacesPnlBack = new JPanel();
-		armyRacesPnlBack.setLayout(new BoxLayout(armyRacesPnlBack, BoxLayout.Y_AXIS));
+		armyRacesPnlBack.setLayout(new BoxLayout(armyRacesPnlBack, BoxLayout.X_AXIS));
+		
+		armyRacesPnlBack.add(Box.createHorizontalGlue());
 		for(String tmp : racesAvailable)
 		{
 			ArmyRaceIcon tmpPnl = new ArmyRaceIcon(tmp);
 			tmpPnl.addMouseListener(btnMouseListerner);
 			allArmyPnl.add(tmpPnl);
 			armyRacesPnlBack.add(tmpPnl);
+			armyRacesPnlBack.add(Box.createHorizontalStrut(5));
 		}
+		armyRacesPnlBack.add(Box.createHorizontalGlue());
+		armyRacesPnlBack.setBackground(guiConfig.getUIColor("grey"));
 		
 		armyRacesScrollPnl = new JScrollPane(armyRacesPnlBack);
 		armyRacesScrollPnl.setAutoscrolls(true);
-		armyRacesScrollPnl.setVerticalScrollBarPolicy(ScrollPaneLayout.VERTICAL_SCROLLBAR_NEVER);
-		armyRacesScrollPnl.setOpaque(false);
+		armyRacesScrollPnl.setBorder(BorderFactory.createEmptyBorder());
+		armyRacesScrollPnl.setMaximumSize(armyRacesScrollPnl.getPreferredSize());
 		
-		BackImage separator = guiConfig.getGeneralImage("SeparatorVImg");
-		separationPnl = new JPanelWithImg(separator.getFinalImage());
-		separationPnl.setAlignmentX(CENTER_ALIGNMENT);
+		
+		horizontalLayoutPnl = new JPanel();
+		horizontalLayoutPnl.setLayout(new BoxLayout(horizontalLayoutPnl,BoxLayout.X_AXIS));
+		horizontalLayoutPnl.add(Box.createHorizontalStrut(200));
+		horizontalLayoutPnl.add(armyRacesScrollPnl);
+		horizontalLayoutPnl.add(Box.createHorizontalGlue());
+		horizontalLayoutPnl.setBackground(Color.BLUE);
+		//BackImage separator = guiConfig.getGeneralImage("SeparatorVImg");
+		//separationPnl = new JPanelWithImg(separator.getFinalImage());
+		//separationPnl.setAlignmentX(CENTER_ALIGNMENT);
 		
 		armyDescriptionTxt = new JTextArea();
 		armyDescriptionTxt.setEditable(false);
 		armyDescriptionTxt.setFont(guiConfig.getToolTipFont());
 		armyDescriptionTxt.append("description de l'armée de la mort qui tue vraiment la mort");
-		//armyDescriptionTxt.setPreferredSize(new Dimension(400,200));
+		armyDescriptionTxt.setPreferredSize(new Dimension(400,200));
 		armyDescriptionTxt.setOpaque(false);
 		
 		raceDescriptionLayoutPnl = new JPanel();
 		raceDescriptionLayoutPnl.setLayout(new BoxLayout(raceDescriptionLayoutPnl, BoxLayout.X_AXIS));
-		raceDescriptionLayoutPnl.add(armyRacesScrollPnl);
-		raceDescriptionLayoutPnl.add(Box.createHorizontalStrut(5));
-		raceDescriptionLayoutPnl.add(separationPnl);
-		raceDescriptionLayoutPnl.add(Box.createHorizontalStrut(5));
 		raceDescriptionLayoutPnl.add(armyDescriptionTxt);
 		raceDescriptionLayoutPnl.setOpaque(false);
-		
 		
 		verticalLayoutPnl = new JPanel();
 		verticalLayoutPnl.setLayout(new BoxLayout(verticalLayoutPnl, BoxLayout.Y_AXIS));
 		verticalLayoutPnl.add(headerLayoutPnl);
-		verticalLayoutPnl.add(raceDescriptionLayoutPnl);
+		verticalLayoutPnl.add(armyDescriptionTxt);
+		verticalLayoutPnl.add(armyRacesScrollPnl);
+		//raceDescriptionLayoutPnl.add(separationPnl);
+		
 		verticalLayoutPnl.setOpaque(false);
 		this.add(verticalLayoutPnl);
 		this.setBackground(guiConfig.getUIColor("grey"));
