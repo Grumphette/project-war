@@ -1,7 +1,7 @@
 {
   "ArmySaveFolder" : "../saved_army",
   "ArmyDB" : "army_db/army.db",
-  "ArmyConfigFiles" : ["configFiles/orcsConfig", "configFiles/elvesConfig"],
+  "ArmyConfigFiles" : ["configFiles/orcsConfig", "configFiles/elvesConfig","configFiles/trollConfig"],
   "GeneralImages" : 
   { 
   		"LogoImg" : ["images/logo.png","306","120"]
@@ -14,5 +14,5 @@
 	"blue" : ["197","197","247","255"],
 	"red" : ["255","0","0","115"]
   }
-  "Font" : "font/Purisa.ttf"
+  "Font" : ["font/Purisa.ttf","14","10"]
 }

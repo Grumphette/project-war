@@ -124,7 +124,7 @@ public class StartWindow extends JPanel
 		
 		/**Start solo game button panel configuration*/
 		lblStartSolo = new JLabel();
-		lblStartSolo.setFont(GuiConfig.getFont());
+		lblStartSolo.setFont(GuiConfig.getStandarFont());
 		lblStartSolo.setText("Start Solo game");
 		btnStartSolo.setBackground(GuiConfig.getUIColor("grey"));
 		btnStartSolo.addMouseListener(btnMouseListerner);
@@ -133,7 +133,7 @@ public class StartWindow extends JPanel
 		
 		/**Start multi game button panel configuration*/
 		lblStartMulti = new JLabel();
-		lblStartMulti.setFont(GuiConfig.getFont());
+		lblStartMulti.setFont(GuiConfig.getStandarFont());
 		lblStartMulti.setText("Start multi-player game");
 		btnStartMulti.setBackground(GuiConfig.getUIColor("grey"));
 		btnStartMulti.addMouseListener(btnMouseListerner);
@@ -141,7 +141,7 @@ public class StartWindow extends JPanel
 		
 		/**Quit button panel configuration*/
 		lblQuit = new JLabel();
-		lblQuit.setFont(GuiConfig.getFont());
+		lblQuit.setFont(GuiConfig.getStandarFont());
 		lblQuit.setText("Quit");
 		btnQuit.setBackground(GuiConfig.getUIColor("grey"));
 		btnQuit.addMouseListener(btnMouseListerner);
@@ -149,7 +149,7 @@ public class StartWindow extends JPanel
 		
 		/**Credit button panel configuration*/
 		lblCredit = new JLabel();
-		lblCredit.setFont(GuiConfig.getFont());
+		lblCredit.setFont(GuiConfig.getStandarFont());
 		lblCredit.setText("Credits");
 		btnCredit.setBackground(GuiConfig.getUIColor("grey"));
 		btnCredit.addMouseListener(btnMouseListerner);

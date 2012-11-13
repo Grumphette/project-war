@@ -112,15 +112,15 @@ public class ConfigFileLoader
 		return null;
 	}
 	
-	public String retrieveFont()
+	public List<String> retrieveFont()
 	{
-		String toReturn = null;
+		List<String> toReturn = null;
 		Iterator<Entry<String,JSONObject>> anIterator = generalConfigJsonObj.entrySet().iterator();
 		while(anIterator.hasNext())
 		{
 			 Map.Entry<String, JSONObject> entry = anIterator.next();
 			 
-			 toReturn = entry.getValue().get("Font").toString();
+			 toReturn = (List<String>)entry.getValue().get("Font");
 			 if(toReturn != null)
 			 {
 				 return toReturn;

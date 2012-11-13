@@ -31,7 +31,7 @@ public class GuiGeneralConfig
 	private Map<String, String> ArmyDescriptions; 
 	private ArrayList<UIColor> UIColors;
 	private Map<String, ArrayList<UnitGui>> GUIunit;
-	private Font purissaFont;
+	private Map<String,Font> FontGui;
 	
 	private GuiGeneralConfig()
 	{
@@ -40,6 +40,7 @@ public class GuiGeneralConfig
 		ArmyConfigFiles = new ArrayList<String>();
 		UIColors = new ArrayList<UIColor>();
 		ArmyDescriptions = new HashMap<String, String>();
+		FontGui = new HashMap<String, Font>();
 	}
 	
 	public static GuiGeneralConfig getGuiConfigSingleton ()
@@ -104,17 +105,19 @@ public class GuiGeneralConfig
 		this.ArmyDescriptions = Descriptionsmap;
 	}
 	
-	private void setFont(String pathToFont)
+	private void setFont(List<String> fontAttribute)
 	{
+		Font tmpFont = null;
 		try 
 		{
-			purissaFont = Font.createFont(Font.TRUETYPE_FONT,new File(pathToFont));
+			tmpFont = Font.createFont(Font.TRUETYPE_FONT,new File(fontAttribute.get(0)));
 		} 
 		catch (Exception e) 
 		{
 			e.printStackTrace();
 		}
-		purissaFont = purissaFont.deriveFont(Font.BOLD, 14);
+		FontGui.put("standard", tmpFont.deriveFont(Font.BOLD, Integer.parseInt(fontAttribute.get(1))));
+		FontGui.put("tooltip", tmpFont.deriveFont(Font.BOLD, Integer.parseInt(fontAttribute.get(2))));
 	}
 	
 	
@@ -123,9 +126,14 @@ public class GuiGeneralConfig
 		return ArmyConfigFiles;
 	}
 	
-	public Font getFont()
+	public Font getStandarFont()
 	{
-		return purissaFont;
+		return FontGui.get("standard");
+	}
+	
+	public Font getToolTipFont()
+	{
+		return FontGui.get("tooltip");
 	}
 	
 	public Color getUIColor(String Name)
