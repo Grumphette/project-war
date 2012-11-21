@@ -1,4 +1,4 @@
-package DesktopGUI;
+package GUIobjects;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import misc.GuiGeneralConfig;
 
-import GUIobjects.BackImage;
+import DesktopGUI.JPanelWithImg;
 
 public class ArmyRaceIcon extends JPanel 
 {
@@ -27,16 +27,16 @@ public class ArmyRaceIcon extends JPanel
 		this.race = race;
 		raceLbl = new JLabel(this.race);
 		raceLbl.setFont(guiConfig.getToolTipFont());
-		raceLbl.setAlignmentX(CENTER_ALIGNMENT);
+		//raceLbl.setAlignmentX(CENTER_ALIGNMENT);
 		raceIcon = guiConfig.getArmyIcons(race);
 		raceIconPnl = new JPanelWithImg(raceIcon.getFinalImage());
-		raceIconPnl.setPreferredSize(raceIcon.getImgSize());
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.add(raceIconPnl);
 		this.add(Box.createVerticalStrut(2));
 		this.add(raceLbl);
 		this.setBackground(guiConfig.getUIColor("grey"));
+		this.setMaximumSize(new Dimension(raceIcon.getImgSize().width,raceIcon.getImgSize().height+2+10));
 	}
 	
 	public String getSelectedRace()

@@ -3,11 +3,10 @@ package DesktopGUI;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -16,11 +15,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.ScrollPaneLayout;
-import javax.swing.border.Border;
 
-import GUIobjects.BackImage;
+import com.sun.org.apache.bcel.internal.generic.PUTSTATIC;
 
+import GUIobjects.ArmyRaceIcon;
 
 import misc.CoreGeneralConfig;
 import misc.GuiGeneralConfig;
@@ -29,7 +27,6 @@ import misc.GuiGeneralConfig;
 public class RaceSelection extends JPanel
 {
 	private JLabel chooseUrArmyLbl;
-	private JPanel verticalLayoutPnl;
 	private JPanel horizontalLayoutPnl;
 	private JPanel raceDescriptionLayoutPnl;
 	private JPanel headerLayoutPnl;
@@ -39,7 +36,9 @@ public class RaceSelection extends JPanel
 	private JLabel lblBtnNext;
 	private JPanel btnReturn;
 	private JLabel lblBtnReturn;
-	private JPanelWithImg separationPnl;
+	//private JPanelWithImg separationPnl;
+	private JPanel playersSelectedRace;
+	private JPanelWithImg choiceValidationButton;
 	
 	private JScrollPane armyRacesScrollPnl;
 	
@@ -54,16 +53,21 @@ public class RaceSelection extends JPanel
 	private boolean isAlreadyBuild;
 	private String selectedRace;
 	
+	private int numberOfHumanPlayer;
+	private int numberOfSelectedRace;
+	
 	public RaceSelection()
 	{
 		super();
 		isAlreadyBuild = false;
 		state = 0;
 		selectedRace = null;
+		this.numberOfHumanPlayer = 0;
 	}
 	
-	public void buildRaceSelection()
+	public void buildRaceSelection(int numberOfHumanPlayer)
 	{
+		this.numberOfHumanPlayer = numberOfHumanPlayer;
 		isAlreadyBuild = true;
 		CoreGeneralConfig  coreConfig = CoreGeneralConfig.getCoreConfigSingleton();
 		guiConfig = GuiGeneralConfig.getGuiConfigSingleton();
@@ -80,7 +84,7 @@ public class RaceSelection extends JPanel
 					state=1;
 					hideRaceWindow();
 				}
-				if(e.getSource().equals(btnNext)   )
+				if(e.getSource().equals(btnNext))
 				{
 					if(selectedRace != null)
 					{
@@ -139,6 +143,12 @@ public class RaceSelection extends JPanel
 					armyDescriptionTxt.setText("");
 					selectedRace = Source.getSelectedRace();
 					armyDescriptionTxt.setText(guiConfig.getArmyDescitpions(selectedRace));
+					
+					JLabel tmpLbl = new JLabel(selectedRace);
+					tmpLbl.setFont(guiConfig.getToolTipFont());
+					playersSelectedRace.add(tmpLbl);
+					
+					numberOfSelectedRace++;
 				}
 			}
 		};
@@ -193,15 +203,19 @@ public class RaceSelection extends JPanel
 		armyRacesScrollPnl = new JScrollPane(armyRacesPnlBack);
 		armyRacesScrollPnl.setAutoscrolls(true);
 		armyRacesScrollPnl.setBorder(BorderFactory.createEmptyBorder());
-		armyRacesScrollPnl.setMaximumSize(armyRacesScrollPnl.getPreferredSize());
+		armyRacesScrollPnl.setPreferredSize(armyRacesPnlBack.getPreferredSize());
+		
+		choiceValidationButton = new JPanelWithImg(guiConfig.getGeneralImage("ValidationImg").getFinalImage());
 		
 		
 		horizontalLayoutPnl = new JPanel();
 		horizontalLayoutPnl.setLayout(new BoxLayout(horizontalLayoutPnl,BoxLayout.X_AXIS));
-		horizontalLayoutPnl.add(Box.createHorizontalStrut(200));
+		//horizontalLayoutPnl.add(Box.createHorizontalGlue());
 		horizontalLayoutPnl.add(armyRacesScrollPnl);
-		horizontalLayoutPnl.add(Box.createHorizontalGlue());
-		horizontalLayoutPnl.setBackground(Color.BLUE);
+		//horizontalLayoutPnl.add(Box.createHorizontalGlue());
+		horizontalLayoutPnl.add(choiceValidationButton);
+		//horizontalLayoutPnl.setOpaque(false);
+		horizontalLayoutPnl.setBackground(Color.blue);
 		//BackImage separator = guiConfig.getGeneralImage("SeparatorVImg");
 		//separationPnl = new JPanelWithImg(separator.getFinalImage());
 		//separationPnl.setAlignmentX(CENTER_ALIGNMENT);
@@ -209,7 +223,7 @@ public class RaceSelection extends JPanel
 		armyDescriptionTxt = new JTextArea();
 		armyDescriptionTxt.setEditable(false);
 		armyDescriptionTxt.setFont(guiConfig.getToolTipFont());
-		armyDescriptionTxt.append("description de l'armée de la mort qui tue vraiment la mort");
+		armyDescriptionTxt.setText("please select a race below to get its history background");
 		armyDescriptionTxt.setPreferredSize(new Dimension(400,200));
 		armyDescriptionTxt.setOpaque(false);
 		
@@ -217,16 +231,25 @@ public class RaceSelection extends JPanel
 		raceDescriptionLayoutPnl.setLayout(new BoxLayout(raceDescriptionLayoutPnl, BoxLayout.X_AXIS));
 		raceDescriptionLayoutPnl.add(armyDescriptionTxt);
 		raceDescriptionLayoutPnl.setOpaque(false);
-		
-		verticalLayoutPnl = new JPanel();
-		verticalLayoutPnl.setLayout(new BoxLayout(verticalLayoutPnl, BoxLayout.Y_AXIS));
-		verticalLayoutPnl.add(headerLayoutPnl);
-		verticalLayoutPnl.add(armyDescriptionTxt);
-		verticalLayoutPnl.add(armyRacesScrollPnl);
 		//raceDescriptionLayoutPnl.add(separationPnl);
 		
-		verticalLayoutPnl.setOpaque(false);
-		this.add(verticalLayoutPnl);
+		
+		playersSelectedRace = new JPanel();
+		playersSelectedRace.setOpaque(false);
+		playersSelectedRace.setLayout(new GridLayout(2,this.numberOfHumanPlayer));
+		for(Integer i=1;i<= this.numberOfHumanPlayer;i++)
+		{
+			JLabel tmpJlbl = new JLabel("Joueur"+i.toString());
+			tmpJlbl.setFont(guiConfig.getToolTipFont());
+			playersSelectedRace.add(tmpJlbl);
+		}
+		
+		
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		this.add(headerLayoutPnl);
+		this.add(armyDescriptionTxt);
+		this.add(playersSelectedRace);
+		this.add(horizontalLayoutPnl);
 		this.setBackground(guiConfig.getUIColor("grey"));
 		
 	}
@@ -243,6 +266,12 @@ public class RaceSelection extends JPanel
 	{
 		this.setVisible(false);
 	}
+	public void resetChoise()
+	{
+		this.selectedRace = null;
+		this.armyDescriptionTxt.setText("please select a race below to get its history background");
+	}
 
 
 }
+

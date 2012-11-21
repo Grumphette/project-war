@@ -41,6 +41,16 @@ public class CoreGeneralConfig
 		ArmyDBC.retrieveAllRaces(armyRaces);
 	}
 	
+	/*public void String setSelectedArmyRace(String race)
+	{
+		this.selectedRace = race;
+	}
+	
+	public Map<String,ArrayList<Unit>> getArmyUnits()
+	{
+		ArmyDBC.retrieveAllRaceUnits(army)
+	}*/
+	
 	private void setArmyDBPath (String dbPath)
 	{
 		ArmyDBC.setPath(dbPath);

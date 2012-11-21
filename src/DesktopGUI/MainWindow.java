@@ -65,7 +65,6 @@ public class MainWindow implements ComponentListener
 			switch(WelcomScreen.getState())
 			{
 				case 1:
-					System.out.println("load single player panel");
 					Window.remove(WelcomScreen);
 					if(SelectPlayerRace.isBuilt() == true)
 					{
@@ -73,7 +72,7 @@ public class MainWindow implements ComponentListener
 					}
 					else
 					{
-						SelectPlayerRace.buildRaceSelection();
+						SelectPlayerRace.buildRaceSelection(1);
 					}
 					
 					Window.add(SelectPlayerRace);
@@ -95,7 +94,7 @@ public class MainWindow implements ComponentListener
 			switch(SelectPlayerRace.getState())
 			{
 				case 1:
-					System.out.println("retunr to start window");
+					SelectPlayerRace.resetChoise();
 					Window.remove(SelectPlayerRace);
 					if(WelcomScreen.isBuilt() == true)
 					{

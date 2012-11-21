@@ -23,7 +23,6 @@ public class JPanelWithImg extends JPanel
 		{
 			this.setPreferredSize(new Dimension(this.bgImg.getWidth(null),this.bgImg.getHeight(null)));
 		}
-		this.setBackground(Color.CYAN);
 	}
 
 	public void paintComponent(Graphics g)

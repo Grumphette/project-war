@@ -1,8 +1,11 @@
 package GUIobjects;
 
-public class UnitGui {
+import Core.Unit;
 
-	public UnitGui() 
+public class UnitGui 
+{
+	private Unit coreUnit;
+	public UnitGui(Unit coreUnit) 
 	{
 	
 	}
