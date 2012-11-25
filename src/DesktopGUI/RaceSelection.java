@@ -2,6 +2,7 @@ package DesktopGUI;
 
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
@@ -55,6 +56,8 @@ public class RaceSelection extends JPanel
 	
 	private int numberOfHumanPlayer;
 	private int numberOfSelectedRace;
+	
+	private int i;
 	
 	public RaceSelection()
 	{
@@ -187,8 +190,6 @@ public class RaceSelection extends JPanel
 		allArmyPnl = new ArrayList<ArmyRaceIcon>();
 		armyRacesPnlBack = new JPanel();
 		armyRacesPnlBack.setLayout(new BoxLayout(armyRacesPnlBack, BoxLayout.X_AXIS));
-		
-		armyRacesPnlBack.add(Box.createHorizontalGlue());
 		for(String tmp : racesAvailable)
 		{
 			ArmyRaceIcon tmpPnl = new ArmyRaceIcon(tmp);
@@ -197,25 +198,25 @@ public class RaceSelection extends JPanel
 			armyRacesPnlBack.add(tmpPnl);
 			armyRacesPnlBack.add(Box.createHorizontalStrut(5));
 		}
-		armyRacesPnlBack.add(Box.createHorizontalGlue());
+		
+		
 		armyRacesPnlBack.setBackground(guiConfig.getUIColor("grey"));
 		
 		armyRacesScrollPnl = new JScrollPane(armyRacesPnlBack);
 		armyRacesScrollPnl.setAutoscrolls(true);
 		armyRacesScrollPnl.setBorder(BorderFactory.createEmptyBorder());
-		armyRacesScrollPnl.setPreferredSize(armyRacesPnlBack.getPreferredSize());
+		armyRacesScrollPnl.setMaximumSize(new Dimension(300,90));
 		
 		choiceValidationButton = new JPanelWithImg(guiConfig.getGeneralImage("ValidationImg").getFinalImage());
 		
 		
 		horizontalLayoutPnl = new JPanel();
 		horizontalLayoutPnl.setLayout(new BoxLayout(horizontalLayoutPnl,BoxLayout.X_AXIS));
-		//horizontalLayoutPnl.add(Box.createHorizontalGlue());
 		horizontalLayoutPnl.add(armyRacesScrollPnl);
-		//horizontalLayoutPnl.add(Box.createHorizontalGlue());
+		horizontalLayoutPnl.add(Box.createHorizontalStrut(100-choiceValidationButton.getPreferredSize().width));
 		horizontalLayoutPnl.add(choiceValidationButton);
-		//horizontalLayoutPnl.setOpaque(false);
-		horizontalLayoutPnl.setBackground(Color.blue);
+		horizontalLayoutPnl.setOpaque(false);
+		
 		//BackImage separator = guiConfig.getGeneralImage("SeparatorVImg");
 		//separationPnl = new JPanelWithImg(separator.getFinalImage());
 		//separationPnl.setAlignmentX(CENTER_ALIGNMENT);
