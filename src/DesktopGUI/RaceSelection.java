@@ -2,6 +2,7 @@ package DesktopGUI;
 
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
@@ -57,6 +58,8 @@ public class RaceSelection extends JPanel
 	
 	private int numberOfHumanPlayer;
 
+	
+	private int i;
 	
 	public RaceSelection()
 	{
@@ -161,8 +164,6 @@ public class RaceSelection extends JPanel
 		
 		armyRacesPnlBack = new JPanel();
 		armyRacesPnlBack.setLayout(new BoxLayout(armyRacesPnlBack, BoxLayout.X_AXIS));
-		
-		armyRacesPnlBack.add(Box.createHorizontalGlue());
 		for(String tmp : racesAvailable)
 		{
 			ArmyRaceIcon tmpPnl = new ArmyRaceIcon(tmp);
@@ -170,14 +171,32 @@ public class RaceSelection extends JPanel
 			armyRacesPnlBack.add(tmpPnl);
 			armyRacesPnlBack.add(Box.createHorizontalStrut(5));
 		}
-		armyRacesPnlBack.add(Box.createHorizontalGlue());
+		
+		
 		armyRacesPnlBack.setBackground(guiConfig.getUIColor("grey"));
 		
 		armyRacesScrollPnl = new JScrollPane(armyRacesPnlBack);
 		armyRacesScrollPnl.setAutoscrolls(true);
 		armyRacesScrollPnl.setBorder(BorderFactory.createEmptyBorder());
-		armyRacesScrollPnl.setPreferredSize(armyRacesPnlBack.getPreferredSize());
+		armyRacesScrollPnl.setMaximumSize(new Dimension(300,90));
 		
+<<<<<<< HEAD
+=======
+		choiceValidationButton = new JPanelWithImg(guiConfig.getGeneralImage("ValidationImg").getFinalImage());
+		
+		
+		horizontalLayoutPnl = new JPanel();
+		horizontalLayoutPnl.setLayout(new BoxLayout(horizontalLayoutPnl,BoxLayout.X_AXIS));
+		horizontalLayoutPnl.add(armyRacesScrollPnl);
+		horizontalLayoutPnl.add(Box.createHorizontalStrut(100-choiceValidationButton.getPreferredSize().width));
+		horizontalLayoutPnl.add(choiceValidationButton);
+		horizontalLayoutPnl.setOpaque(false);
+		
+		//BackImage separator = guiConfig.getGeneralImage("SeparatorVImg");
+		//separationPnl = new JPanelWithImg(separator.getFinalImage());
+		//separationPnl.setAlignmentX(CENTER_ALIGNMENT);
+		
+>>>>>>> b7edee69f21d0a6923c1b88fabdd8f8c12d64bd8
 		armyDescriptionTxt = new JTextArea();
 		armyDescriptionTxt.setEditable(false);
 		armyDescriptionTxt.setFont(guiConfig.getToolTipFont());

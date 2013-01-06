@@ -6,7 +6,7 @@
   { 
   		"LogoImg" : ["images/logo.png","306","120"]
   		"SeparatorVImg" : ["images/separator.png","2","180"]
-		"ValidationImg" : ["images/validation.png","70","70"]
+		"ValidationImg" : ["images/validation.png","37","70"]
   },
   "UIColors" : 
   {
