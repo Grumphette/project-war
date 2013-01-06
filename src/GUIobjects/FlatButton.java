@@ -3,13 +3,10 @@ package GUIobjects;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
 import misc.GuiGeneralConfig;
 
 
-public class FlatButton extends JPanel implements MouseListener
+public class FlatButton extends Button implements MouseListener
 {
 	private GuiGeneralConfig GuiConfig;
 

@@ -22,7 +22,8 @@ import com.sun.org.apache.bcel.internal.generic.PUTSTATIC;
 import GUIobjects.ArmyRaceIcon;
 import GUIobjects.ConfirmationButton;
 import GUIobjects.FlatButton;
-import GUIobjects.JPanelWithImg;
+import GUIobjects.GroupButton;
+
 
 import misc.CoreGeneralConfig;
 import misc.GuiGeneralConfig;
@@ -164,6 +165,7 @@ public class RaceSelection extends JPanel
 		
 		armyRacesPnlBack = new JPanel();
 		armyRacesPnlBack.setLayout(new BoxLayout(armyRacesPnlBack, BoxLayout.X_AXIS));
+		
 		for(String tmp : racesAvailable)
 		{
 			ArmyRaceIcon tmpPnl = new ArmyRaceIcon(tmp);
@@ -180,23 +182,6 @@ public class RaceSelection extends JPanel
 		armyRacesScrollPnl.setBorder(BorderFactory.createEmptyBorder());
 		armyRacesScrollPnl.setMaximumSize(new Dimension(300,90));
 		
-<<<<<<< HEAD
-=======
-		choiceValidationButton = new JPanelWithImg(guiConfig.getGeneralImage("ValidationImg").getFinalImage());
-		
-		
-		horizontalLayoutPnl = new JPanel();
-		horizontalLayoutPnl.setLayout(new BoxLayout(horizontalLayoutPnl,BoxLayout.X_AXIS));
-		horizontalLayoutPnl.add(armyRacesScrollPnl);
-		horizontalLayoutPnl.add(Box.createHorizontalStrut(100-choiceValidationButton.getPreferredSize().width));
-		horizontalLayoutPnl.add(choiceValidationButton);
-		horizontalLayoutPnl.setOpaque(false);
-		
-		//BackImage separator = guiConfig.getGeneralImage("SeparatorVImg");
-		//separationPnl = new JPanelWithImg(separator.getFinalImage());
-		//separationPnl.setAlignmentX(CENTER_ALIGNMENT);
-		
->>>>>>> b7edee69f21d0a6923c1b88fabdd8f8c12d64bd8
 		armyDescriptionTxt = new JTextArea();
 		armyDescriptionTxt.setEditable(false);
 		armyDescriptionTxt.setFont(guiConfig.getToolTipFont());

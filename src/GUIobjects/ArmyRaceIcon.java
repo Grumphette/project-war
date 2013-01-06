@@ -25,11 +25,7 @@ public class ArmyRaceIcon extends JPanel
 		this.race = race;
 		raceLbl = new JLabel(this.race);
 		raceLbl.setFont(guiConfig.getToolTipFont());
-<<<<<<< HEAD
-		
-=======
-		raceLbl.setAlignmentX(CENTER_ALIGNMENT);
->>>>>>> b7edee69f21d0a6923c1b88fabdd8f8c12d64bd8
+
 		raceIcon = guiConfig.getArmyIcons(race);
 		raceIconPnl = new ConfirmationButton(raceIcon.getFinalImage());
 		
