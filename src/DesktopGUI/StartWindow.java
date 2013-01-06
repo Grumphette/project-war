@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 
 import misc.GuiGeneralConfig;
 import GUIobjects.BackImage;
+import GUIobjects.FlatButton;
+import GUIobjects.JPanelWithImg;
 
 
 @SuppressWarnings("serial")
@@ -20,10 +22,10 @@ public class StartWindow extends JPanel
 	
 	private JPanelWithImg Logo;
 	private JPanel btnPnl;
-	private JPanel btnStartSolo;
-	private JPanel btnStartMulti;
-	private JPanel btnQuit;
-	private JPanel btnCredit;
+	private FlatButton btnStartSolo;
+	private FlatButton btnStartMulti;
+	private FlatButton btnQuit;
+	private FlatButton btnCredit;
 	private JLabel lblStartSolo;
 	private JLabel lblStartMulti;
 	private JLabel lblQuit;
@@ -51,11 +53,6 @@ public class StartWindow extends JPanel
 			@Override
 			public void mouseReleased(MouseEvent e) 
 			{
-				if(e.getSource().equals(btnCredit) || e.getSource().equals(btnQuit) || e.getSource().equals(btnStartMulti) || e.getSource().equals(btnStartSolo))
-				{
-					JPanel Source = (JPanel)e.getSource();
-					Source.setBackground(GuiConfig.getUIColor("lightblue"));
-				}
 				if(e.getSource().equals(btnStartSolo))
 				{
 					state=1;
@@ -74,37 +71,12 @@ public class StartWindow extends JPanel
 				}
 				hideStartWindow();
 			}
-			
 			@Override
-			public void mousePressed(MouseEvent e) 
-			{
-				if(e.getSource().equals(btnCredit) || e.getSource().equals(btnQuit) || e.getSource().equals(btnStartMulti) || e.getSource().equals(btnStartSolo))
-				{
-					JPanel Source = (JPanel)e.getSource();
-					Source.setBackground(GuiConfig.getUIColor("blue"));
-				}
-			}
-			
+			public void mousePressed(MouseEvent e) {}
 			@Override
-			public void mouseExited(MouseEvent e) 
-			{
-				if(e.getSource().equals(btnCredit) || e.getSource().equals(btnQuit) || e.getSource().equals(btnStartMulti) || e.getSource().equals(btnStartSolo))
-				{
-					JPanel Source = (JPanel)e.getSource();
-					Source.setBackground(GuiConfig.getUIColor("grey"));
-				}
-			}
-			
+			public void mouseExited(MouseEvent e) {}
 			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
-				if(e.getSource().equals(btnCredit) || e.getSource().equals(btnQuit) || e.getSource().equals(btnStartMulti) || e.getSource().equals(btnStartSolo))
-				{
-					JPanel Source = (JPanel)e.getSource();
-					Source.setBackground(GuiConfig.getUIColor("lightblue"));
-				}
-			}
-			
+			public void mouseEntered(MouseEvent e) {}
 			@Override
 			public void mouseClicked(MouseEvent e) {}
 		};
@@ -115,10 +87,10 @@ public class StartWindow extends JPanel
 		Logo = new JPanelWithImg(GuiConfig.getGeneralImage("LogoImg").getFinalImage());
 		
 		btnPnl = new JPanel();
-		btnStartSolo = new JPanel();
-		btnStartMulti = new JPanel();
-		btnQuit = new JPanel();
-		btnCredit = new JPanel();
+		btnStartSolo = new FlatButton();
+		btnStartMulti = new FlatButton();
+		btnQuit = new FlatButton();
+		btnCredit = new FlatButton();
 		btnLayoutPnl = new JPanel();
 		
 		

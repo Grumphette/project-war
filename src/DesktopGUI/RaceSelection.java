@@ -19,6 +19,9 @@ import javax.swing.JTextArea;
 import com.sun.org.apache.bcel.internal.generic.PUTSTATIC;
 
 import GUIobjects.ArmyRaceIcon;
+import GUIobjects.ConfirmationButton;
+import GUIobjects.FlatButton;
+import GUIobjects.JPanelWithImg;
 
 import misc.CoreGeneralConfig;
 import misc.GuiGeneralConfig;
@@ -32,17 +35,16 @@ public class RaceSelection extends JPanel
 	private JPanel headerLayoutPnl;
 	private JPanel armyRacesPnlBack;
 	private JTextArea armyDescriptionTxt;
-	private JPanel btnNext;
+	private FlatButton btnNext;
 	private JLabel lblBtnNext;
-	private JPanel btnReturn;
+	private FlatButton btnReturn;
 	private JLabel lblBtnReturn;
 	//private JPanelWithImg separationPnl;
 	private JPanel playersSelectedRace;
-	private JPanelWithImg choiceValidationButton;
-	
+
 	private JScrollPane armyRacesScrollPnl;
 	
-	private ArrayList<ArmyRaceIcon> allArmyPnl;
+
 	private ArrayList<String> racesAvailable;
 	private int state;
 	
@@ -54,7 +56,7 @@ public class RaceSelection extends JPanel
 	private String selectedRace;
 	
 	private int numberOfHumanPlayer;
-	private int numberOfSelectedRace;
+
 	
 	public RaceSelection()
 	{
@@ -63,6 +65,7 @@ public class RaceSelection extends JPanel
 		state = 0;
 		selectedRace = null;
 		this.numberOfHumanPlayer = 0;
+
 	}
 	
 	public void buildRaceSelection(int numberOfHumanPlayer)
@@ -79,8 +82,6 @@ public class RaceSelection extends JPanel
 			{
 				if(e.getSource().equals(btnReturn))
 				{
-					JPanel Source = (JPanel)e.getSource();
-					Source.setBackground(guiConfig.getUIColor("grey"));	
 					state=1;
 					hideRaceWindow();
 				}
@@ -88,68 +89,42 @@ public class RaceSelection extends JPanel
 				{
 					if(selectedRace != null)
 					{
-						JPanel Source = (JPanel)e.getSource();
-						Source.setBackground(guiConfig.getUIColor("grey"));
 						state=2;
 						hideRaceWindow();
 					}
 					else
 					{
-						JPanel Source = (JPanel)e.getSource();
-						Source.setBackground(guiConfig.getUIColor("red"));	
-						
+						((FlatButton)e.getSource()).setErrorColor();
 					}
 					
+				}
+				
+				if((!e.getSource().equals(btnNext)) && (!e.getSource().equals(btnReturn)))
+				{
+					
+					System.out.println(e.getSource().toString());
+					/*armyDescriptionTxt.setText("");
+					selectedRace = Source.getSelectedRace();
+					armyDescriptionTxt.setText(guiConfig.getArmyDescitpions(selectedRace));*/
+					
+					
+
 				}
 				
 			}
 			
 			@Override
-			public void mousePressed(MouseEvent e)
-			{
-				if(e.getSource().equals(btnNext) || e.getSource().equals(btnReturn))
-				{
-					JPanel Source = (JPanel)e.getSource();
-					Source.setBackground(guiConfig.getUIColor("blue"));
-				}
-			}
+			public void mousePressed(MouseEvent e){}
+			@Override
+			public void mouseExited(MouseEvent e){}
 			
 			@Override
-			public void mouseExited(MouseEvent e)
-			{
-				if(e.getSource().equals(btnNext) || e.getSource().equals(btnReturn))
-				{
-					JPanel Source = (JPanel)e.getSource();
-					Source.setBackground(guiConfig.getUIColor("grey"));
-				}
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
-				if(e.getSource().equals(btnNext) || e.getSource().equals(btnReturn))
-				{
-					JPanel Source = (JPanel)e.getSource();
-					Source.setBackground(guiConfig.getUIColor("lightblue"));
-				}
-			}
+			public void mouseEntered(MouseEvent e){}
 			
 			@Override
 			public void mouseClicked(MouseEvent e) 
 			{
-				if((!e.getSource().equals(btnNext)) && (!e.getSource().equals(btnReturn)))
-				{
-					ArmyRaceIcon Source = (ArmyRaceIcon)e.getSource();
-					armyDescriptionTxt.setText("");
-					selectedRace = Source.getSelectedRace();
-					armyDescriptionTxt.setText(guiConfig.getArmyDescitpions(selectedRace));
-					
-					JLabel tmpLbl = new JLabel(selectedRace);
-					tmpLbl.setFont(guiConfig.getToolTipFont());
-					playersSelectedRace.add(tmpLbl);
-					
-					numberOfSelectedRace++;
-				}
+				
 			}
 		};
 		
@@ -162,7 +137,7 @@ public class RaceSelection extends JPanel
 		lblBtnNext = new JLabel();
 		lblBtnNext.setFont(guiConfig.getStandarFont());
 		lblBtnNext.setText(">");
-		btnNext = new JPanel();
+		btnNext = new FlatButton();
 		btnNext.setBackground(guiConfig.getUIColor("grey"));
 		btnNext.addMouseListener(btnMouseListerner);
 		btnNext.add(lblBtnNext);
@@ -170,7 +145,7 @@ public class RaceSelection extends JPanel
 		lblBtnReturn = new JLabel();
 		lblBtnReturn.setFont(guiConfig.getStandarFont());
 		lblBtnReturn.setText("<");
-		btnReturn = new JPanel();
+		btnReturn = new FlatButton();
 		btnReturn.setBackground(guiConfig.getUIColor("grey"));
 		btnReturn.addMouseListener(btnMouseListerner);
 		btnReturn.add(lblBtnReturn);
@@ -184,7 +159,6 @@ public class RaceSelection extends JPanel
 		headerLayoutPnl.add(Box.createHorizontalGlue());
 		headerLayoutPnl.add(btnNext);
 		
-		allArmyPnl = new ArrayList<ArmyRaceIcon>();
 		armyRacesPnlBack = new JPanel();
 		armyRacesPnlBack.setLayout(new BoxLayout(armyRacesPnlBack, BoxLayout.X_AXIS));
 		
@@ -193,7 +167,6 @@ public class RaceSelection extends JPanel
 		{
 			ArmyRaceIcon tmpPnl = new ArmyRaceIcon(tmp);
 			tmpPnl.addMouseListener(btnMouseListerner);
-			allArmyPnl.add(tmpPnl);
 			armyRacesPnlBack.add(tmpPnl);
 			armyRacesPnlBack.add(Box.createHorizontalStrut(5));
 		}
@@ -204,21 +177,6 @@ public class RaceSelection extends JPanel
 		armyRacesScrollPnl.setAutoscrolls(true);
 		armyRacesScrollPnl.setBorder(BorderFactory.createEmptyBorder());
 		armyRacesScrollPnl.setPreferredSize(armyRacesPnlBack.getPreferredSize());
-		
-		choiceValidationButton = new JPanelWithImg(guiConfig.getGeneralImage("ValidationImg").getFinalImage());
-		
-		
-		horizontalLayoutPnl = new JPanel();
-		horizontalLayoutPnl.setLayout(new BoxLayout(horizontalLayoutPnl,BoxLayout.X_AXIS));
-		//horizontalLayoutPnl.add(Box.createHorizontalGlue());
-		horizontalLayoutPnl.add(armyRacesScrollPnl);
-		//horizontalLayoutPnl.add(Box.createHorizontalGlue());
-		horizontalLayoutPnl.add(choiceValidationButton);
-		//horizontalLayoutPnl.setOpaque(false);
-		horizontalLayoutPnl.setBackground(Color.blue);
-		//BackImage separator = guiConfig.getGeneralImage("SeparatorVImg");
-		//separationPnl = new JPanelWithImg(separator.getFinalImage());
-		//separationPnl.setAlignmentX(CENTER_ALIGNMENT);
 		
 		armyDescriptionTxt = new JTextArea();
 		armyDescriptionTxt.setEditable(false);
@@ -233,7 +191,6 @@ public class RaceSelection extends JPanel
 		raceDescriptionLayoutPnl.setOpaque(false);
 		//raceDescriptionLayoutPnl.add(separationPnl);
 		
-		
 		playersSelectedRace = new JPanel();
 		playersSelectedRace.setOpaque(false);
 		playersSelectedRace.setLayout(new GridLayout(2,this.numberOfHumanPlayer));
@@ -244,12 +201,11 @@ public class RaceSelection extends JPanel
 			playersSelectedRace.add(tmpJlbl);
 		}
 		
-		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.add(headerLayoutPnl);
 		this.add(armyDescriptionTxt);
 		this.add(playersSelectedRace);
-		this.add(horizontalLayoutPnl);
+		this.add(armyRacesScrollPnl);
 		this.setBackground(guiConfig.getUIColor("grey"));
 		
 	}

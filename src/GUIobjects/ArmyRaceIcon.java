@@ -1,9 +1,7 @@
 package GUIobjects;
 
-import java.awt.Color;
-import java.awt.Dimension;
 
-import javax.swing.BorderFactory;
+import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -11,14 +9,14 @@ import javax.swing.JPanel;
 
 import misc.GuiGeneralConfig;
 
-import DesktopGUI.JPanelWithImg;
 
 public class ArmyRaceIcon extends JPanel 
 {
 	private String race;
 	private JLabel raceLbl;
 	private BackImage raceIcon;
-	private JPanelWithImg raceIconPnl;
+	private ConfirmationButton raceIconPnl;
+	
 	
 	public ArmyRaceIcon(String race)
 	{
@@ -27,9 +25,9 @@ public class ArmyRaceIcon extends JPanel
 		this.race = race;
 		raceLbl = new JLabel(this.race);
 		raceLbl.setFont(guiConfig.getToolTipFont());
-		//raceLbl.setAlignmentX(CENTER_ALIGNMENT);
+		
 		raceIcon = guiConfig.getArmyIcons(race);
-		raceIconPnl = new JPanelWithImg(raceIcon.getFinalImage());
+		raceIconPnl = new ConfirmationButton(raceIcon.getFinalImage());
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.add(raceIconPnl);

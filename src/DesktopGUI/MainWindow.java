@@ -72,7 +72,7 @@ public class MainWindow implements ComponentListener
 					}
 					else
 					{
-						SelectPlayerRace.buildRaceSelection(1);
+						SelectPlayerRace.buildRaceSelection(2);
 					}
 					
 					Window.add(SelectPlayerRace);
